@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 	'foodsharing_webui',
 	'foodsharing_webui.list',
+    'bootstrap3',
 )
 
 MIDDLEWARE_CLASSES = (
