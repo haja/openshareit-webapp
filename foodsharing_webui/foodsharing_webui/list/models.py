@@ -1,7 +1,3 @@
-from django.db import models
-
 # Create your models here.
 
-class Basket(models.Model):
-    title = models.CharField(max_length=30)
-    description = models.CharField(max_length=140)
+# no models here because we use a REST backend, not a database directly
