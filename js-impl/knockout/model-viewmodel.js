@@ -1,18 +1,27 @@
-function Basket(id, description) {
+function Basket(id, name) {
     var self = this;
     self.id = id;
-    self.description = description;
+    self.name = name;
 }
 
 function BasketsViewModel() {
     var self = this;
 
     //data
-    self.baskets = ko.observableArray([
-            new Basket(0, "asdf"),
-            new Basket(1, "asdf2"),
-            new Basket(12, "asdf3")
-            ]);
+    self.baskets = ko.observableArray([]);
+
+    self.addBasket = function(basket) {
+        self.baskets.push(basket);
+    }
+
 }
 
-ko.applyBindings(new BasketsViewModel());
+var viewmodel = new BasketsViewModel();
+ko.applyBindings(viewmodel);
+
+    /* fill with testdata */
+for (var i = 0; i < 15; i++) {
+    viewmodel.addBasket(new Basket(i, "asdf" + i));
+}
+
+
