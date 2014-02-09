@@ -1,0 +1,41 @@
+{
+    "status": "READY",
+    "articles": [
+        {
+            "name": "Schokonikolaus",
+            "purchaseDate": "2013-05-15T18:42:08+0000",
+            "image": null,
+            "expirationDate": "2013-05-15T18:42:08+0000",
+            "basket": 1,
+            "id": 1,
+            "unit": "g",
+            "quantity": 250
+        }
+    ],
+    "name": "Schokonikolaus",
+    "user": {
+        "mobileNumber": null,
+        "firstName": "Astra",
+        "lastName": "(a:a)",
+        "email": "a",
+        "isAdmin": true,
+        "phoneNumber": null,
+        "avatar": null,
+        "last_login": "2013-05-19T20:10:35+0000",
+        "id": 1
+    },
+    "id": 1,
+    "location": {
+        "province": "Wien",
+        "city": "Wien",
+        "country": "Austria",
+        "coordinates": {
+            "latitude": "16.2726546",
+            "longitude": "48.1087105"
+        },
+        "street": "Stephansplatz",
+        "postalCode": "1010",
+        "houseNumber": "1",
+        "id": 1
+    }
+}
