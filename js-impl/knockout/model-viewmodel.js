@@ -4,11 +4,18 @@ function Basket(id, name) {
     self.name = name;
 }
 
+function MapMarker(lat, lng) {
+    var self = this;
+    self.lat = ko.observable(lat);
+    self.lng = ko.observable(lng);
+}
+
 function BasketsViewModel() {
     var self = this;
 
     //data
     self.baskets = ko.observableArray([]);
+    self.map = ko.observable(new MapMarker(46.2, 18.2));
 
     self.addBasket = function(basket) {
         self.baskets.push(basket);
@@ -22,9 +29,11 @@ function BasketsViewModel() {
             var mappedItems = $.map(data, function(item) { return new Basket(item.id, item.name) });
             self.baskets(mappedItems);
         })
-        .fail(function(a, b, c) { alert("fail"); });
+    .fail(function(a, b, c) { alert("fail");
+    });
 }
 
-var viewmodel = new BasketsViewModel();
-ko.applyBindings(viewmodel);
 
+$(document).ready(function () {
+    ko.applyBindings(new BasketsViewModel());
+});
