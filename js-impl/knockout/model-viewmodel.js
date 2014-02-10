@@ -14,14 +14,17 @@ function BasketsViewModel() {
         self.baskets.push(basket);
     }
 
+    $.getJSON(
+            "http://localhost:8000/json"
+            )
+        .done(function(data) {
+            window.console&&console.log(data);
+            var mappedItems = $.map(data, function(item) { return new Basket(item.id, item.name) });
+            self.baskets(mappedItems);
+        })
+        .fail(function(a, b, c) { alert("fail"); });
 }
 
 var viewmodel = new BasketsViewModel();
 ko.applyBindings(viewmodel);
-
-    /* fill with testdata */
-for (var i = 0; i < 15; i++) {
-    viewmodel.addBasket(new Basket(i, "asdf" + i));
-}
-
 
