@@ -51,25 +51,25 @@
 <div class="container theme-showcase">
 
   <div class="row">
-    <div class="col-sm-4">
-      <div class="panel panel-default">
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-      </div>
+    <div class="col-md-6">
 
       <div class="panel panel-default">
         <div class="panel-body">
+          <form class="navbar-form navbar-left" role="search">
+            <div class="input-group">
+              <input type="text" class="form-control input-sm" placeholder="Ort, Artikel, ...">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+              </span>
+            </div>
+          </form>
           <div id="googleMapsDiv" class="google-maps-wrapper" data-bind="map:map">
           </div>
         </div>
       </div>
     </div>
 
-    <div class="col-sm-8" data-bind="foreach: items" >
+    <div class="col-md-6" data-bind="foreach: items" >
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title" data-bind="text: id"></h3>
