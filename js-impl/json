@@ -17,8 +17,8 @@
             "city": "Wien",
             "country": "\u00d6sterreich",
             "coordinates": {
-                "latitude": "16.3726546",
-                "longitude": "48.2087105"
+                "latitude": "48.2087105",
+                "longitude": "16.3726546"
             },
             "street": "Stephansplatz",
             "postalCode": "1010",
@@ -46,8 +46,8 @@
             "city": "Wien",
             "country": "\u00d6sterreich",
             "coordinates": {
-                "latitude": "16.3718631",
-                "longitude": "48.2071545"
+                "latitude": "48.8071545",
+                "longitude": "16.2718631"
             },
             "street": "Weihburggasse",
             "postalCode": "1010",
@@ -75,8 +75,8 @@
             "city": "Wien",
             "country": "\u00d6sterreich",
             "coordinates": {
-                "latitude": "16.3718631",
-                "longitude": "48.2071545"
+                "latitude": "48.5071545",
+                "longitude": "16.83718631"
             },
             "street": "Weihburggasse",
             "postalCode": "1010",
@@ -104,8 +104,8 @@
             "city": "Wien",
             "country": "\u00d6sterreich",
             "coordinates": {
-                "latitude": "16.3726432",
-                "longitude": "48.2075853"
+                "latitude": "48.0275853",
+                "longitude": "16.3276432"
             },
             "street": "Singerstrasse",
             "postalCode": "1010",
