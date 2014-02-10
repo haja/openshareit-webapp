@@ -2,7 +2,7 @@ ko.bindingHandlers.map = {
     init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
         var mapObj = ko.utils.unwrapObservable(valueAccessor());
         var latLng = new google.maps.LatLng(
-                48.2, 16.2
+                48.2, 16.2 /* TODO fix this somehow (load default location and update with data?) */
                 );
 
         var mapOptions = { center: latLng,
@@ -31,6 +31,7 @@ ko.bindingHandlers.map = {
                 loc._marker = new google.maps.Marker({
                     map: mapObj.googleMap,
                     position: latLng,
+                    title: "I'm the title!",
                     draggable: false
                 });
 
