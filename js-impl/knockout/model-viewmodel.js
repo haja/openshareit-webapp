@@ -1,24 +1,31 @@
-function Basket(id, name) {
+function Item(id, name, loc) {
     var self = this;
     self.id = id;
     self.name = name;
+    self.loc = loc;
 }
 
-function MapMarker(lat, lng) {
+function GMap(items) {
     var self = this;
-    self.lat = ko.observable(lat);
-    self.lng = ko.observable(lng);
+    self.items = items;
+    self.getLocations = function() {
+        return $.map(ko.utils.unwrapObservable(self.items), function(item) {
+            var c = item.loc.coordinates;
+            return {lat: c.latitude,
+                lng: c.longitude};
+        });
+    };
 }
 
-function BasketsViewModel() {
+function ItemsViewModel() {
     var self = this;
 
     //data
-    self.baskets = ko.observableArray([]);
-    self.map = ko.observable(new MapMarker(46.2, 18.2));
+    self.items = ko.observableArray([]);
+    self.map = ko.observable(new GMap(self.items));
 
-    self.addBasket = function(basket) {
-        self.baskets.push(basket);
+    self.addItem = function(item) {
+        self.items.push(item);
     }
 
     $.getJSON(
@@ -26,14 +33,14 @@ function BasketsViewModel() {
             )
         .done(function(data) {
             window.console&&console.log(data);
-            var mappedItems = $.map(data, function(item) { return new Basket(item.id, item.name) });
-            self.baskets(mappedItems);
+            var mappedItems = $.map(data, function(item) { return new Item(item.id, item.name, item.location) });
+            self.items(mappedItems);
         })
     .fail(function(a, b, c) { alert("fail");
     });
 }
 
-
+var viewModel = new ItemsViewModel();
 $(document).ready(function () {
-    ko.applyBindings(new BasketsViewModel());
+    ko.applyBindings(viewModel);
 });
