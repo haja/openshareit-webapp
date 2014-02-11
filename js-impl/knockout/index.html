@@ -64,20 +64,24 @@
           </span>
         </div>
       </form>
+    </div>
+
+    <div class="col-md-6">
+      <div class="btn-group"> <!-- query type buttons -->
+        <button type="button" class="btn btn-default btn-sm active">N&auml;he</button>
+        <button type="button" class="btn btn-default btn-sm">Aktualit&auml;t</button>
+        <button type="button" class="btn btn-default btn-sm">Abholdatum</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
       <div class="panel panel-default">
         <div id="googleMapsDiv" class="google-maps-wrapper" data-bind="map: { map: map, locations: map().asLocations() } "> <!-- maps viewport -->
         </div>
       </div>
     </div>
-
     <div class="col-md-6">
-      <div class="panel panel-default"> <!-- query type buttons -->
-        <div class="btn-group">
-          <button type="button" class="btn btn-default btn-sm active">N&auml;he</button>
-          <button type="button" class="btn btn-default btn-sm">Aktualit&auml;t</button>
-          <button type="button" class="btn btn-default btn-sm">Abholdatum</button>
-        </div>
-      </div>
       <!-- ko foreach: items -->
       <div class="panel panel-default"> <!-- items -->
         <div class="panel-heading">
