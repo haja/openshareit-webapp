@@ -13,6 +13,8 @@
 <!-- Custom styles for this template -->
 <link href="theme.css" rel="stylesheet">
 
+<!-- thumbnail-dummies -->
+<script src="holder.js"></script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -82,12 +84,14 @@
       </div>
     </div>
     <div class="col-md-6">
+      <!-- items -->
       <!-- ko foreach: items -->
-      <div class="panel panel-default"> <!-- items -->
-        <div class="panel-heading">
-          <h3 class="panel-title" data-bind="text: id"></h3>
-        </div>
-        <div class="panel-body" data-bind="text: name">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <img alt="" title="thumbnail" src="holder.js/100x100" style="float: left; margin-right: 15px;" class="img-thumbnail">
+          <h4 data-bind="text: name" ></h4>
+          Beschreibung (TODO)<br>
+          <span data-bind="text: loc.city"></span>
         </div>
       </div>
       <!-- /ko -->
