@@ -7,7 +7,6 @@ ko.bindingHandlers.map = {
                 );
 
         var mapOptions = { center: latLng,
-            zoom: 8,
             mapTypeId: google.maps.MapTypeId.ROADMAP};
 
         mapObj.googleMap = new google.maps.Map(element, mapOptions);
@@ -17,6 +16,7 @@ ko.bindingHandlers.map = {
     update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
         var mapWrapper = ko.utils.unwrapObservable(valueAccessor());
         var locations = mapWrapper.locations;
+        var bounds = new google.maps.LatLngBounds();
 
         window.console&&console.log("locations: " + locations);
         ko.utils.arrayForEach(locations, function(loc) {
@@ -25,7 +25,6 @@ ko.bindingHandlers.map = {
                 loc.lat,
                 loc.lng
                 );
-
             loc._marker = new google.maps.Marker({
                 map: mapWrapper.map.googleMap,
                 position: latLng,
@@ -33,7 +32,12 @@ ko.bindingHandlers.map = {
                 draggable: false
             });
 
+            // center & zoom map to show all markers
+            bounds.extend(latLng);
+
         });
+
+        mapWrapper.map.googleMap.fitBounds(bounds);
 
         /* TODO fixme
            mapObj.onChangedCoord = function(newValue) {
