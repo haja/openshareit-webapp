@@ -28,7 +28,7 @@ ko.bindingHandlers.map = {
             loc._marker = new google.maps.Marker({
                 map: mapWrapper.map.googleMap,
                 position: latLng,
-                title: "I'm the title!",
+                title: "ID: " + loc.id,
                 draggable: false
             });
 

@@ -13,6 +13,7 @@ function GMap(items) {
             var loc = item.loc.coordinates;
             return { lat: loc.latitude
                 , lng: loc.longitude
+                , id: item.id
             };
         });
     }, self);
