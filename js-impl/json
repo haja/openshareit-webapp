@@ -26,7 +26,8 @@
             "id": 1
         },
         "id": 1,
-        "name": "Schokonikolaus"
+        "name": "Schokonikolaus",
+        "description": "kleiner Nikolaus aus Schokolade"
     },
     {
         "status": "READY",
@@ -55,7 +56,8 @@
             "id": 1
         },
         "id": 5,
-        "name": "Käse"
+        "name": "Kaese",
+        "description": "Hartkaese"
     },
     {
         "status": "READY",
@@ -84,7 +86,8 @@
             "id": 2
         },
         "id": 2,
-        "name": "Zucker & Mehl"
+        "name": "Zucker & Mehl",
+        "description": "eine Packung Zucker, eine Packung Mehl"
     },
     {
         "status": "READY",
@@ -113,7 +116,8 @@
             "id": 2
         },
         "id": 3,
-        "name": "\u00c4pfel & Birnen"
+        "name": "\u00c4pfel & Birnen",
+        "description": "jede Menge Obst"
     },
     {
         "status": "READY",
@@ -142,6 +146,7 @@
             "id": 3
         },
         "id": 4,
-        "name": "Kartoffeln"
+        "name": "Kartoffeln",
+        "description": "ein Sack Erdaepfel"
     }
 ]

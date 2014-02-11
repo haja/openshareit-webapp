@@ -1,8 +1,9 @@
-function Item(id, name, loc) {
+function Item(id, name, loc, descr) {
     var self = this;
     self.id = id;
     self.name = name;
     self.loc = loc;
+    self.description = descr;
 }
 
 function GMap(items) {
@@ -35,7 +36,7 @@ function ItemsViewModel() {
             )
         .done(function(data) {
             window.console&&console.log(data);
-            var mappedItems = $.map(data, function(item) { return new Item(item.id, item.name, item.location) });
+            var mappedItems = $.map(data, function(item) { return new Item(item.id, item.name, item.location, item.description) });
             self.items(mappedItems);
         })
     .fail(function(a, b, c) { alert("fail");

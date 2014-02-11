@@ -88,9 +88,9 @@
       <!-- ko foreach: items -->
       <div class="panel panel-default">
         <div class="panel-body">
-          <img alt="" title="thumbnail" src="holder.js/100x100" style="float: left; margin-right: 15px;" class="img-thumbnail">
+          <img alt="thumbnail" title="thumbnail" data-src="holder.js/100x100/text:Thumbnail" style="float: left; margin-right: 15px;" class="img-thumbnail">
           <h4 data-bind="text: name" ></h4>
-          Beschreibung (TODO)<br>
+          <span data-bind="text: description"></span><br />
           <span data-bind="text: loc.city"></span>
         </div>
       </div>
