@@ -20,7 +20,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-<title>List all Items</title>
+<title>Registrierung</title>
 </head>
 <body>
 
@@ -39,64 +39,22 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="#my-articles">Meine Artikel</a></li>
         <li><a href="#about-us">About Us</a></li>
         <li><a href="#impressum">Impressum</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="register.html">register</a></li>
-        <li><a href="#">login</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
 </div>
 
 <div class="container theme-showcase">
-
-  <div class="row">
-    <div class="col-md-6">
-      <form class="form-group" role="search"> <!-- search bar -->
-        <div class="input-group">
-          <input type="text" class="form-control input-sm" placeholder="Ort, Artikel, ...">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span></button>
-          </span>
-        </div>
-      </form>
-      <div class="panel panel-default">
-        <div id="googleMapsDiv" class="google-maps-wrapper" data-bind="map:map"> <!-- maps viewport -->
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="panel panel-default"> <!-- query type buttons -->
-        <div class="btn-group">
-          <button type="button" class="btn btn-default btn-sm active">N&auml;he</button>
-          <button type="button" class="btn btn-default btn-sm">Aktualit&auml;t</button>
-          <button type="button" class="btn btn-default btn-sm">Abholdatum</button>
-        </div>
-      </div>
-      <!-- ko foreach: items -->
-      <div class="panel panel-default"> <!-- items -->
-        <div class="panel-heading">
-          <h3 class="panel-title" data-bind="text: id"></h3>
-        </div>
-        <div class="panel-body" data-bind="text: name">
-        </div>
-      </div>
-      <!-- /ko -->
-    </div><!-- /.col-sm-8 -->
-  </div>
-
+  <h1>Registrierung</h1>
+  <h2>TODO</h2>
 </div> <!-- /container -->
 
 <script src="../jquery.js"></script>
 <script src="knockout-3.0.0.js"></script>
-<script src="http://maps.google.com/maps/api/js?sensor=false&.js"></script>
-<script src="google-maps-binding.js"></script>
-<script src="index-model-viewmodel.js"></script>
 
 <!-- Bootstrap core JavaScript
     ================================================== -->
