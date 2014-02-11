@@ -1,6 +1,7 @@
 ko.bindingHandlers.map = {
     init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-        var mapObj = ko.utils.unwrapObservable(valueAccessor());
+        var mapWrapper = ko.utils.unwrapObservable(valueAccessor());
+        var mapObj = mapWrapper.map;
         var latLng = new google.maps.LatLng(
                 48.2, 16.2 /* TODO fix this somehow (load default location and update with data?) */
                 );
@@ -14,30 +15,25 @@ ko.bindingHandlers.map = {
 
     },
     update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-        var mapObj = ko.utils.unwrapObservable(valueAccessor());
+        var mapWrapper = ko.utils.unwrapObservable(valueAccessor());
+        var locations = mapWrapper.locations;
 
-        var l = mapObj.getLocations();
-        window.console&&console.log("l: " + l);
-        if(l.length > 0) {
-            for(var i = 0; i < mapObj.getLocations().length; i++)
-            {
-                var loc = mapObj.getLocations()[i];
-                window.console&&console.log("load marker: " + loc);
-                var latLng = new google.maps.LatLng(
-                        ko.utils.unwrapObservable(loc.lat),
-                        ko.utils.unwrapObservable(loc.lng)
-                        );
+        window.console&&console.log("locations: " + locations);
+        ko.utils.arrayForEach(locations, function(loc) {
+            window.console&&console.log("load marker: " + loc);
+            var latLng = new google.maps.LatLng(
+                loc.lat,
+                loc.lng
+                );
 
-                loc._marker = new google.maps.Marker({
-                    map: mapObj.googleMap,
-                    position: latLng,
-                    title: "I'm the title!",
-                    draggable: false
-                });
+            loc._marker = new google.maps.Marker({
+                map: mapWrapper.map.googleMap,
+                position: latLng,
+                title: "I'm the title!",
+                draggable: false
+            });
 
-            }
-
-        }
+        });
 
         /* TODO fixme
            mapObj.onChangedCoord = function(newValue) {

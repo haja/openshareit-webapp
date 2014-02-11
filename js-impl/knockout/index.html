@@ -65,7 +65,7 @@
         </div>
       </form>
       <div class="panel panel-default">
-        <div id="googleMapsDiv" class="google-maps-wrapper" data-bind="map:map"> <!-- maps viewport -->
+        <div id="googleMapsDiv" class="google-maps-wrapper" data-bind="map: { map: map, locations: map().asLocations() } "> <!-- maps viewport -->
         </div>
       </div>
     </div>

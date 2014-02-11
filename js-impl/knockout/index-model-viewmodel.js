@@ -8,13 +8,14 @@ function Item(id, name, loc) {
 function GMap(items) {
     var self = this;
     self.items = items;
-    self.getLocations = function() {
-        return $.map(ko.utils.unwrapObservable(self.items), function(item) {
-            var c = item.loc.coordinates;
-            return {lat: c.latitude,
-                lng: c.longitude};
+    self.asLocations = ko.computed(function() {
+        return ko.utils.arrayMap(self.items(), function(item) {
+            var loc = item.loc.coordinates;
+            return { lat: loc.latitude
+                , lng: loc.longitude
+            };
         });
-    };
+    }, self);
 }
 
 function ItemsViewModel() {
