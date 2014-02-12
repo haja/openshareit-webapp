@@ -16,33 +16,50 @@ ko.bindingHandlers.map = {
     update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
         var mapWrapper = ko.utils.unwrapObservable(valueAccessor());
         var locations = mapWrapper.locations;
+        var locationsData = mapWrapper.locationsData;
         var bounds = new google.maps.LatLngBounds();
 
         window.console&&console.log("locations: " + locations);
-        ko.utils.arrayForEach(locations, function(loc) {
-            window.console&&console.log("load marker: " + loc);
-            var latLng = new google.maps.LatLng(
-                loc.lat,
-                loc.lng
-                );
-            loc._marker = new google.maps.Marker({
-                map: mapWrapper.map.googleMap,
-                position: latLng,
-                title: "ID: " + loc.id,
-                draggable: false
-            });
+        for(var i = 0; i < locations.length; i++) {
+            var loc = locations[i];
+            if(!locationsData[i]) {
+                window.console&&console.log("creating new locData " + i);
+                locationsData[i] = {};
+            }
+            var locData = locationsData[i];
+
+            var latLng = new google.maps.LatLng(loc.latitude, loc.longitude);
+            if(!locData._marker) {
+                window.console&&console.log("load marker: " + loc);
+                locData._marker = new google.maps.Marker({
+                    map: mapWrapper.map.googleMap,
+                    position: latLng,
+                    title: "ID: " + loc.id,
+                    draggable: false
+                });
+            }
 
             if(loc.active) {
-                loc._infoWindow = new google.maps.InfoWindow({
-                    content: "Hi!"
-                })
-                loc._infoWindow.open(mapWrapper.map.googleMap, loc._marker);
+                // open infoWindow only if not already active
+                if(!locData._infoWindow) {
+                    locData._infoWindow = new google.maps.InfoWindow({
+                        content: "Hi!"
+                    })
+                    locData._infoWindow.open(mapWrapper.map.googleMap, locData._marker);
+                }
+            } else {
+                // hide not active items
+                if(locData._infoWindow) {
+                    window.console&&console.log(loc.id + " had prev infoWindow, closing...");
+                    locData._infoWindow.close();
+                    locData._infoWindow = null;
+                }
             }
 
             // center & zoom map to show all markers
             bounds.extend(latLng);
-
-        });
+        }
+        window.console&&console.log("locData: " + locationsData.length);
 
         mapWrapper.map.googleMap.fitBounds(bounds);
 

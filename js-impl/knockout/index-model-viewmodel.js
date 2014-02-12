@@ -10,12 +10,13 @@ function Item(id, name, loc, descr) {
 function GMap(items) {
     var self = this;
     self.items = items;
+    self.locationsData = array();
     self.asLocations = ko.computed(function() {
         window.console&&console.log("computed again");
         return ko.utils.arrayMap(self.items(), function(item) {
             var loc = item.loc.coordinates;
-            return { lat: loc.latitude
-                , lng: loc.longitude
+            return { latitude: loc.latitude
+                , longitude: loc.longitude
                 , id: item.id
                 , active: item.active()
             };
