@@ -4,17 +4,20 @@ function Item(id, name, loc, descr) {
     self.name = name;
     self.loc = loc;
     self.description = descr;
+    self.active = ko.observable(false);
 }
 
 function GMap(items) {
     var self = this;
     self.items = items;
     self.asLocations = ko.computed(function() {
+        window.console&&console.log("computed again");
         return ko.utils.arrayMap(self.items(), function(item) {
             var loc = item.loc.coordinates;
             return { lat: loc.latitude
                 , lng: loc.longitude
                 , id: item.id
+                , active: item.active()
             };
         });
     }, self);

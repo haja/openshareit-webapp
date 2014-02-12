@@ -32,6 +32,13 @@ ko.bindingHandlers.map = {
                 draggable: false
             });
 
+            if(loc.active) {
+                loc._infoWindow = new google.maps.InfoWindow({
+                    content: "Hi!"
+                })
+                loc._infoWindow.open(mapWrapper.map.googleMap, loc._marker);
+            }
+
             // center & zoom map to show all markers
             bounds.extend(latLng);
 
