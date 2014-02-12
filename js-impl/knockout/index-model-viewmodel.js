@@ -22,6 +22,7 @@ function GMap(items) {
                 , longitude: loc.longitude
                 , id: item.id
                 , active: item.active()
+                , 'toggleActive': item.toggleActive
             };
         });
     }, self);

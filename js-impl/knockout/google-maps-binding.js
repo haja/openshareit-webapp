@@ -36,7 +36,10 @@ ko.bindingHandlers.map = {
                     position: latLng,
                     title: "ID: " + loc.id,
                     draggable: false
+                    , clickable: true
                 });
+
+                google.maps.event.addListener(locData._marker, 'click', loc.toggleActive);
             }
 
             if(loc.active) {
