@@ -53,5 +53,10 @@ function ItemsViewModel() {
 
 var viewModel = new ItemsViewModel();
 $(document).ready(function () {
+
+    // setup external templates
+    infuser.defaults.templateSuffix = ".tmpl.html";
+    infuser.defaults.templateUrl = "templates";
+
     ko.applyBindings(viewModel);
 });
