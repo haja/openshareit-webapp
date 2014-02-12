@@ -46,9 +46,10 @@ ko.bindingHandlers.map = {
                 // open infoWindow only if not already active
                 if(!locData._infoWindow) {
                     locData._infoWindow = new google.maps.InfoWindow({
-                        content: "Hi!"
+                        content: $("#item_" + loc.id).clone()[0]
                     })
                     locData._infoWindow.open(mapWrapper.map.googleMap, locData._marker);
+                    google.maps.event.addListener(locData._infoWindow, 'closeclick', loc.toggleActive);
                 }
             } else {
                 // hide not active items
