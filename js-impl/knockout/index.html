@@ -26,7 +26,33 @@
 </head>
 <body>
 
-<div data-bind="template: { name: 'navbar' }"></div>
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">OpenShareIt</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#my-articles">Meine Artikel</a></li>
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#impressum">Impressum</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="register.html">register</a></li>
+        <li><a href="#">login</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
 
 <div class="container theme-showcase">
 
@@ -80,7 +106,6 @@
 
 <script src="../jquery.js"></script>
 <script src="knockout-3.0.0.js"></script>
-<script src="koExternalTemplateEngine_all.min.js"></script>
 <script src="http://maps.google.com/maps/api/js?sensor=false&.js"></script>
 <script src="google-maps-binding.js"></script>
 <script src="index-model-viewmodel.js"></script>
