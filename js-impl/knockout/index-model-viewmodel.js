@@ -5,12 +5,15 @@ function Item(id, name, loc, descr) {
     self.loc = loc;
     self.description = descr;
     self.active = ko.observable(false);
+    self.toggleActive = function() {
+        self.active(!self.active());
+    };
 }
 
 function GMap(items) {
     var self = this;
     self.items = items;
-    self.locationsData = array();
+    self.locationsData = new Array();
     self.asLocations = ko.computed(function() {
         window.console&&console.log("computed again");
         return ko.utils.arrayMap(self.items(), function(item) {

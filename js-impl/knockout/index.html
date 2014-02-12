@@ -86,7 +86,7 @@
     <div class="col-md-6">
       <!-- items -->
       <!-- ko foreach: items -->
-      <div class="panel panel-default">
+      <div class="panel panel-default" data-bind="click: toggleActive">
         <div class="panel-body">
           <img alt="thumbnail" title="thumbnail" data-src="holder.js/100x100/text:Thumbnail" style="float: left; margin-right: 15px;" class="img-thumbnail">
           <h4 data-bind="text: name" ></h4>
