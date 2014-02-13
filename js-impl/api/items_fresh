@@ -1,0 +1,152 @@
+[
+    {
+        "status": "READY",
+        "user": {
+            "mobileNumber": null,
+            "firstName": "Astra",
+            "lastName": "(a:a)",
+            "email": "a",
+            "isAdmin": true,
+            "phoneNumber": null,
+            "avatar": null,
+            "last_login": "2013-05-19T20:10:35+0000",
+            "id": 1
+        },
+        "location": {
+            "province": "Wien",
+            "city": "Wien",
+            "country": "\u00d6sterreich",
+            "coordinates": {
+                "latitude": "48.1887105",
+                "longitude": "16.3826546"
+            },
+            "street": "Stephansplatz",
+            "postalCode": "1010",
+            "houseNumber": "1",
+            "id": 1
+        },
+        "id": 5,
+        "name": "Kaese",
+        "description": "Hartkaese"
+    },
+    {
+        "status": "READY",
+        "user": {
+            "mobileNumber": null,
+            "firstName": "Astra",
+            "lastName": "(a:a)",
+            "email": "a",
+            "isAdmin": true,
+            "phoneNumber": null,
+            "avatar": null,
+            "last_login": "2013-05-19T20:10:35+0000",
+            "id": 1
+        },
+        "location": {
+            "province": "Wien",
+            "city": "Wien",
+            "country": "\u00d6sterreich",
+            "coordinates": {
+                "latitude": "48.2161545",
+                "longitude": "16.3518631"
+            },
+            "street": "Weihburggasse",
+            "postalCode": "1010",
+            "houseNumber": "1",
+            "id": 2
+        },
+        "id": 2,
+        "name": "Zucker & Mehl",
+        "description": "eine Packung Zucker, eine Packung Mehl"
+    },
+    {
+        "status": "READY",
+        "user": {
+            "mobileNumber": null,
+            "firstName": "Astra",
+            "lastName": "(a:a)",
+            "email": "a",
+            "isAdmin": true,
+            "phoneNumber": null,
+            "avatar": null,
+            "last_login": "2013-05-19T20:10:35+0000",
+            "id": 1
+        },
+        "location": {
+            "province": "Wien",
+            "city": "Wien",
+            "country": "\u00d6sterreich",
+            "coordinates": {
+                "latitude": "48.2087105",
+                "longitude": "16.3726546"
+            },
+            "street": "Stephansplatz",
+            "postalCode": "1010",
+            "houseNumber": "1",
+            "id": 1
+        },
+        "id": 1,
+        "name": "Schokonikolaus",
+        "description": "kleiner Nikolaus aus Schokolade"
+    },
+    {
+        "status": "READY",
+        "user": {
+            "mobileNumber": null,
+            "firstName": "Astra",
+            "lastName": "(a:a)",
+            "email": "a",
+            "isAdmin": true,
+            "phoneNumber": null,
+            "avatar": null,
+            "last_login": "2013-05-19T20:10:35+0000",
+            "id": 1
+        },
+        "location": {
+            "province": "Wien",
+            "city": "Wien",
+            "country": "\u00d6sterreich",
+            "coordinates": {
+                "latitude": "48.1375853",
+                "longitude": "16.3276432"
+            },
+            "street": "Singerstrasse",
+            "postalCode": "1010",
+            "houseNumber": "6",
+            "id": 3
+        },
+        "id": 4,
+        "name": "Kartoffeln",
+        "description": "ein Sack Erdaepfel"
+    },
+    {
+        "status": "READY",
+        "user": {
+            "mobileNumber": null,
+            "firstName": "Astra",
+            "lastName": "(a:a)",
+            "email": "a",
+            "isAdmin": true,
+            "phoneNumber": null,
+            "avatar": null,
+            "last_login": "2013-05-19T20:10:35+0000",
+            "id": 1
+        },
+        "location": {
+            "province": "Wien",
+            "city": "Wien",
+            "country": "\u00d6sterreich",
+            "coordinates": {
+                "latitude": "48.1571545",
+                "longitude": "16.38718631"
+            },
+            "street": "Weihburggasse",
+            "postalCode": "1010",
+            "houseNumber": "1",
+            "id": 2
+        },
+        "id": 3,
+        "name": "\u00c4pfel & Birnen",
+        "description": "jede Menge Obst"
+    }
+]
