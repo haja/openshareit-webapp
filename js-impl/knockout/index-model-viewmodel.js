@@ -13,7 +13,7 @@ function Item(id, name, loc, descr) {
 function GMap(items) {
     var self = this;
     self.items = items;
-    self.locationsData = new Array();
+    self.data = {};
     self.asLocations = ko.computed(function() {
         window.console&&console.log("computed again");
         return ko.utils.arrayMap(self.items(), function(item) {

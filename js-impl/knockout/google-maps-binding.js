@@ -1,9 +1,12 @@
 ko.bindingHandlers.map = {
     init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
         var mapWrapper = ko.utils.unwrapObservable(valueAccessor());
-        var mapObj = mapWrapper.map;
+        mapWrapper.data._markerData = {};
+        mapWrapper.data.map = {};
+        var mapObj = mapWrapper.data.map;
+
         var latLng = new google.maps.LatLng(
-                48.2, 16.2 /* TODO fix this somehow (load default location and update with data?) */
+                48.2, 16.2 /* only default until locations are loaded */
                 );
 
         var mapOptions = { center: latLng,
@@ -11,36 +14,35 @@ ko.bindingHandlers.map = {
 
         mapObj.googleMap = new google.maps.Map(element, mapOptions);
         $(element).data("mapObj",mapObj);
-
     },
     update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
         var mapWrapper = ko.utils.unwrapObservable(valueAccessor());
         var locations = mapWrapper.locations;
-        var locationsData = mapWrapper.locationsData;
+        var locationsData = mapWrapper.data._markerData;
         var bounds = new google.maps.LatLngBounds();
 
         window.console&&console.log("locations: " + locations);
-        for(var i = 0; i < locations.length; i++) {
-            var loc = locations[i];
-            if(!locationsData[i]) {
-                window.console&&console.log("creating new locData " + i);
-                locationsData[i] = {};
+        $.each(locations, function(idx, loc) {
+            if(!locationsData[loc.id]) {
+                window.console&&console.log("creating new locData " + loc.id);
+                locationsData[loc.id] = {};
             }
-            var locData = locationsData[i];
+            var locData = locationsData[loc.id];
 
             var latLng = new google.maps.LatLng(loc.latitude, loc.longitude);
             if(!locData._marker) {
-                window.console&&console.log("load marker: " + loc);
+                window.console&&console.log("create marker: " + loc);
                 locData._marker = new google.maps.Marker({
-                    map: mapWrapper.map.googleMap,
+                    map: mapWrapper.data.map.googleMap,
                     position: latLng,
                     title: "ID: " + loc.id,
                     draggable: false
                     , clickable: true
                 });
-
-                google.maps.event.addListener(locData._marker, 'click', loc.toggleActive);
             }
+            // listener needs to be recreated, item could be new
+            google.maps.event.clearListeners(locData._marker, 'click');
+            google.maps.event.addListener(locData._marker, 'click', loc.toggleActive);
 
             if(loc.active) {
                 // open infoWindow only if not already active
@@ -48,7 +50,7 @@ ko.bindingHandlers.map = {
                     locData._infoWindow = new google.maps.InfoWindow({
                         content: $("#item_" + loc.id).clone()[0]
                     })
-                    locData._infoWindow.open(mapWrapper.map.googleMap, locData._marker);
+                    locData._infoWindow.open(mapWrapper.data.map.googleMap, locData._marker);
                     google.maps.event.addListener(locData._infoWindow, 'closeclick', loc.toggleActive);
                 }
             } else {
@@ -62,10 +64,8 @@ ko.bindingHandlers.map = {
 
             // center & zoom map to show all markers
             bounds.extend(latLng);
-        }
-        window.console&&console.log("locData: " + locationsData.length);
-
-        mapWrapper.map.googleMap.fitBounds(bounds);
+        });
+        mapWrapper.data.map.googleMap.fitBounds(bounds);
 
         /* TODO fixme
            mapObj.onChangedCoord = function(newValue) {
