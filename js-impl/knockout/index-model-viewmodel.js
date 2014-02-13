@@ -28,6 +28,25 @@ function GMap(items) {
     }, self);
 }
 
+var api_url = "http://localhost:8000/api/"
+
+function QueryType(name, query, resultProperty) {
+    var self = this;
+    self.name = name;
+
+    self.query = function() {
+        $.getJSON(
+                api_url + query
+                )
+            .done(function(data) {
+                window.console&&console.log(data);
+                resultProperty($.map(data, function(item) { return new Item(item.id, item.name, item.location, item.description) }));
+            })
+        .fail(function(a, b, c) { alert("fail");
+        });
+    };
+}
+
 function ItemsViewModel() {
     var self = this;
 
@@ -39,16 +58,12 @@ function ItemsViewModel() {
         self.items.push(item);
     }
 
-    $.getJSON(
-            "http://localhost:8000/api/items_near"
-            )
-        .done(function(data) {
-            window.console&&console.log(data);
-            var mappedItems = $.map(data, function(item) { return new Item(item.id, item.name, item.location, item.description) });
-            self.items(mappedItems);
-        })
-    .fail(function(a, b, c) { alert("fail");
-    });
+    self.queryTypes = ko.observableArray([
+            new QueryType('N&auml;he', 'items_near', self.items)
+            ]);
+
+    self.queryTypes()[0].query();
+
 }
 
 var viewModel = new ItemsViewModel();
