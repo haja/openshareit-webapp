@@ -53,10 +53,7 @@ function ItemsViewModel() {
     //data
     self.items = ko.observableArray([]);
     self.map = ko.observable(new GMap(self.items));
-
-    self.addItem = function(item) {
-        self.items.push(item);
-    }
+    self.lastQuery = ko.observable();
 
     self.queryTypes = ko.observableArray([
             new QueryType('Nähe', 'items_near', self.items)
@@ -64,8 +61,14 @@ function ItemsViewModel() {
             , new QueryType('Abholdatum', 'items_pick_up', self.items)
             ]);
 
-    self.queryTypes()[0].query();
+    self.query = function(queryType) {
+        window.console&&console.log("query: " + queryType.name);
+        self.lastQuery(queryType.name);
+        queryType.query();
+    };
 
+    // default query to view
+    self.query(self.queryTypes()[0]);
 }
 
 var viewModel = new ItemsViewModel();
