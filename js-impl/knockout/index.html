@@ -69,10 +69,8 @@
     </div>
 
     <div class="col-md-6">
-      <div class="btn-group"> <!-- query type buttons -->
-        <button type="button" class="btn btn-default btn-sm active">N&auml;he</button>
-        <button type="button" class="btn btn-default btn-sm">Aktualit&auml;t</button>
-        <button type="button" class="btn btn-default btn-sm">Abholdatum</button>
+      <div class="btn-group" data-bind="foreach: queryTypes"> <!-- query type buttons -->
+        <button type="button" class="btn btn-default btn-sm" data-bind="text: name, click: query"></button>
       </div>
     </div>
   </div>

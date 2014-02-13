@@ -59,7 +59,7 @@ function ItemsViewModel() {
     }
 
     self.queryTypes = ko.observableArray([
-            new QueryType('N&auml;he', 'items_near', self.items)
+            new QueryType('Nähe', 'items_near', self.items)
             ]);
 
     self.queryTypes()[0].query();
