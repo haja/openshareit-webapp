@@ -61,14 +61,14 @@ function ItemsViewModel() {
             , new QueryType('Abholdatum', 'items_pick_up', self.items)
             ]);
 
-    self.query = function(queryType) {
+    self.goToQueryType = function(queryType) {
         window.console&&console.log("query: " + queryType.name);
         self.lastQuery(queryType.name);
         queryType.query();
     };
 
     // default query to view
-    self.query(self.queryTypes()[0]);
+    self.goToQueryType(self.queryTypes()[0]);
 }
 
 var viewModel = new ItemsViewModel();

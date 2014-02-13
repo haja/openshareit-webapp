@@ -70,7 +70,7 @@
 
     <div class="col-md-6">
       <div class="btn-group" data-bind="foreach: queryTypes"> <!-- query type buttons -->
-        <button type="button" class="btn btn-default btn-sm" data-bind="css: { active: name == $parent.lastQuery() }, text: name, click: $parent.query"></button>
+        <button type="button" class="btn btn-default btn-sm" data-bind="css: { active: name == $parent.lastQuery() }, text: name, click: $parent.goToQueryType"></button>
       </div>
     </div>
   </div>
