@@ -40,7 +40,7 @@ function ItemsViewModel() {
     }
 
     $.getJSON(
-            "http://localhost:8000/api/json"
+            "http://localhost:8000/api/items_near"
             )
         .done(function(data) {
             window.console&&console.log(data);
