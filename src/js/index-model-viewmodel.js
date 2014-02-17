@@ -28,7 +28,7 @@ function GMap(items) {
     }, self);
 }
 
-var api_url = "../api/"
+var api_url = "../../api/"
 
 function QueryType(name, query, resultProperty) {
     var self = this;
