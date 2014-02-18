@@ -14,6 +14,7 @@ requirejs.config({
         "Markdown.Converter": "../lib/requirejs-plugins/lib/Markdown.Converter",
         text: "../lib/requirejs-plugins/lib/text",
         requirejs: "../lib/requirejs/require",
+        domReady: '../lib/requirejs-domready/domReady',
         knockout: "../lib/knockout.js/knockout",
         jquery: "../lib/jquery/jquery",
         holderjs: "../lib/holderjs/holder",
@@ -26,17 +27,15 @@ requirejs.config({
         'bootstrap': {
             deps: ['jquery'],
             exports: 'jQuery'
-     }
-}
+        }
+    }
 });
 
-define(function (require) {
-    var system = require('durandal/system'),
-    app = require('durandal/app');
+define(['durandal/system', 'durandal/app', 'durandal/viewLocator'], function (system, app, viewLocator) {
 
     system.debug(true);
 
-    app.title = 'Durandal Starter Kit';
+    app.title = 'first sample';
 
     app.configurePlugins({
         router:true,
@@ -44,6 +43,11 @@ define(function (require) {
     });
 
     app.start().then(function() {
-        app.setRoot('shell');
+        //Replace 'viewmodels' in the moduleId with 'views' to locate the view.
+        //Look for partial views in a 'views' folder in the root.
+        viewLocator.useConvention();
+
+        //Show the app by setting the root view model for our application.
+        app.setRoot('viewmodels/shell');
     });
 });

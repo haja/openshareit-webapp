@@ -1,0 +1,47 @@
+<section>
+<div class="container theme-showcase">
+
+  <div class="row">
+    <div class="col-md-6">
+      <form class="form-group" role="search"> <!-- search bar -->
+        <div class="input-group">
+          <input type="text" class="form-control input-sm" name="search_term" placeholder="Ort, Artikel, ...">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+          </span>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-6">
+      <div class="btn-group" data-bind="foreach: queryTypes"> <!-- query type buttons -->
+        <button type="button" class="btn btn-default btn-sm" data-bind="css: { active: name == $parent.lastQuery() }, text: name, click: $parent.goToQueryType"></button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div id="googleMapsDiv" class="google-maps-wrapper" data-bind="map: { data: map().data, locations: map().asLocations() } "> <!-- maps viewport -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <!-- items -->
+      <!-- ko foreach: items -->
+      <div class="panel panel-default" data-bind="click: toggleActive">
+        <div class="panel-body">
+          <img alt="thumbnail" title="thumbnail" data-src="holder.js/100x100/text:Thumbnail" style="float: left; margin-right: 15px;" class="img-thumbnail">
+          <div data-bind="attr: { 'id': 'item_' + $data.id }">
+            <h4 data-bind="text: name" ></h4>
+            <span data-bind="text: description"></span><br />
+            <span data-bind="text: loc.city"></span>
+          </div>
+        </div>
+      </div>
+      <!-- /ko -->
+    </div><!-- /.col-sm-8 -->
+  </div>
+
+</div> <!-- /container -->
+</section>
