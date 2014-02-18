@@ -28,5 +28,6 @@ require.config({
 });
 
 require(['knockout', 'index-model-viewmodel', 'holderjs', 'bootstrap', 'jquery', 'domReady!', 'async!http://maps.google.com/maps/api/js?sensor=false', 'knockout-amd-helpers'], function(ko, items_viewmodel, holderjs, bootstrap, $) {
+    ko.amdTemplateEngine.defaultPath = "../html/templates";
     ko.applyBindings(new items_viewmodel());
 });
