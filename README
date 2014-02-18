@@ -1,16 +1,10 @@
 # Dependencies:
 #
-# python3.3
-# pip
-# virtualenv
+# npm
 #
 
-# setup virtualenv
-virtualenv-3.3 env
-source env/bin/activate
+# install bower using npm
+npm install
 
-# install requirements (TODO do this in virtualenv setup script)
-pip install -r requirements.txt
-
-# run local server
-python foodsharing_webui/manage.py runserver
+# then install dependencies via bower
+./node_modules/.bin/bower install

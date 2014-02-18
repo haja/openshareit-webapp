@@ -1,0 +1,8 @@
+{
+    "name": "foodsharing_webui",
+    "version": "0.1.0",
+    "devDependencies": {
+        "bower-requirejs": "~0.9.2",
+        "bower": "~1.2.8"
+    }
+}
