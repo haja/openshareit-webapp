@@ -1,4 +1,4 @@
-define(['knockout', 'durandal/app', 'jquery', 'ko-bindings/google-maps-binding'], function(ko, app, $, gmaps_binding) {
+define(['knockout', 'durandal/app', 'jquery', 'ko-bindings/google-maps-binding', 'utils/holder'], function(ko, app, $, gmaps_binding, holder) {
     function Item(id, name, loc, descr) {
         var self = this;
         self.id = id;
@@ -70,6 +70,8 @@ define(['knockout', 'durandal/app', 'jquery', 'ko-bindings/google-maps-binding']
 
         // default query to view
         self.goToQueryType(self.queryTypes()[0]);
+
+        self.compositionComplete = holder.compositionComplete;
     };
 
     return new ItemsViewModel();
