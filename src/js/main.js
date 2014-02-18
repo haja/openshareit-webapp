@@ -1,4 +1,5 @@
 require.config({
+  urlArgs: "bust=" + (new Date()).getTime(), // remove this for production
   shim: {
     bootstrap: [
       'jquery'
@@ -6,7 +7,6 @@ require.config({
   },
   paths: {
     requirejs: '../../bower_components/requirejs/require',
-    knockoutjs: '../../bower_components/knockoutjs/build/output/knockout-latest.debug',
     holderjs: '../../bower_components/holderjs/holder',
     bootstrap: '../../bower_components/bootstrap/dist/js/bootstrap',
     jquery: '../../bower_components/jquery/dist/jquery.min',
@@ -21,10 +21,12 @@ require.config({
     noext: '../../bower_components/requirejs-plugins/src/noext',
     propertyParser: '../../bower_components/requirejs-plugins/src/propertyParser',
     'Markdown.Converter': '../../bower_components/requirejs-plugins/lib/Markdown.Converter',
-    text: '../../bower_components/requirejs-plugins/lib/text'
+    text: '../../bower_components/requirejs-plugins/lib/text',
+    'knockout-amd-helpers': '../../bower_components/knockout-amd-helpers/build/knockout-amd-helpers.min',
+    knockout: '../../bower_components/knockout/build/output/knockout-latest.debug'
   }
 });
 
-require(['knockoutjs', 'index-model-viewmodel', 'holderjs', 'bootstrap', 'jquery', 'domReady!', 'async!http://maps.google.com/maps/api/js?sensor=false'], function(ko, items_viewmodel, holderjs, bootstrap, $) {
+require(['knockout', 'index-model-viewmodel', 'holderjs', 'bootstrap', 'jquery', 'domReady!', 'async!http://maps.google.com/maps/api/js?sensor=false', 'knockout-amd-helpers'], function(ko, items_viewmodel, holderjs, bootstrap, $) {
     ko.applyBindings(new items_viewmodel());
 });

@@ -1,4 +1,4 @@
-define(['knockoutjs'], function(ko) {
+define(['knockout'], function(ko) {
     ko.bindingHandlers.map = {
         init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
             var mapWrapper = ko.utils.unwrapObservable(valueAccessor());

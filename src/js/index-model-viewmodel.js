@@ -1,4 +1,4 @@
-define(['knockoutjs', 'ko-bindings/google-maps-binding'], function(ko, gmaps_binding) {
+define(['knockout', 'ko-bindings/google-maps-binding'], function(ko, gmaps_binding) {
     function Item(id, name, loc, descr) {
         var self = this;
         self.id = id;
