@@ -1,4 +1,4 @@
-define(['knockout', 'durandal/app', 'jquery', 'holderjs', 'ko-bindings/google-maps-binding'], function(ko, app, $, holderjs, gmaps_binding) {
+define(['knockout', 'durandal/app', 'jquery', 'ko-bindings/google-maps-binding'], function(ko, app, $, gmaps_binding) {
     function Item(id, name, loc, descr) {
         var self = this;
         self.id = id;
