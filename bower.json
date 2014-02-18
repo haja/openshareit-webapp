@@ -5,7 +5,7 @@
     "haja <h.jagenteufel@gmail.com>"
   ],
   "description": "WebUI for the foodsharing project at UT Vienna",
-  "main": "js/main.js",
+  "main": "app/main.js",
   "license": "none",
   "private": true,
   "ignore": [
@@ -16,12 +16,13 @@
     "tests"
   ],
   "dependencies": {
-      "knockout": "~3.0.0",
-      "jquery": "~1.11.0",
-      "requirejs": "~2.1.11",
-      "bootstrap": "~3.1.1",
-      "holderjs": "~2.3.1",
-      "requirejs-plugins": "~1.0.2",
-      "knockout-amd-helpers": "~0.6.1"
+    "knockout.js": "",
+    "jquery": "",
+    "requirejs": "",
+    "bootstrap": "~3.1.1",
+    "holderjs": "~2.3.1",
+    "requirejs-plugins": "~1.0.2",
+    "durandal": "~2.0.1",
+    "requirejs-domready": "~2.0.1"
   }
 }
