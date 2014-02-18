@@ -10,6 +10,12 @@ define(['plugins/router'], function (router) {
                     nav: true
                 },
                 {
+                    route: 'my-items',
+                    title:'Meine Artikel',
+                    moduleId: 'viewmodels/my-items',
+                    nav: true
+                },
+                {
                     route: 'register',
                     title:'Registrierung',
                     moduleId: 'viewmodels/register',
