@@ -5,10 +5,18 @@
     <div class="col-md-8">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Items</h3>
+          <h3 class="panel-title">Artikel</h3>
         </div>
         <div class="panel-body">
-          TODO items listen
+          <p>
+          aktuelle Artikel
+          </p>
+          <ul class="vertical-list" data-bind="foreach: items">
+            <li>
+            <img alt="thumbnail" data-bind="attr: { 'title': name, 'data-src': 'holder.js/100x100/text:' + name }" class="img-thumbnail">
+            </li>
+          </ul>
+          <button class="btn btn-default" style="float: right" type="button">bearbeiten</button>
         </div>
       </div>
 

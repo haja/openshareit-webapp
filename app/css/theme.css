@@ -21,3 +21,12 @@ body {
     box-sizing: content-box;
 }
 
+.vertical-list li
+{
+    float: left;
+    list-style-type: none;
+}
+ul.vertical-list
+{
+    padding-left: 0px;
+}
