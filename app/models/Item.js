@@ -8,6 +8,13 @@ define(['knockout', 'models/User'], function(ko, User) {
         self.user = new User(item.user);
 
         // UI behavior
+        self.maxDescriptionLength = 12;
+        self.getShortDescription = ko.computed(function() {
+            if(self.description.length > self.maxDescriptionLength) {
+                return self.description.slice(0, self.maxDescriptionLength) + " ...";
+            }
+            return self.description;
+        });
         self.active = ko.observable(false);
         self.toggleActive = function() {
             self.active(!self.active());
