@@ -1,66 +1,74 @@
 <section>
-<div class="container theme-showcase">
+  <div class="container theme-showcase">
 
-  <div class="row">
-    <div class="col-md-8">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Artikel</h3>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Artikel</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <p>
+                aktuelle Artikel
+                </p>
+                <ul class="vertical-list" data-bind="foreach: items">
+                  <li>
+                  <img alt="thumbnail" data-bind="attr: { 'title': name, 'data-src': 'holder.js/100x100/text:' + name }" class="img-thumbnail item-thumbnail">
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <button class="btn btn-default" style="float: right" type="button">bearbeiten</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="panel-body">
-          <p>
-          aktuelle Artikel
-          </p>
-          <ul class="vertical-list" data-bind="foreach: items">
-            <li>
-            <img alt="thumbnail" data-bind="attr: { 'title': name, 'data-src': 'holder.js/100x100/text:' + name }" class="img-thumbnail">
-            </li>
-          </ul>
-          <button class="btn btn-default" style="float: right" type="button">bearbeiten</button>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Adressen</h3>
+          </div>
+          <div class="panel-body">
+            TODO Adressen
+          </div>
         </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Tipps</h3>
+          </div>
+          <div class="panel-body">
+            TODO tipps
+          </div>
+        </div>
+
       </div>
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Adressen</h3>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Aktivitäten / Bewertungen</h3>
+          </div>
+          <div class="panel-body">
+            TODO Bewertungen
+          </div>
         </div>
-        <div class="panel-body">
-          TODO Adressen
-        </div>
-      </div>
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Tipps</h3>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Profilfoto</h3>
+          </div>
+          <div class="panel-body">
+            TODO Profil
+          </div>
         </div>
-        <div class="panel-body">
-          TODO tipps
-        </div>
-      </div>
 
+      </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Aktivitäten / Bewertungen</h3>
-        </div>
-        <div class="panel-body">
-          TODO Bewertungen
-        </div>
-      </div>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Profilfoto</h3>
-        </div>
-        <div class="panel-body">
-          TODO Profil
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-</div> <!-- /container -->
+  </div> <!-- /container -->
 </section>
