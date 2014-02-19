@@ -87,7 +87,7 @@
             <img class="img-thumbnail" alt="thumbnail" title="thumbnail" data-src="holder.js/200x200/text:Foto hinzufuegen">
             <table class="profile-details">
               <tr><th>Name:</th><td data-bind="text: firstName + ' ' + lastName"></td>
-              <tr><th>beigetreten am:</th><td data-bind="text: dateJoined"></td>
+              <tr><th>beigetreten am:</th><td data-bind="text: getDateJoinedAsString()"></td>
               <tr><th>e-mail:</th><td data-bind="text: email"></td>
             </table>
           </div>
