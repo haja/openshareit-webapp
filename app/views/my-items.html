@@ -22,7 +22,10 @@
             </div>
             <div class="row">
               <div class="col-xs-12">
-                <button class="btn btn-default" style="float: right" type="button">bearbeiten</button>
+                <div style="float: right">
+                  <button class="btn btn-primary" type="button">Artikel anlegen</button>
+                  <button class="btn btn-default" type="button">bearbeiten</button>
+                </div>
               </div>
             </div>
           </div>
@@ -52,7 +55,10 @@
             </div>
             <div class="row">
               <div class="col-xs-12">
-                <button class="btn btn-default" style="float: right" type="button">bearbeiten</button>
+                <div style="float: right">
+                  <button class="btn btn-primary" type="button">Addresse hinzufügen</button>
+                  <button class="btn btn-default" type="button">bearbeiten</button>
+                </div>
               </div>
             </div>
           </div>
@@ -86,10 +92,13 @@
           <div class="panel-body" data-bind="with: profile">
             <img class="img-thumbnail" alt="thumbnail" title="thumbnail" data-src="holder.js/200x200/text:Foto hinzufuegen">
             <table class="profile-details">
-              <tr><th>Name:</th><td data-bind="text: firstName + ' ' + lastName"></td>
-              <tr><th>beigetreten am:</th><td data-bind="text: getDateJoinedAsString()"></td>
-              <tr><th>e-mail:</th><td data-bind="text: email"></td>
+              <tr><th>Name:</th><td data-bind="text: firstName + ' ' + lastName"></td></tr>
+              <tr><th>beigetreten am:</th><td data-bind="text: getDateJoinedAsString()"></td></tr>
+              <tr><th>e-mail:</th><td data-bind="text: email"></td></tr>
             </table>
+            <div style="float: right">
+              <button class="btn btn-default" type="button">bearbeiten</button>
+            </div>
           </div>
         </div>
 
