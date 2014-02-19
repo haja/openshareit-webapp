@@ -9,6 +9,9 @@ define(['knockout'], function(ko) {
         self.toggleActive = function() {
             self.active(!self.active());
         };
+        self.setActive = function(b) {
+            self.active(b);
+        };
     };
 
     return Ctor;

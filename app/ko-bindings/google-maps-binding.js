@@ -44,7 +44,7 @@ define(['knockout', 'jquery', 'durandal/composition', 'async!http://maps.google.
                 }
                 // listener needs to be recreated, item could be new
                 google.maps.event.clearListeners(locData._marker, 'click');
-                google.maps.event.addListener(locData._marker, 'click', loc.toggleActive);
+                google.maps.event.addListener(locData._marker, 'click', loc.setActive);
 
                 if(loc.active) {
                     // open infoWindow only if not already active
@@ -53,7 +53,7 @@ define(['knockout', 'jquery', 'durandal/composition', 'async!http://maps.google.
                             content: $("#item_" + loc.id).clone()[0]
                         })
                         locData._infoWindow.open(mapWrapper.data.map.googleMap, locData._marker);
-                        google.maps.event.addListener(locData._infoWindow, 'closeclick', loc.toggleActive);
+                        google.maps.event.addListener(locData._infoWindow, 'closeclick', loc.setInactive);
                     }
                 } else {
                     // hide not active items

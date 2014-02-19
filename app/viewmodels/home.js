@@ -2,6 +2,7 @@ define([
     'knockout'
     , 'durandal/app'
     , 'jquery'
+    , 'underscore'
     , 'ko-bindings/google-maps-binding'
     , 'utils/holder'
     , 'models/GMap'
@@ -11,6 +12,7 @@ function(
     ko
     , app
     , $
+    , _
     , gmaps_binding
     , holder
     , GMap
@@ -33,9 +35,21 @@ function(
     function ItemsViewModel() {
         var self = this;
 
+        /**
+         * only one item can be active
+         */
+        self.setActive = function(item, state) {
+            state = typeof state !== 'undefined' ? state : true; //state defaults to true
+            window.console && console.log("setActive: " + item);
+            _.each(self.items(), function(it) {
+                it.setActive(false);
+            });
+            item.setActive(state);
+        };
+
         //data
         self.items = ko.observableArray([]);
-        self.map = ko.observable(new GMap(self.items));
+        self.map = ko.observable(new GMap(self.items, self.setActive));
         self.lastQuery = ko.observable();
 
         self.queryTypes = ko.observableArray([

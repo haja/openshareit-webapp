@@ -29,13 +29,18 @@
     <div class="col-md-6">
       <!-- items -->
       <!-- ko foreach: items -->
-      <div class="panel panel-default" data-bind="click: toggleActive">
+      <div class="panel panel-default" data-bind="click: $parent.setActive">
         <div class="panel-body">
           <img alt="thumbnail" title="thumbnail" data-src="holder.js/100x100/text:Thumbnail" style="float: left; margin-right: 15px;" class="img-thumbnail">
           <div data-bind="attr: { 'id': 'item_' + $data.id }">
             <h4 data-bind="text: name" ></h4>
             <span data-bind="text: description"></span><br />
             <span data-bind="text: loc.city"></span>
+            <div data-bind="if: active">
+              <p>
+              active!
+              </p>
+            </div>
           </div>
         </div>
       </div>
