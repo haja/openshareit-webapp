@@ -23,9 +23,12 @@ function(
         self.name = name;
 
         var api_url = "../../api/"
+        var reloadHolder = function() {
+            holder.compositionComplete();
+        }
 
         self.query = function() {
-            jsonHelper.getItems(api_url + query, resultProperty);
+            jsonHelper.getItems(api_url + query, resultProperty, reloadHolder);
         };
     };
 
