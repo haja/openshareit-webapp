@@ -2,11 +2,13 @@ define([
     'jquery'
     , 'underscore'
     , 'models/Item'
+    , 'models/Address'
 ],
 function(
     $
     , _
     , Item
+    , Address
 ) {
     var obj = {};
     var getWithCtor = function(Ctor, url, resultProperty, afterDoneHook) {
@@ -23,6 +25,7 @@ function(
     };
 
     obj.getItems = _.partial(getWithCtor, Item);
+    obj.getAddresses = _.partial(getWithCtor, Address);
 
     return obj;
 });
