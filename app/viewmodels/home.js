@@ -7,6 +7,7 @@ define([
     , 'utils/holder'
     , 'models/GMap'
     , 'utils/json-helper'
+    , 'dialogs/QueryItemDialog'
 ],
 function(
     ko
@@ -17,6 +18,7 @@ function(
     , holder
     , GMap
     , jsonHelper
+    , QueryItemDialog
 ) {
     function QueryType(name, query, resultProperty) {
         var self = this;
@@ -51,6 +53,16 @@ function(
         self.items = ko.observableArray([]);
         self.map = ko.observable(new GMap(self.items, self.setActive));
         self.lastQuery = ko.observable();
+
+
+        /** open a modal dialog to query an item */
+        self.showQueryItemDialog = function(item) {
+            QueryItemDialog.show(item).then(function(response) {
+                if(typeof response !== 'undefined') {
+                    app.showMessage('Dialog closed; response: ' + response);
+                }
+            });
+        };
 
         self.queryTypes = ko.observableArray([
             new QueryType('Nähe', 'items_near', self.items)
