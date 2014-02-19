@@ -1,0 +1,16 @@
+{
+    "url": "http://api.ionic.at/users/1/",
+    "email": "user_xy@email.at",
+    "firstName": "Max",
+    "lastName": "Mustermann",
+    "isSuperuser": false,
+    "isStaff": true,
+    "isActive": true,
+    "dateJoined": "2013-12-31T23:00:00Z",
+    "phoneNumber": "0",
+    "mobileNumber": "0",
+    "primaryAddress": "http://api.ionic.at/addresses/1/",
+    "avatar": "",
+    "lastChanged": "2013-12-31T23:00:00Z",
+    "deleted": false
+}

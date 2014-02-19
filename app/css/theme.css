@@ -40,3 +40,14 @@ ul.vertical-list
 {
     margin-right: 14px;
 }
+
+.profile-details
+{
+    margin-top: 14px;
+}
+
+.profile-details tr th
+{
+    font-weight: normal;
+    padding-right: 10px;
+}

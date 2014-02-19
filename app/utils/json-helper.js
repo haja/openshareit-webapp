@@ -3,12 +3,14 @@ define([
     , 'underscore'
     , 'models/Item'
     , 'models/Address'
+    , 'models/Profile'
 ],
 function(
     $
     , _
     , Item
     , Address
+    , Profile
 ) {
     var obj = {};
     var getWithCtor = function(dataMapper, Ctor, url, resultProperty, afterDoneHook) {
@@ -32,6 +34,7 @@ function(
 
     obj.getItems = _.partial(getWithCtor, arrayMapper, Item);
     obj.getAddresses = _.partial(getWithCtor, arrayMapper, Address);
+    obj.getProfile = _.partial(getWithCtor, objMapper, Profile);
 
     return obj;
 });
