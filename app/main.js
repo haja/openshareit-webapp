@@ -1,27 +1,27 @@
 requirejs.config({
     urlArgs: "bust=" + (new Date()).getTime,
     paths: {
-        sizzle: "../lib/sizzle/dist/sizzle",
-        async: "../lib/requirejs-plugins/src/async",
-        depend: "../lib/requirejs-plugins/src/depend",
-        font: "../lib/requirejs-plugins/src/font",
-        goog: "../lib/requirejs-plugins/src/goog",
-        image: "../lib/requirejs-plugins/src/image",
-        json: "../lib/requirejs-plugins/src/json",
-        mdown: "../lib/requirejs-plugins/src/mdown",
-        noext: "../lib/requirejs-plugins/src/noext",
-        propertyParser: "../lib/requirejs-plugins/src/propertyParser",
-        "Markdown.Converter": "../lib/requirejs-plugins/lib/Markdown.Converter",
-        text: "../lib/requirejs-plugins/lib/text",
-        requirejs: "../lib/requirejs/require",
-        domReady: '../lib/requirejs-domready/domReady',
-        knockout: "../lib/knockout.js/knockout",
-        jquery: "../lib/jquery/jquery",
-        holderjs: "../lib/holderjs/holder",
-        bootstrap: "../lib/bootstrap/dist/js/bootstrap",
-        durandal: "../lib/durandal/js",
-        plugins: "../lib/durandal/js/plugins",
-        transitions: "../lib/durandal/js/transitions"
+        sizzle: "../lib/sizzle/dist/sizzle"
+        , async: "../lib/requirejs-plugins/src/async"
+        , depend: "../lib/requirejs-plugins/src/depend"
+        , font: "../lib/requirejs-plugins/src/font"
+        , goog: "../lib/requirejs-plugins/src/goog"
+        , image: "../lib/requirejs-plugins/src/image"
+        , json: "../lib/requirejs-plugins/src/json"
+        , mdown: "../lib/requirejs-plugins/src/mdown"
+        , noext: "../lib/requirejs-plugins/src/noext"
+        , propertyParser: "../lib/requirejs-plugins/src/propertyParser"
+        , "Markdown.Converter": "../lib/requirejs-plugins/lib/Markdown.Converter"
+        , text: "../lib/requirejs-plugins/lib/text"
+        , requirejs: "../lib/requirejs/require"
+        , domReady: '../lib/requirejs-domready/domReady'
+        , knockout: "../lib/knockout.js/knockout"
+        , jquery: "../lib/jquery/jquery"
+        , holderjs: "../lib/holderjs/holder"
+        , bootstrap: "../lib/bootstrap/dist/js/bootstrap"
+        , durandal: "../lib/durandal/js"
+        , plugins: "../lib/durandal/js/plugins"
+        , transitions: "../lib/durandal/js/transitions"
     },
     shim: {
         'bootstrap': {
