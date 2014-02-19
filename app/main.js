@@ -22,6 +22,7 @@ requirejs.config({
         , durandal: "../lib/durandal/js"
         , plugins: "../lib/durandal/js/plugins"
         , transitions: "../lib/durandal/js/transitions"
+        , underscore: "../lib/underscore/underscore"
     },
     shim: {
         'bootstrap': {

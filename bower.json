@@ -24,5 +24,6 @@
     , "requirejs-plugins": "~1.0.2"
     , "durandal": "~2.0.1"
     , "requirejs-domready": "~2.0.1"
+    , "underscore": "~1.6.0"
   }
 }
