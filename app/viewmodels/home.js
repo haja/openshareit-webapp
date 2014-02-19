@@ -4,7 +4,6 @@ define([
     , 'jquery'
     , 'ko-bindings/google-maps-binding'
     , 'utils/holder'
-    , 'models/Item'
     , 'models/GMap'
     , 'utils/json-helper'
 ],
@@ -14,7 +13,6 @@ function(
     , $
     , gmaps_binding
     , holder
-    , Item
     , GMap
     , jsonHelper
 ) {
