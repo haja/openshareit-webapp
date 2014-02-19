@@ -7,19 +7,22 @@ define(['plugins/router', 'ko-bindings/bootstrap-nav-menu-close-on-click'], func
                     route: ['', 'home'],
                     title:'All Items',
                     moduleId: 'viewmodels/home',
-                    nav: true
+                    nav: true,
+                    navDisplayStyle: 'left'
                 },
                 {
                     route: 'my-items',
                     title:'Meine Artikel',
                     moduleId: 'viewmodels/my-items',
-                    nav: true
+                    nav: true,
+                    navDisplayStyle: 'left'
                 },
                 {
                     route: 'register',
                     title:'Registrierung',
                     moduleId: 'viewmodels/register',
-                    nav: true
+                    nav: true,
+                    navDisplayStyle: 'right'
                 }
             ]).buildNavigationModel();
             //.mapUnknownRoutes('home', 'not-found');
