@@ -1,4 +1,4 @@
-define(['plugins/router'], function (router) {
+define(['plugins/router', 'ko-bindings/bootstrap-nav-menu-close-on-click'], function (router) {
     return {
         router: router,
         activate: function () {

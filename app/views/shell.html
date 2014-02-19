@@ -12,9 +12,9 @@
         <a class="navbar-brand" href="#">OpenShareIt</a>
       </div>
       <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav" data-bind="foreach: router.navigationModel">
+        <ul class="nav navbar-nav" data-bind="foreach: router.navigationModel, bootstrapNavMenuCloseOnClick: {}">
           <li data-bind="css: { active: isActive }">
-          <a data-bind="attr: { href: hash }, html: title"></a>
+          <a class="navbar-link" data-bind="attr: { href: hash }, html: title"></a>
           </li>
         </ul>
         <div class="loader pull-right" data-bind="css: { active: router.isNavigating }">
