@@ -33,7 +33,28 @@
             <h3 class="panel-title">Adressen</h3>
           </div>
           <div class="panel-body">
-            TODO Adressen
+            <div class="row">
+              <div class="col-xs-12">
+                <ul class="vertical-list" data-bind="foreach: addresses">
+                  <li>
+                  <div class="address panel panel-default">
+                    <div class="panel-body">
+                      <p>
+                      <strong><span data-bind="text: 'Adresse ' + id"></span></strong><br /><br />
+                      <span data-bind="text: street + ' ' + houseNumber"></span><br />
+                      <span data-bind="text: postalCode + ' ' + city"></span>
+                      </p>
+                    </div>
+                  </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <button class="btn btn-default" style="float: right" type="button">bearbeiten</button>
+              </div>
+            </div>
           </div>
         </div>
 
