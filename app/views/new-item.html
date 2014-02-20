@@ -1,0 +1,82 @@
+<section>
+  <div class="container theme-showcase">
+
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Artikel anlegen</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <form>
+                  <ul class="vertical-list">
+                    <li>
+                    <img alt="thumbnail" title="Foto 1" data-src="holder.js/100x100/text:Foto 1" class="img-thumbnail item-thumbnail">
+                    </li>
+                    <li>
+                    <img alt="thumbnail" title="Foto hinzufügen..." data-src="holder.js/100x100/text:hinzufuegen.../#fff:#aaa" class="img-thumbnail item-thumbnail">
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-xs-12">
+                  <textarea class="form-control autofocus" rows="6" name="description" placeholder="Artikelbeschreibung"></textarea>
+                </div>
+                <div class="col-xs-12">
+                  <div style="float: right">
+                    <button class="btn btn-success" type="submit">Artikel anlegen</button>
+                    <button class="btn btn-default" type="button">abbrechen</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Adressen</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <ul class="vertical-list" data-bind="foreach: addresses">
+                  <li>
+                  <div class="address panel panel-default">
+                    <div class="panel-body">
+                      <p>
+                      <strong><span data-bind="text: 'Adresse ' + id"></span></strong><br /><br />
+                      <span data-bind="text: street + ' ' + houseNumber"></span><br />
+                      <span data-bind="text: postalCode + ' ' + city"></span>
+                      </p>
+                    </div>
+                  </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xs-12">
+                <div style="float: right">
+                  <button class="btn btn-primary" type="button">Addresse hinzufügen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Abholdatum</h3>
+          </div>
+          <div class="panel-body">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div> <!-- /container -->
+</section>

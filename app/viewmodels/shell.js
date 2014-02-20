@@ -18,6 +18,12 @@ define(['plugins/router', 'ko-bindings/bootstrap-nav-menu-close-on-click'], func
                     navDisplayStyle: 'left'
                 },
                 {
+                    route: 'my-items/new-item',
+                    title:'Artikel anlegen',
+                    moduleId: 'viewmodels/new-item',
+                    nav: false,
+                },
+                {
                     route: 'register',
                     title:'Registrierung',
                     moduleId: 'viewmodels/register',
