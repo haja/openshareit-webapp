@@ -24,6 +24,7 @@ requirejs.config({
         , plugins: "../lib/durandal/js/plugins"
         , transitions: "../lib/durandal/js/transitions"
         , underscore: "../lib/underscore/underscore"
+        , moment: "../lib/momentjs/min/moment-with-langs.min"
     },
     shim: {
         'bootstrap': {
