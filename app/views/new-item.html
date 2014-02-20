@@ -21,7 +21,7 @@
                   </ul>
                 </div>
                 <div class="col-xs-12">
-                  <textarea class="form-control autofocus" rows="6" name="description" placeholder="Artikelbeschreibung"></textarea>
+                    <textarea class="form-control autofocus" style="margin-top: 14px" rows="6" name="description" placeholder="Artikelbeschreibung"></textarea>
                 </div>
               </div>
             </form>
@@ -44,8 +44,8 @@
                       <span data-bind="text: street + ' ' + houseNumber"></span><br />
                       <span data-bind="text: postalCode + ' ' + city"></span>
                       </p>
-                      <button class="btn btn-sm btn-default" data-bind="click: $parent.choosenAddress, visible: $data !== $parent.choosenAddress()">Auswählen</button>
-                      <button class="btn btn-sm btn-default active" data-bind="visible: $data === $parent.choosenAddress()">Ausgewählt</button>
+                      <button class="btn btn-sm btn-default pull-right" data-bind="click: $parent.choosenAddress, visible: $data !== $parent.choosenAddress()">Auswählen</button>
+                      <button class="btn btn-sm btn-default active pull-right" data-bind="visible: $data === $parent.choosenAddress()">Ausgewählt</button>
                     </div>
                   </div>
                   </li>
