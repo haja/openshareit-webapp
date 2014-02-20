@@ -8,6 +8,7 @@ define([
     , 'models/GMap'
     , 'utils/json-helper'
     , 'dialogs/QueryItemDialog'
+    , 'dialogs/UserDetailsDialog'
 ],
 function(
     ko
@@ -19,6 +20,7 @@ function(
     , GMap
     , jsonHelper
     , QueryItemDialog
+    , UserDetailsDialog
 ) {
     function QueryType(name, query, resultProperty) {
         var self = this;
@@ -62,6 +64,12 @@ function(
                     app.showMessage('Dialog closed; response: ' + response);
                 }
             });
+        };
+
+        /** open a modal dialog to show user details */
+        self.showUserDialog = function(item) {
+            window.console && console.log("showUserDialog " + item);
+            UserDetailsDialog.show(item.user);
         };
 
         self.queryTypes = ko.observableArray([

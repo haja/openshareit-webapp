@@ -1,0 +1,15 @@
+<div class="messageBox autoclose" role="dialog">
+  <div class="modal-header">
+    <h3 data-bind="text: 'User: ' + user.getFullName()"></h3>
+  </div>
+  <div class="modal-body">
+    <p>
+    <img class="img-thumbnail" alt="thumbnail" title="thumbnail" data-src="holder.js/200x200/text:Profilbild"><br />
+    email: <span data-bind="text: user.email"></span><br />
+    ...
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-default" data-bind="click: close">Schließen</button>
+  </div>
+</div>
