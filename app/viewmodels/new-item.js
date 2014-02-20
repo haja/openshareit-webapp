@@ -37,7 +37,7 @@ function(
                 format: dateformat.datepicker
                 , autoclose: true
             });
-            holder.compositionComplete;
+            holder.compositionComplete();
         };
     };
 
