@@ -72,6 +72,13 @@
             <h3 class="panel-title">Abholdatum</h3>
           </div>
           <div class="panel-body">
+            <div class="input-group">
+              <input data-provide="datepicker" data-bind="value: pickupDate" type="date" class="form-control"></input>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+            <p>
+            Bis spätestens <span data-bind="text: pickupDate"></span> kann der Artikel abgeholt werden!
+            </p>
           </div>
         </div>
 

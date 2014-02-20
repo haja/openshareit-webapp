@@ -19,6 +19,7 @@ requirejs.config({
         , jquery: "../lib/jquery/jquery"
         , holderjs: "../lib/holderjs/holder"
         , bootstrap: "../lib/bootstrap/dist/js/bootstrap"
+        , "bootstrap-datepicker": "../lib/bootstrap-datepicker/js/bootstrap-datepicker"
         , durandal: "../lib/durandal/js"
         , plugins: "../lib/durandal/js/plugins"
         , transitions: "../lib/durandal/js/transitions"
@@ -28,6 +29,10 @@ requirejs.config({
         'bootstrap': {
             deps: ['jquery'],
             exports: 'jQuery'
+        }
+        , 'bootstrap-datepicker': {
+            deps: ['jquery', 'bootstrap'],
+            exports: '$.fn.datepicker'
         }
     }
 });
