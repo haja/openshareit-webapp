@@ -36,7 +36,7 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'bootstrap'],
 
     system.debug(true);
 
-    app.title = 'first sample';
+    app.title = 'OpenShareIt';
 
     app.configurePlugins({
         router:true,
