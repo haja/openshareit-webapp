@@ -23,12 +23,6 @@
                 <div class="col-xs-12">
                   <textarea class="form-control autofocus" rows="6" name="description" placeholder="Artikelbeschreibung"></textarea>
                 </div>
-                <div class="col-xs-12">
-                  <div style="float: right">
-                    <button class="btn btn-success" type="submit">Artikel anlegen</button>
-                    <button class="btn btn-default" type="button">abbrechen</button>
-                  </div>
-                </div>
               </div>
             </form>
           </div>
@@ -50,6 +44,8 @@
                       <span data-bind="text: street + ' ' + houseNumber"></span><br />
                       <span data-bind="text: postalCode + ' ' + city"></span>
                       </p>
+                      <button class="btn btn-sm btn-default" data-bind="click: $parent.choosenAddress, visible: $data !== $parent.choosenAddress()">Auswählen</button>
+                      <button class="btn btn-sm btn-default active" data-bind="visible: $data === $parent.choosenAddress()">Ausgewählt</button>
                     </div>
                   </div>
                   </li>
@@ -57,7 +53,7 @@
               </div>
               <div class="col-xs-12">
                 <div style="float: right">
-                  <button class="btn btn-primary" type="button">Addresse hinzufügen</button>
+                  <button class="btn btn-default" type="button" data-bind="click: showCreateAddressDialog">Addresse hinzufügen</button>
                 </div>
               </div>
             </div>
@@ -83,6 +79,12 @@
           </div>
         </div>
 
+      </div>
+
+      <div class="col-xs-12">
+        <div style="float: right">
+          <button class="btn btn-success" type="submit">Artikel anlegen</button>
+        </div>
       </div>
     </div>
 

@@ -1,0 +1,37 @@
+<div class="messageBox autoclose" role="dialog">
+  <div class="modal-header">
+    <h3>Adresse hinzufügen</h3>
+  </div>
+  <form data-bind="submit: createAddress">
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="street">Straße</label>
+        <input name="street" tabindex="1" class="form-control autofocus" data-bind="value: street" type="text" placeholder="Straße">
+      </div>
+      <div class="form-group">
+        <label for="houseNumber">Hausnummer</label>
+        <input name="houseNumber" tabindex="2" class="form-control" data-bind="value: houseNumber" type="text" placeholder="Hausnummer">
+      </div>
+      <div class="form-group">
+        <label for="postalCode">Plz</label>
+        <input name="postalCode" tabindex="3" class="form-control" data-bind="value: postalCode" type="text" placeholder="Plz">
+      </div>
+      <div class="form-group">
+        <label for="city">Stadt</label>
+        <input name="city" tabindex="4" class="form-control" data-bind="value: city" type="text" placeholder="Stadt">
+      </div>
+      <div class="form-group">
+        <label for="province">Bundesland</label>
+        <input name="province" tabindex="5" class="form-control" data-bind="value: province" type="text" placeholder="Bundesland">
+      </div>
+      <div class="form-group">
+        <label for="country">Land</label>
+        <input name="country" tabindex="6" class="form-control" data-bind="value: country" type="text" placeholder="Land">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" tabindex="8" data-bind="click: abort">Abbrechen</button>
+      <button type="submit" class="btn btn-primary" tabindex="7">Adresse hinzufügen</button>
+    </div>
+  </form>
+</div>
