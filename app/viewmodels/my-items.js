@@ -3,12 +3,14 @@ define([
     , 'utils/holder'
     , 'utils/json-helper'
     , 'plugins/router'
+    , 'dialogs/CreateAddressDialog'
 ],
 function(
     ko
     , holder
     , jsonHelper
     , router
+    , CreateAddressDialog
 ) {
     var ViewModel = function() {
         var self = this;
@@ -22,6 +24,14 @@ function(
         self.navigateNewItem = function() {
             router.navigate('my-items/new-item');
         };
+        self.showCreateAddressDialog = function() {
+            window.console && console.log("showCreateAddressDialog");
+            CreateAddressDialog.show().then(function(response) {
+                if(typeof response !== 'undefined') {
+                    self.addresses.push(response);
+                }
+            });
+        }
 
         // load data
         var api_url = "../../api/"
