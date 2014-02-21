@@ -2,114 +2,50 @@
   <div class="container theme-showcase">
 
     <div class="row">
-      <div class="col-sm-8">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Artikel</h3>
-          </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-xs-12">
-                <p>
-                aktuelle Artikel
-                </p>
-                <ul class="vertical-list" data-bind="foreach: items">
-                  <li>
-                  <img alt="thumbnail" data-bind="attr: { 'title': name, 'data-src': 'holder.js/100x100/text:' + name }" class="img-thumbnail item-thumbnail">
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <div style="margin-top: 14px" class="pull-right">
-                  <button class="btn btn-primary" type="button" data-bind="click: navigateNewItem">Artikel anlegen</button>
-                  <button class="btn btn-default" type="button">bearbeiten</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="col-xs-8 col-md-offset-2 col-md-6">
 
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Adressen</h3>
-          </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-xs-12">
-                <ul class="vertical-list" data-bind="foreach: addresses">
-                  <li>
-                  <div class="address panel panel-default">
-                    <div class="panel-body">
-                      <p>
-                      <strong><span data-bind="text: 'Adresse ' + id"></span></strong><br /><br />
-                      <span data-bind="text: street + ' ' + houseNumber"></span><br />
-                      <span data-bind="text: postalCode + ' ' + city"></span>
-                      </p>
-                    </div>
-                  </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <div style="float: right">
-                  <button class="btn btn-default" type="button" data-bind="click: showCreateAddressDialog">Addresse hinzufügen</button>
-                  <button class="btn btn-default" type="button">bearbeiten</button>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="form-group">
+        <div class="btn-group" data-bind="foreach: itemTypes"> <!-- item type buttons -->
+          <button type="button" class="btn btn-default" data-bind="css: { active: name == $parent.lastItemType() }, text: name, click: $parent.goToItemType"></button>
         </div>
-
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Tipps</h3>
-          </div>
-          <div class="panel-body">
-            TODO tipps
-          </div>
         </div>
-
       </div>
 
-      <div class="col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Aktivitäten / Bewertungen</h3>
-          </div>
-          <div class="panel-body">
-            TODO Bewertungen
-          </div>
+      <div class="col-xs-4 col-md-2">
+        <div class="form-group">
+        <div class="btn-group pull-right">
+          <button class="btn btn-primary" type="button" data-bind="click: navigateNewItem">Artikel anlegen</button>
         </div>
-
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Profilfoto</h3>
-          </div>
-          <div class="panel-body" data-bind="with: profile">
-            <img class="img-thumbnail" alt="thumbnail" title="thumbnail" data-src="holder.js/200x200/text:Foto hinzufuegen">
-            <table class="profile-details">
-              <tr><th>Name:</th><td data-bind="text: firstName + ' ' + lastName"></td></tr>
-              <tr><th>beigetreten am:</th><td data-bind="text: getDateJoinedAsString()"></td></tr>
-              <tr><th>e-mail:</th><td data-bind="text: email"></td></tr>
-            </table>
-            <div style="margin-top: 14px" class="pull-right">
-              <button class="btn btn-default" type="button">bearbeiten</button>
-            </div>
-          </div>
         </div>
-
       </div>
+
     </div>
     <div class="row">
-      <div class="col-xs-12">
-              <button class="btn btn-default pull-right" type="button">Konto löschen</button>
-    </div>
-    </div>
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <!-- TODO move to own template -->
+        <!-- items -->
+        <!-- ko foreach: items -->
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <img alt="thumbnail" title="thumbnail" data-src="holder.js/100x100/text:Thumbnail" style="float: left; margin-right: 15px;" class="img-thumbnail">
+            <div style="overflow: hidden" data-bind="attr: { 'id': 'item_' + $data.id }">
+              <h4 data-bind="text: name" ></h4>
+              <span data-bind="text: description"></span><br />
+              User: <a href="#" data-bind="click: $parent.showUserDialog, clickBubble: false"><span data-bind="text: user.getFullName"></span></a><br />
+              <span data-bind="text: loc.street + ' ' + loc.houseNumber"></span><br />
+              <span data-bind="text: loc.postalCode + ' ' + loc.city"></span><br />
+              <span data-bind="text: loc.country"></span><br />
+              <div style="float: right">
+                <button type="button" class="btn btn-default" data-bind="click: $parent.showQueryItemDialog, clickBubble: false">Bearbeiten</button>
+              </div>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- /ko -->
 
+      </div>
+    </div>
 
   </div> <!-- /container -->
 </section>

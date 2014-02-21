@@ -12,32 +12,52 @@ function(
     , router
     , CreateAddressDialog
 ) {
+    // TODO move to own module
+    function QueryType(name, query, resultProperty) {
+        var self = this;
+        self.name = name;
+
+        var api_url = "../../api/"
+        var reloadHolder = function() {
+            holder.compositionComplete();
+        }
+
+        self.query = function() {
+            jsonHelper.getItems(api_url + query, resultProperty, reloadHolder);
+        };
+    };
+
     var ViewModel = function() {
         var self = this;
 
         // data
         self.items = ko.observableArray([]);
-        self.addresses = ko.observableArray([]);
-        self.profile = ko.observable();
+
+        // TODO move to own util (queryTypeSwitcher)
+        self.lastItemType = ko.observable();
+        self.itemTypes = ko.observableArray([
+            new QueryType('Meine Artikel', 'items_my', self.items)
+            , new QueryType('Angefragte Artikel', 'items_queried', self.items)
+            , new QueryType('Abgeholte Artikel', 'items_picked_up', self.items)
+        ]);
+
+        self.goToItemType = function(itemType) {
+            window.console&&console.log("itemType: " + itemType.name);
+            self.lastItemType(itemType.name);
+            itemType.query();
+        };
+
+        // default query to view
+        self.goToItemType(self.itemTypes()[0]);
 
         // behaviour
         self.navigateNewItem = function() {
             router.navigate('my-items/new-item');
         };
-        self.showCreateAddressDialog = function() {
-            window.console && console.log("showCreateAddressDialog");
-            CreateAddressDialog.show().then(function(response) {
-                if(typeof response !== 'undefined') {
-                    self.addresses.push(response);
-                }
-            });
-        }
 
         // load data
         var api_url = "../../api/"
         jsonHelper.getItems(api_url + "items_my", self.items);
-        jsonHelper.getAddresses(api_url + "addresses_my", self.addresses);
-        jsonHelper.getProfile(api_url + "profile_my", self.profile);
 
         // load holderjs images
         self.compositionComplete = holder.compositionComplete;
