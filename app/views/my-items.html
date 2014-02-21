@@ -22,7 +22,7 @@
             </div>
             <div class="row">
               <div class="col-xs-12">
-                <div style="float: right">
+                <div style="margin-top: 14px" class="pull-right">
                   <button class="btn btn-primary" type="button" data-bind="click: navigateNewItem">Artikel anlegen</button>
                   <button class="btn btn-default" type="button">bearbeiten</button>
                 </div>
@@ -56,7 +56,7 @@
             <div class="row">
               <div class="col-xs-12">
                 <div style="float: right">
-                  <button class="btn btn-primary" type="button" data-bind="click: showCreateAddressDialog">Addresse hinzufügen</button>
+                  <button class="btn btn-default" type="button" data-bind="click: showCreateAddressDialog">Addresse hinzufügen</button>
                   <button class="btn btn-default" type="button">bearbeiten</button>
                 </div>
               </div>
@@ -96,7 +96,7 @@
               <tr><th>beigetreten am:</th><td data-bind="text: getDateJoinedAsString()"></td></tr>
               <tr><th>e-mail:</th><td data-bind="text: email"></td></tr>
             </table>
-            <div style="float: right">
+            <div style="margin-top: 14px" class="pull-right">
               <button class="btn btn-default" type="button">bearbeiten</button>
             </div>
           </div>
@@ -104,6 +104,12 @@
 
       </div>
     </div>
+    <div class="row">
+      <div class="col-xs-12">
+              <button class="btn btn-default pull-right" type="button">Konto löschen</button>
+    </div>
+    </div>
+
 
   </div> <!-- /container -->
 </section>
