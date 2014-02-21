@@ -5,7 +5,7 @@ define(['plugins/router', 'ko-bindings/bootstrap-nav-menu-close-on-click'], func
             router.map([
                 {
                     route: ['', 'home'],
-                    title:'All Items',
+                    title:'Home',
                     moduleId: 'viewmodels/home',
                     nav: true,
                     navDisplayStyle: 'left'
