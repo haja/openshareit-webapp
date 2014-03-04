@@ -19,7 +19,7 @@
     </div>
 
     <div class="col-md-6">
-      <div data-bind="compose: { view: '../templates/itemList.html', preserveContext:true }"></div>
+      <div data-bind="compose: { model: '../templates/itemList', activationData: { items: items, queryTypes: queryTypes, setActive: setActive } }"></div>
     </div><!-- /.col-sm-8 -->
   </div>
 

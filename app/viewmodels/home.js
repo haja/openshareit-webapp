@@ -8,7 +8,6 @@ define([
     , 'models/GMap'
     , 'utils/json-helper'
     , 'dialogs/QueryItemDialog'
-    , 'dialogs/UserDetailsDialog'
 ],
 function(
     ko
@@ -20,7 +19,6 @@ function(
     , GMap
     , jsonHelper
     , QueryItemDialog
-    , UserDetailsDialog
 ) {
     function QueryType(name, query, resultProperty) {
         var self = this;
@@ -54,8 +52,6 @@ function(
         //data
         self.items = ko.observableArray([]);
         self.map = ko.observable(new GMap(self.items, self.setActive));
-        self.lastQuery = ko.observable();
-
 
         /** open a modal dialog to query an item */
         self.showQueryItemDialog = function(item) {
@@ -66,26 +62,11 @@ function(
             });
         };
 
-        /** open a modal dialog to show user details */
-        self.showUserDialog = function(item) {
-            window.console && console.log("showUserDialog " + item);
-            UserDetailsDialog.show(item.user);
-        };
-
         self.queryTypes = ko.observableArray([
             new QueryType('Nähe', 'items_near', self.items)
             , new QueryType('Aktualität', 'items_fresh', self.items)
             , new QueryType('Abholdatum', 'items_pick_up', self.items)
         ]);
-
-        self.goToQueryType = function(queryType) {
-            window.console&&console.log("query: " + queryType.name);
-            self.lastQuery(queryType.name);
-            queryType.query();
-        };
-
-        // default query to view
-        self.goToQueryType(self.queryTypes()[0]);
 
         // load holderjs images
         self.compositionComplete = holder.compositionComplete;
