@@ -22,6 +22,7 @@ function(
             self.items = data.items;
             self.queryTypes = data.queryTypes;
             self.setActive = data.setActive;
+            self.actions = data.actions;
 
             // default query to view
             self.goToQueryType(self.queryTypes()[0]);
@@ -32,11 +33,6 @@ function(
             window.console && console.log("showUserDialog " + item);
             UserDetailsDialog.show(item.user);
         };
-
-        self.showQueryItemDialog = function(item) {
-            alert("item: " + item);
-        };
-
     };
 
     return new ItemListViewModel();
