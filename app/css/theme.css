@@ -51,3 +51,8 @@ ul.vertical-list
     font-weight: normal;
     padding-right: 10px;
 }
+
+.query-type-buttons
+{
+    margin-bottom: 15px;
+}
