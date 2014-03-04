@@ -33,6 +33,10 @@ function(
             UserDetailsDialog.show(item.user);
         };
 
+        self.showQueryItemDialog = function(item) {
+            alert("item: " + item);
+        };
+
     };
 
     return new ItemListViewModel();

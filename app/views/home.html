@@ -19,7 +19,11 @@
     </div>
 
     <div class="col-md-6">
-      <div data-bind="compose: { model: '../templates/itemList', activationData: { items: items, queryTypes: queryTypes, setActive: setActive } }"></div>
+      <div data-bind="compose: { model: '../templates/itemList', activationData: { items: items, queryTypes: queryTypes, setActive: setActive }, mode: 'templated' }">
+        <div data-part="bottom-right">
+          <button type="button" class="btn btn-primary" data-bind="click: $parent.showQueryItemDialog, clickBubble: false">Anfragen</button>
+        </div>
+      </div>
     </div><!-- /.col-sm-8 -->
   </div>
 
