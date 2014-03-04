@@ -61,7 +61,10 @@ function(
                 }
             });
         };
-        self.actions = { showQueryItemDialog: self.showQueryItemDialog };
+        self.actions = {
+            showQueryItemDialog: self.showQueryItemDialog
+            , setActive: self.setActive
+        };
 
         self.queryTypes = ko.observableArray([
             new QueryType('Nähe', 'items_near', self.items)

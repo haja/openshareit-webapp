@@ -2,48 +2,19 @@
   <div class="container theme-showcase">
 
     <div class="row">
-      <div class="col-xs-8 col-md-offset-2 col-md-6">
-
-        <div class="form-group">
-        <div class="btn-group" data-bind="foreach: itemTypes"> <!-- item type buttons -->
-          <button type="button" class="btn btn-default" data-bind="css: { active: name == $parent.lastItemType() }, text: name, click: $parent.goToItemType"></button>
-        </div>
-        </div>
-      </div>
-
-      <div class="col-xs-4 col-md-2">
-        <div class="form-group">
-        <div class="btn-group pull-right">
-          <button class="btn btn-primary" type="button" data-bind="click: navigateNewItem">Artikel anlegen</button>
-        </div>
-        </div>
-      </div>
-
-    </div>
-    <div class="row">
       <div class="col-xs-12 col-md-8 col-md-offset-2">
-        <!-- TODO move to own template -->
-        <!-- items -->
-        <!-- ko foreach: items -->
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <img alt="thumbnail" title="thumbnail" data-src="holder.js/100x100/text:Thumbnail" style="float: left; margin-right: 15px;" class="img-thumbnail">
-            <div style="overflow: hidden" data-bind="attr: { 'id': 'item_' + $data.id }">
-              <h4 data-bind="text: name" ></h4>
-              <span data-bind="text: description"></span><br />
-              User: <a href="#" data-bind="click: $parent.showUserDialog, clickBubble: false"><span data-bind="text: user.getFullName"></span></a><br />
-              <span data-bind="text: loc.street + ' ' + loc.houseNumber"></span><br />
-              <span data-bind="text: loc.postalCode + ' ' + loc.city"></span><br />
-              <span data-bind="text: loc.country"></span><br />
-              <div style="float: right">
-                <button type="button" class="btn btn-default" data-bind="click: $parent.showQueryItemDialog, clickBubble: false">Bearbeiten</button>
+        <div data-bind="compose: { model: '../templates/itemList', activationData: { items: items, queryTypes: queryTypes, actions: actions }, mode: 'templated' }">
+          <div data-part="btn-group-right">
+            <button class="btn btn-primary" type="button" data-bind="click: actions.navigateNewItem">Artikel anlegen</button>
+          </div>
+          <div data-part="item-view">
+            <div data-bind="compose: { model: 'templates/itemViewFull', activationData: { item: $data }, mode: 'templated' }">
+              <div data-part="bottom-right">
+                <button type="button" class="btn btn-default" data-bind="clickBubble: false">Bearbeiten</button>
               </div>
-              </p>
             </div>
           </div>
         </div>
-        <!-- /ko -->
-
       </div>
     </div>
 

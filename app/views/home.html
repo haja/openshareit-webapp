@@ -1,31 +1,52 @@
 <section>
-<div class="container theme-showcase">
+  <div class="container theme-showcase">
 
-  <div class="row">
-    <div class="col-md-6">
-      <form class="form-group" role="search"> <!-- search bar -->
-        <div class="input-group">
-          <input type="text" class="form-control input-sm" name="search_term" placeholder="Ort, Artikel, ...">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span></button>
-          </span>
-        </div>
-      </form>
+    <div class="row">
+      <div class="col-md-6">
+        <form class="form-group" role="search"> <!-- search bar -->
+          <div class="input-group">
+            <input type="text" class="form-control input-sm" name="search_term" placeholder="Ort, Artikel, ...">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+            </span>
+          </div>
+        </form>
 
-      <div class="panel panel-default">
-        <div id="googleMapsDiv" class="google-maps-wrapper" data-bind="map: { data: map().data, locations: map().asLocations() } "> <!-- maps viewport -->
+        <div class="panel panel-default">
+          <div id="googleMapsDiv" class="google-maps-wrapper" data-bind="map: { data: map().data, locations: map().asLocations() } "> <!-- maps viewport -->
+          </div>
         </div>
       </div>
+
+      <div class="col-md-6">
+        <div data-bind="compose: { model: '../templates/itemList', activationData: { items: items, queryTypes: queryTypes, actions: actions }, mode: 'templated' }">
+          <div data-part="item-view">
+            <div data-bind="click: $parent.actions.setActive">
+
+              <div data-bind="ifnot: active">
+                <img alt="thumbnail" title="thumbnail" data-src="holder.js/100x100/text:Thumbnail" style="float: left; margin-right: 15px;" class="img-thumbnail">
+                <div style="overflow: hidden" data-bind="attr: { 'id': 'item_' + $data.id }">
+                  <h4 data-bind="text: name" ></h4>
+
+                  <p>
+                  <span data-bind="text: getShortDescription"></span><br />
+                  <span data-bind="text: loc.postalCode + ' ' + loc.city"></span>
+                  </p>
+                </div>
+              </div>
+
+              <div data-bind="if: active">
+                <div data-bind="compose: { model: 'templates/itemViewFull', activationData: { item: $data }, mode: 'templated', preserveContext: true }">
+                  <div data-part="bottom-right">
+                    <button type="button" class="btn btn-primary" data-bind="click: $parent.actions.showQueryItemDialog, clickBubble: false">Anfragen</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.col-sm-8 -->
     </div>
 
-    <div class="col-md-6">
-      <div data-bind="compose: { model: '../templates/itemList', activationData: { items: items, queryTypes: queryTypes, setActive: setActive, actions: actions }, mode: 'templated' }">
-        <div data-part="bottom-right">
-          <button type="button" class="btn btn-primary" data-bind="click: $parent.actions.showQueryItemDialog, clickBubble: false">Anfragen</button>
-        </div>
-      </div>
-    </div><!-- /.col-sm-8 -->
-  </div>
-
-</div> <!-- /container -->
+  </div> <!-- /container -->
 </section>

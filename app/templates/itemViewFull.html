@@ -1,0 +1,18 @@
+<img alt="thumbnail" title="thumbnail" data-src="holder.js/100x100/text:Thumbnail" style="float: left; margin-right: 15px;" class="img-thumbnail">
+<div style="overflow: hidden" data-bind="attr: { 'id': 'item_' + item.id }">
+  <h4 data-bind="text: item.name" ></h4>
+  <div>
+    <p>
+    <span data-bind="text: item.description"></span><br />
+    User: <a href="#" data-bind="click: showUserDialog, clickBubble: false"><span data-bind="text: item.user.getFullName"></span></a><br />
+    <span data-bind="text: item.loc.street + ' ' + item.loc.houseNumber"></span><br />
+    <span data-bind="text: item.loc.postalCode + ' ' + item.loc.city"></span><br />
+    <span data-bind="text: item.loc.country"></span><br />
+    TODO abholdatum
+    <div style="float: right">
+      <div data-part="bottom-right">
+      </div>
+    </div>
+    </p>
+  </div>
+</div>

@@ -33,27 +33,17 @@ function(
         // data
         self.items = ko.observableArray([]);
 
-        // TODO move to own util (queryTypeSwitcher)
-        self.lastItemType = ko.observable();
-        self.itemTypes = ko.observableArray([
+        self.queryTypes = ko.observableArray([
             new QueryType('Meine Artikel', 'items_my', self.items)
             , new QueryType('Angefragte Artikel', 'items_queried', self.items)
             , new QueryType('Abgeholte Artikel', 'items_picked_up', self.items)
         ]);
 
-        self.goToItemType = function(itemType) {
-            window.console&&console.log("itemType: " + itemType.name);
-            self.lastItemType(itemType.name);
-            itemType.query();
-        };
-
-        // default query to view
-        self.goToItemType(self.itemTypes()[0]);
-
         // behaviour
         self.navigateNewItem = function() {
             router.navigate('my-items/new-item');
         };
+        self.actions = { navigateNewItem: self.navigateNewItem };
 
         // load data
         var api_url = "../../api/"
