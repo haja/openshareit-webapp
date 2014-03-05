@@ -25,8 +25,8 @@
               data-bind="css: { 'panel-default': !active(), 'panel-primary': active() }">
               <div class="panel-body">
                 <div data-bind="click: $parent.actions.setActive">
-
                   <div data-bind="ifnot: active">
+                    <span class="glyphicon glyphicon-chevron-down pull-right"></span>
                     <img alt="thumbnail" title="thumbnail" data-src="holder.js/100x100/text:Thumbnail" style="float: left; margin-right: 15px;" class="img-thumbnail">
                     <div style="overflow: hidden" data-bind="attr: { 'id': 'item_' + $data.id }">
                       <h4 data-bind="text: name" ></h4>
@@ -39,6 +39,7 @@
                   </div>
 
                   <div data-bind="if: active">
+                    <span class="glyphicon glyphicon-chevron-up pull-right"></span>
                     <div
                       data-bind="compose: { 
                       model: 'templates/itemViewFull'
