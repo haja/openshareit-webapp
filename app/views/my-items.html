@@ -14,6 +14,16 @@
                   data-bind="visible: parent.lastQuery() === 'Meine Artikel'
                     , clickBubble: false"
                   >Bearbeiten</button>
+                <div data-bind="visible: parent.lastQuery() === 'Angefragte Artikel'"
+                  class="btn-group btn-group-vertical"
+                  >
+                  <button type="button" class="btn btn-default"
+                    data-bind="clickBubble: false"
+                    >Nachricht senden</button>
+                  <button type="button" class="btn btn-default"
+                    data-bind="clickBubble: false"
+                    >Anfrage stornieren</button>
+                </div>
               </div>
             </div>
           </div>
