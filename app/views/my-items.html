@@ -8,9 +8,13 @@
             <button class="btn btn-primary" type="button" data-bind="click: actions.navigateNewItem">Artikel anlegen</button>
           </div>
           <div data-part="item-view">
-            <div data-bind="compose: { model: 'templates/itemViewFull', activationData: { item: $data }, mode: 'templated' }">
+            <div data-bind="compose: { model: 'templates/itemViewFull', activationData: { item: $data, parent: $parent }, mode: 'templated' }">
               <div data-part="bottom-right">
-                <button type="button" class="btn btn-default" data-bind="clickBubble: false">Bearbeiten</button>
+                <button type="button" class="btn btn-default"
+                  data-bind="visible: parent.lastQuery() === 'Meine Artikel'
+                    , clickBubble: false
+                    , click: logParent"
+                  >Bearbeiten</button>
               </div>
             </div>
           </div>

@@ -13,7 +13,9 @@ function(
 
         self.activate = function(data) {
             window.console && console.log("itemViewFull ***** activate ****");
-            self.item = data.item
+            window.console && console.log(data);
+            self.item = data.item;
+            self.parent = data.parent;
         };
 
         /** open a modal dialog to show user details */
