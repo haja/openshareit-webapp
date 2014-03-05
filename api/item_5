@@ -1,0 +1,30 @@
+{
+    "status": "READY",
+        "user": {
+            "mobileNumber": null,
+            "firstName": "Astra",
+            "lastName": "(a:a)",
+            "email": "a",
+            "isAdmin": true,
+            "phoneNumber": null,
+            "avatar": null,
+            "last_login": "2013-05-19T20:10:35+0000",
+            "id": 1
+        },
+        "location": {
+            "province": "Wien",
+            "city": "Wien",
+            "country": "\u00d6sterreich",
+            "coordinates": {
+                "latitude": "48.1887105",
+                "longitude": "16.3826546"
+            },
+            "street": "Stephansplatz",
+            "postalCode": "1010",
+            "houseNumber": "1",
+            "id": 1
+        },
+        "id": 5,
+        "name": "Kaese",
+        "description": "Hartkaese"
+}
