@@ -8,6 +8,7 @@ define([
     , 'models/GMap'
     , 'utils/json-helper'
     , 'dialogs/QueryItemDialog'
+    , 'utils/QueryType'
 ],
 function(
     ko
@@ -19,20 +20,8 @@ function(
     , GMap
     , jsonHelper
     , QueryItemDialog
+    , QueryType
 ) {
-    function QueryType(name, query, resultProperty) {
-        var self = this;
-        self.name = name;
-
-        var api_url = "../../api/"
-        var reloadHolder = function() {
-            holder.compositionComplete();
-        }
-
-        self.query = function() {
-            jsonHelper.getItems(api_url + query, resultProperty, reloadHolder);
-        };
-    };
 
     function ItemsViewModel() {
         var self = this;

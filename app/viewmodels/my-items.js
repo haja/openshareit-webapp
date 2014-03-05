@@ -4,6 +4,7 @@ define([
     , 'utils/json-helper'
     , 'plugins/router'
     , 'dialogs/CreateAddressDialog'
+    , 'utils/QueryType'
 ],
 function(
     ko
@@ -11,22 +12,8 @@ function(
     , jsonHelper
     , router
     , CreateAddressDialog
+    , QueryType
 ) {
-    // TODO move to own module
-    function QueryType(name, query, resultProperty) {
-        var self = this;
-        self.name = name;
-
-        var api_url = "../../api/"
-        var reloadHolder = function() {
-            holder.compositionComplete();
-        }
-
-        self.query = function() {
-            jsonHelper.getItems(api_url + query, resultProperty, reloadHolder);
-        };
-    };
-
     var ViewModel = function() {
         var self = this;
 

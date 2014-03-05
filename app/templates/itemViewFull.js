@@ -1,10 +1,12 @@
 define([
     'knockout'
     , 'dialogs/UserDetailsDialog'
+    , 'utils/holder'
 ],
 function(
     ko
     , UserDetailsDialog
+    , holder
 ) {
     function Ctor () {
         var self = this;
@@ -19,6 +21,9 @@ function(
             window.console && console.log("showUserDialog " + item);
             UserDetailsDialog.show(item.user);
         };
+
+        // load holderjs images
+        self.compositionComplete = holder.compositionComplete;
     };
 
     return new Ctor();
