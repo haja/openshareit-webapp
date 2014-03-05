@@ -19,9 +19,9 @@ function(
         };
 
         /** open a modal dialog to show user details */
-        self.showUserDialog = function(item) {
-            window.console && console.log("showUserDialog " + item);
-            UserDetailsDialog.show(item.user);
+        self.showUserDialog = function() {
+            window.console && console.log("showUserDialog " + self.item.user.getFullName());
+            UserDetailsDialog.show(self.item.user);
         };
 
         // load holderjs images
