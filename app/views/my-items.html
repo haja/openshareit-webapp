@@ -10,10 +10,11 @@
           <div data-part="item-view">
             <div data-bind="compose: { model: 'templates/itemViewFull', activationData: { item: $data, parent: $parent }, mode: 'templated' }">
               <div data-part="bottom-right">
-                <button type="button" class="btn btn-default"
+                <a class="btn btn-default"
                   data-bind="visible: parent.lastQuery() === 'Meine Artikel'
-                    , clickBubble: false"
-                  >Bearbeiten</button>
+                  , attr: { href: '#my-items/edit/' + item.id }
+                  "
+                  >Bearbeiten</a>
                 <div data-bind="visible: parent.lastQuery() === 'Angefragte Artikel'"
                   class="btn-group btn-group-vertical"
                   >

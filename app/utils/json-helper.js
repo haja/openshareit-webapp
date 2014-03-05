@@ -33,6 +33,7 @@ function(
     };
 
     obj.getItems = _.partial(getWithCtor, arrayMapper, Item);
+    obj.getItem = _.partial(getWithCtor, objMapper, Item);
     obj.getAddresses = _.partial(getWithCtor, arrayMapper, Address);
     obj.getProfile = _.partial(getWithCtor, objMapper, Profile);
 

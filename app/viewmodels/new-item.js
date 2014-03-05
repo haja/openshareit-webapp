@@ -1,3 +1,6 @@
+// *
+// create a new item or edit an existing item (if itemId is passed on activation)
+// */
 define([
     'knockout'
     , 'utils/holder'
@@ -22,8 +25,10 @@ function(
         var self = this;
 
         // data
+        self.title = ko.observable();
         self.addresses = ko.observableArray([]);
         self.choosenAddress = ko.observable();
+        self.item = ko.observable({});
         var dateformat = {
             'moment': 'DD.MM.YYYY'
             , 'datepicker': 'dd.mm.yyyy'
@@ -40,12 +45,28 @@ function(
             });
         }
 
-        // load data
-        var api_url = "../../api/";
-        // TODO set default address
-        jsonHelper.getAddresses(api_url + "addresses_my", self.addresses, function() {
-            self.choosenAddress(self.addresses()[0]);
-        });
+        self.activate = function(itemId) {
+            // load data
+            var api_url = "../../api/";
+            // TODO set default address
+            jsonHelper.getAddresses(api_url + "addresses_my", self.addresses, function() {
+                if(typeof(itemId) === 'undefined') {
+                    self.choosenAddress(self.addresses()[0]);
+                }
+            });
+
+            if(typeof(itemId) !== 'undefined') {
+                self.title('Artikel bearbeiten');
+                // load item data
+                jsonHelper.getItem(api_url + 'item_' + itemId, self.item, function() {
+                    window.console && console.log("item loaded:");
+                    window.console && console.log(self.item());
+                    self.choosenAddress(self.item().loc); // TODO FIXME
+                });
+            } else {
+                self.title('Artikel anlegen');
+            };
+        };
 
         // load holderjs images and datepicker
         self.compositionComplete = function() {

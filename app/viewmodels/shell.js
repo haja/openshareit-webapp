@@ -24,6 +24,12 @@ define(['plugins/router', 'ko-bindings/bootstrap-nav-menu-close-on-click'], func
                     nav: false,
                 },
                 {
+                    route: 'my-items/edit/:id',
+                    title:'Artikel bearbeiten',
+                    moduleId: 'viewmodels/new-item',
+                    nav: false,
+                },
+                {
                     route: 'register',
                     title:'Registrierung',
                     moduleId: 'viewmodels/register',
