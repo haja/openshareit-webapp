@@ -4,17 +4,43 @@ all-items:
 d highlighten
 o grünen rand/schatten
 o karte nicht mitscrollen
-o artikel anlegen oben rechts
+o artikel anlegen oben rechts (rot / pink / grün)
 d pfeil auf item einblenden (damit man sieht, dass es aufklappt)
+o karte: mehrere artikel gruppieren? mit david reden
 
 meine artikel:
 d nur artikel, untereinander, wie home;
+o artikelname bold
+o labels für artikelname/beschreibung
+o profil rechts anzeigen
+o einspaltig / button auf selbe höhe wie "Adresse hinzufügen"
+
+o meine artikel: übersicht über anfragen zu jedem artikel mit link zu anfragen. anfragen auf eigener seite (siehe mockup) (für alle arten von anfragen; meine anfragen + anfragen an mich)
+
+
+itemView:
+o buttons nicht unterhalb, sondern richtiges float:right / rechts neben text
 
 mein profil:
 d adressen -> meine adressen
 d abholdatum -> abholfrist
 d aktuelle adresse highlighten + ausgewählte hinschreiben; radiobutton + highlighten
 
+o kein drop-down menu, logout button neben "mein profil"
+
+o push-notifications
+
+
+nachrichten:
+o letzte nachricht oben
+o textbox oben
+
+
 bootstrap:
 o device-klassen, modaldialog auf fullscreen?
 
+sonstiges:
+o about mit dummy-text
+o "konto löschen" in profil bearbeiten verschieben
+
+o david fragen wegen hosting
