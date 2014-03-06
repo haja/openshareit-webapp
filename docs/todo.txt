@@ -1,0 +1,19 @@
+#TODO:
+
+all-items:
+d highlighten
+o grünen rand/schatten
+o karte nicht mitscrollen
+o artikel anlegen oben rechts
+d pfeil auf item einblenden (damit man sieht, dass es aufklappt)
+
+meine artikel:
+d nur artikel, untereinander, wie home;
+mein profil:
+o adressen -> meine adressen
+o abholdatum -> abholfrist
+o aktuelle adresse highlighten + ausgewählte hinschreiben; radiobutton + highlighten
+
+bootstrap:
+o device-klassen, modaldialog auf fullscreen?
+
