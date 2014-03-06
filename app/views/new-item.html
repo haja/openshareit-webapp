@@ -1,16 +1,16 @@
 <section>
   <div class="container theme-showcase">
 
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title" data-bind="text: title"></h3>
-          </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-xs-12">
-                <form>
+    <form>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title" data-bind="text: title"></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-12">
                   <ul class="vertical-list">
                     <li>
                     <!-- TODO handle fotos somehow -->
@@ -22,76 +22,76 @@
                   </ul>
                 </div>
                 <div class="col-xs-12">
-                    <input data-bind="value: item().name"
-                      class="form-control autofocus" style="margin-top: 14px" name="name" placeholder="Artikelname"></input>
-                    <textarea data-bind="value: item().description"
-                      class="form-control" style="margin-top: 14px" rows="6" name="description" placeholder="Artikelbeschreibung"></textarea>
+                  <input data-bind="value: item().name"
+                  class="form-control autofocus" style="margin-top: 14px" name="name" placeholder="Artikelname"></input>
+                  <textarea data-bind="value: item().description"
+                    class="form-control" style="margin-top: 14px" rows="6" name="description" placeholder="Artikelbeschreibung"></textarea>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
-        </div>
 
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Meine Adressen</h3>
-          </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-xs-12">
-                <ul class="vertical-list" data-bind="foreach: addresses">
-                  <li>
-                  <div class="address panel panel-default">
-                    <div class="panel-body">
-                      <p>
-                      <strong><span data-bind="text: 'Adresse ' + id"></span></strong><br /><br />
-                      <span data-bind="text: street + ' ' + houseNumber"></span><br />
-                      <span data-bind="text: postalCode + ' ' + city"></span>
-                      </p>
-                      <div>
-                        <input type="radio" name="address" data-bind="value: id, checked: $parent.choosenAddress" />auswählen
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Abholadresse wählen (<span data-bind="text: 'Adresse ' + choosenAddress() + ' gewählt'"></span>)</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-12">
+                  <ul class="vertical-list" data-bind="foreach: addresses">
+                    <li>
+                    <div class="address panel" data-bind="css: { 'panel-default': id.toString() !== $parent.choosenAddress().toString(), 'panel-primary': id.toString() === $parent.choosenAddress().toString() }">
+                      <div class="panel-body">
+                        <p>
+                        <strong><span data-bind="text: 'Adresse ' + id"></span></strong><br /><br />
+                        <span data-bind="text: street + ' ' + houseNumber"></span><br />
+                        <span data-bind="text: postalCode + ' ' + city"></span>
+                        </p>
+                        <div>
+                          <input type="radio" name="address" data-bind="attr: { value: id }, checked: $parent.choosenAddress" />
+                          auswählen</div>
                       </div>
                     </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-xs-12">
+                  <div style="float: right">
+                    <button class="btn btn-default" type="button" data-bind="click: showCreateAddressDialog">Addresse hinzufügen</button>
                   </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-xs-12">
-                <div style="float: right">
-                  <button class="btn btn-default" type="button" data-bind="click: showCreateAddressDialog">Addresse hinzufügen</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-sm-4">
+        <div class="col-sm-4">
 
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Abholfrist</h3>
-          </div>
-          <div class="panel-body">
-            <div class="input-group">
-              <input data-bind="value: pickupDate" type="date" class="form-control datepicker"></input>
-              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Abholfrist</h3>
             </div>
-            <!--<div class="datepicker" data-bind="value: pickupDate"></div> -->
-            <p>
-            Bis spätestens <span data-bind="text: pickupDate"></span> kann der Artikel abgeholt werden!
-            </p>
+            <div class="panel-body">
+              <div class="input-group">
+                <input data-bind="value: pickupDate" type="date" class="form-control datepicker"></input>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+              </div>
+              <!--<div class="datepicker" data-bind="value: pickupDate"></div> -->
+              <p>
+              Bis spätestens <span data-bind="text: pickupDate"></span> kann der Artikel abgeholt werden!
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-xs-12">
+          <div style="float: right">
+            <button class="btn btn-success" type="submit">Artikel anlegen / speichern</button>
           </div>
         </div>
-
       </div>
-
-      <div class="col-xs-12">
-        <div style="float: right">
-          <button class="btn btn-success" type="submit">Artikel anlegen / speichern</button>
-        </div>
-      </div>
-    </div>
+    </form>
 
   </div> <!-- /container -->
 </section>
