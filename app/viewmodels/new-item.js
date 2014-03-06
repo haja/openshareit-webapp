@@ -51,7 +51,7 @@ function(
             // TODO set default address
             jsonHelper.getAddresses(api_url + "addresses_my", self.addresses, function() {
                 if(typeof(itemId) === 'undefined') {
-                    self.choosenAddress(self.addresses()[0]);
+                    self.choosenAddress(self.addresses()[0].id);
                 }
             });
 
@@ -61,7 +61,7 @@ function(
                 jsonHelper.getItem(api_url + 'item_' + itemId, self.item, function() {
                     window.console && console.log("item loaded:");
                     window.console && console.log(self.item());
-                    self.choosenAddress(self.item().loc); // TODO FIXME
+                    self.choosenAddress(self.item().loc.id); // TODO FIXME
                 });
             } else {
                 self.title('Artikel anlegen');

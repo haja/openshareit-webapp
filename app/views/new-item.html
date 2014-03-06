@@ -48,8 +48,9 @@
                       <span data-bind="text: street + ' ' + houseNumber"></span><br />
                       <span data-bind="text: postalCode + ' ' + city"></span>
                       </p>
-                      <button class="btn btn-sm btn-default pull-right" data-bind="click: $parent.choosenAddress, visible: $data !== $parent.choosenAddress()">Auswählen</button>
-                      <button class="btn btn-sm btn-default active pull-right" data-bind="visible: $data === $parent.choosenAddress()">Ausgewählt</button>
+                      <div>
+                        <input type="radio" name="address" data-bind="value: id, checked: $parent.choosenAddress" />auswählen
+                      </div>
                     </div>
                   </div>
                   </li>
