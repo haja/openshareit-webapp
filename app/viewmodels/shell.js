@@ -30,6 +30,20 @@ define(['plugins/router', 'ko-bindings/bootstrap-nav-menu-close-on-click'], func
                     nav: false,
                 },
                 {
+                    route: 'my-profile',
+                    title:'<span class="glyphicon glyphicon-user"></span> Ich <span class="caret"></span>',
+                    moduleId: 'viewmodels/my-profile',
+                    nav: true,
+                    navDisplayStyle: 'right'
+                },
+                {
+                    route: 'my-profile', // TODO change this
+                    title:'<span class="glyphicon glyphicon-envelope"></span>',
+                    moduleId: 'viewmodels/my-profile', // TODO change this
+                    nav: true,
+                    navDisplayStyle: 'right'
+                },
+                {
                     route: 'register',
                     title:'Registrierung',
                     moduleId: 'viewmodels/register',
