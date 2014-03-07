@@ -4,7 +4,8 @@ all-items:
 d highlighten
 o grünen rand/schatten
 o karte nicht mitscrollen
-o artikel anlegen oben rechts (rot / pink / grün)
+d artikel anlegen oben rechts
+o artikel anlegen: farbe (rot / pink / grün)
 d pfeil auf item einblenden (damit man sieht, dass es aufklappt)
 o karte: mehrere artikel gruppieren? mit david reden
 

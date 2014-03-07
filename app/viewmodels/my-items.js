@@ -26,11 +26,7 @@ function(
             , new QueryType('Abgeholte Artikel', 'items_picked_up', self.items)
         ]);
 
-        // behaviour
-        self.navigateNewItem = function() {
-            router.navigate('my-items/new-item');
-        };
-        self.actions = { navigateNewItem: self.navigateNewItem };
+        self.actions = {};
 
         // load data
         var api_url = "../../api/"
