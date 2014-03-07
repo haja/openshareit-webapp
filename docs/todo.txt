@@ -19,7 +19,7 @@ o meine artikel: übersicht über anfragen zu jedem artikel mit link zu anfragen
 
 
 itemView:
-o buttons nicht unterhalb, sondern richtiges float:right / rechts neben text
+d buttons nicht unterhalb, sondern richtiges float:right / rechts neben text
 
 mein profil:
 d adressen -> meine adressen
