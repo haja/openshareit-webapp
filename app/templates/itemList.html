@@ -1,6 +1,6 @@
 <!-- query type buttons -->
 <div class="btn-group query-type-buttons" data-bind="foreach: queryTypes">
-  <button type="button" class="btn btn-default btn-sm" data-bind="css: { active: name === $parent.lastQuery() }, text: name, click: $parent.goToQueryType"></button>
+  <button type="button" class="btn btn-default" data-bind="css: { active: name === $parent.lastQuery() }, text: name, click: $parent.goToQueryType"></button>
 </div>
 <div class="pull-right">
   <div data-part="btn-group-right">
