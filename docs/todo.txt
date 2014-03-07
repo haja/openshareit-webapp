@@ -10,12 +10,13 @@ o karte: mehrere artikel gruppieren? mit david reden
 
 meine artikel:
 d nur artikel, untereinander, wie home;
+o meine artikel: übersicht über anfragen zu jedem artikel mit link zu anfragen. anfragen auf eigener seite (siehe mockup) (für alle arten von anfragen; meine anfragen + anfragen an mich)
+
+neuer artikel / bearbeiten:
 o artikelname bold
 o labels für artikelname/beschreibung
 o profil rechts anzeigen
 o einspaltig / button auf selbe höhe wie "Adresse hinzufügen"
-
-o meine artikel: übersicht über anfragen zu jedem artikel mit link zu anfragen. anfragen auf eigener seite (siehe mockup) (für alle arten von anfragen; meine anfragen + anfragen an mich)
 
 
 itemView:
