@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Profilfoto</h3>
+  </div>
+  <div class="panel-body" data-bind="with: profile">
+    <img class="img-thumbnail" alt="thumbnail" title="thumbnail" data-src="holder.js/200x200/text:Foto hinzufuegen">
+    <table class="profile-details">
+      <tr><th>Name:</th><td data-bind="text: firstName + ' ' + lastName"></td></tr>
+      <tr><th>beigetreten am:</th><td data-bind="text: getDateJoinedAsString()"></td></tr>
+      <tr><th>e-mail:</th><td data-bind="text: email"></td></tr>
+    </table>
+    <div style="margin-top: 14px" class="pull-right">
+      <button class="btn btn-default" type="button">bearbeiten</button>
+    </div>
+  </div>
+</div>

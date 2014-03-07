@@ -46,7 +46,8 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'bootstrap'],
 
     app.configurePlugins({
         router:true,
-        dialog: true
+        dialog: true,
+        widget: true,
     });
 
     app.start().then(function() {

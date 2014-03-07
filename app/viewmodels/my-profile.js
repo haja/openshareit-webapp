@@ -18,7 +18,6 @@ function(
         // data
         self.items = ko.observableArray([]);
         self.addresses = ko.observableArray([]);
-        self.profile = ko.observable();
 
         // behaviour
         self.navigateNewItem = function() {
@@ -37,7 +36,6 @@ function(
         var api_url = "../../api/"
         jsonHelper.getItems(api_url + "items_my", self.items);
         jsonHelper.getAddresses(api_url + "addresses_my", self.addresses);
-        jsonHelper.getProfile(api_url + "profile_my", self.profile);
 
         // load holderjs images
         self.compositionComplete = holder.compositionComplete;
