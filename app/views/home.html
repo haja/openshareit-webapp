@@ -38,8 +38,15 @@
                     </div>
                   </div>
 
-                  <div data-bind="if: active">
-                    <span class="glyphicon glyphicon-chevron-up pull-right"></span>
+                  <div class="panel-right" data-bind="if: active">
+                    <div class"btn-panel-right">
+                      <span class="glyphicon glyphicon-chevron-up pull-right"></span>
+                      <button type="button" class="btn btn-primary btn-right-bottom"
+                        data-bind="
+                        click: $parent.actions.showQueryItemDialog
+                        , clickBubble: false"
+                        >Anfragen</button>
+                    </div>
                     <div
                       data-bind="compose: { 
                       model: 'templates/itemViewFull'
@@ -47,11 +54,6 @@
                       , mode: 'templated'
                       , preserveContext: true }">
                     </div>
-                    <button type="button" class="pull-right btn btn-primary"
-                      data-bind="
-                      click: $parent.actions.showQueryItemDialog
-                      , clickBubble: false"
-                      >Anfragen</button>
                   </div>
                 </div>
               </div>
