@@ -56,3 +56,20 @@ ul.vertical-list
 {
     margin-bottom: 15px;
 }
+
+.panel-right
+{
+    position: relative;
+}
+
+.btn-panel-right
+{
+    float: right;
+}
+
+.btn-right-bottom
+{
+    position: absolute;
+    bottom: 10px; /* bootstrap adds 10px margin to p */
+    right: 0px;
+}
