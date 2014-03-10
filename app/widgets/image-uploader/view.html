@@ -3,8 +3,14 @@
     <input type="file" style="display: none" multiple="multiple" accept="image/*" data-bind="event: { change: handleFiles }" />
   </div>
   <div data-part="fileList">
-    <ul>
-      <li><a href="#" data-bind="click: addPhoto">add photo</a></li>
+    <ul class="list-inline">
+      <li><a href="#" data-bind="click: addPhoto">
+        <img alt="thumbnail" title="Foto hinzufügen..." data-src="holder.js/100x100/text:hinzufuegen.../#fff:#aaa" class="img-thumbnail item-thumbnail">
+      </a>
+      </li>
     </ul>
+  </div>
+  <div data-part="listElementTemplate" class="hidden">
+    <li><img class="img-thumbnail item-thumbnail" style="height:100px" alt="thumbnail" /></li>
   </div>
 </div>

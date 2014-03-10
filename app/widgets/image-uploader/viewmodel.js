@@ -54,16 +54,14 @@ function(
             log(list);
 
             for (var i = 0; i < files.length; i++) {
-                log("creating li");
-                var li = $('<li></li>');
+                log("copy li");
+                var li = $(parts.listElementTemplate).children("li:first-of-type").clone();
                 list.prepend(li);
 
-                log("creating img");
-                var img = $('<img />').attr({ src: URL.createObjectURL(files[i]), height: 100, onload: function(e) {
+                log("set img");
+                var img = $(li).children("img:first-of-type").attr({ src: URL.createObjectURL(files[i]), onload: function(e) {
                     window.URL.revokeObjectURL(this.src);
                 } });
-                log("appending img");
-                li.append(img);
             }
             log(list);
         }
