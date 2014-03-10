@@ -1,6 +1,10 @@
 <div>
-  <input type="file" id="fileElem" multiple accept="image/*" data-bind="event: { change: handleFiles }" />
-  <a href="#" id="fileSelect">Select some files</a>
-  <div id="fileList">
+  <div data-part="fileElem">
+    <input type="file" style="display: none" multiple="multiple" accept="image/*" data-bind="event: { change: handleFiles }" />
+  </div>
+  <div data-part="fileList">
+    <ul>
+      <li><a href="#" data-bind="click: addPhoto">add photo</a></li>
+    </ul>
   </div>
 </div>

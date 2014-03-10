@@ -1,71 +1,73 @@
 define([
     'knockout'
+    , 'durandal/composition'
     , 'utils/holder'
     , 'utils/json-helper'
     , 'jquery'
 ],
 function(
     ko
+    , composition
     , holder
     , jsonHelper
     , $
     )
 {
-  var ctor = function() {};
-  var URL, fileSelect, fileElem, fileList, $view;
+    var log = function(msg) {
+        window.console && console.log(msg);
+    };
+    var ctor = function() {};
+    var URL, parts;
 
-  ctor.prototype.activate = function() {
-    $(document).ready(function() {
-      URL = window.URL || window.webkitURL;
-    });
-  };
+    ctor.prototype.activate = function(settings) {
+        this.settings = settings;
+        $(document).ready(function() {
+            URL = window.URL || window.webkitURL;
+        });
+    };
 
-  ctor.prototype.attached = function(view) {
-      $view = $(view);
+    ctor.prototype.attached = function(view) {
+        log("composition:");
+        log(composition.getParts(view));
+        parts = composition.getParts(view);
+    };
 
-      fileSelect = $view.find("#fileSelect");
-      fileElem = $view.find("#fileElem");
-      fileList = $view.find("#fileList");
-  };
-
-  ctor.prototype.handleFiles = function(data, event) {
-    window.console && console.log("handleFiles: " + data + " event: " + event);
-    window.console && console.log(data);
-    window.console && console.log("event: ");
-    window.console && console.log(event);
-    var files = event.currentTarget.files;
-
-    if (!files.length) {
-        window.console && console.log("no files.length");
-      fileList.innerHTML = "<p>No files selected!</p>";
-    } else {
-        window.console && console.log("creating ul");
-      var list = $('<ul></ul>');
-      for (var i = 0; i < files.length; i++) {
-        window.console && console.log("creating li");
-        var li = $('<li></li>');
-        list.append(li);
-
-        window.console && console.log("creating img");
-        var img = $('<img />').attr({ src: URL.createObjectURL(files[i]), height: 100, onload: function(e) {
-          window.URL.revokeObjectURL(this.src);
-        } });
-        window.console && console.log("appending img");
-        li.append(img);
-
-        /*
-        var info = document.createElement("span");
-        info.innerHTML = files[i].name + ": " + files[i].size + " bytes";
-        li.appendChild(info);
-        */
-      }
-      window.console && console.log("appending ul:");
-      window.console && console.log(list);
-      fileList.append(list);
-      window.console && console.log(list);
-      window.console && console.log(fileList);
+    ctor.prototype.addPhoto = function() {
+        log("addPhoto");
+        $(parts.fileElem).children("input:first-of-type").click();
     }
-  }
 
-  return ctor;
+    ctor.prototype.handleFiles = function(data, event) {
+        log("handleFiles: ");
+        log(data);
+        log("event: ");
+        log(event);
+        var files = event.currentTarget.files;
+        log("composition:");
+        log(composition);
+
+        if (!files.length) {
+            log("no files.length");
+        } else {
+            var list = $(parts.fileList).children("ul:first-of-type");
+            log("list:");
+            log(list);
+
+            for (var i = 0; i < files.length; i++) {
+                log("creating li");
+                var li = $('<li></li>');
+                list.prepend(li);
+
+                log("creating img");
+                var img = $('<img />').attr({ src: URL.createObjectURL(files[i]), height: 100, onload: function(e) {
+                    window.URL.revokeObjectURL(this.src);
+                } });
+                log("appending img");
+                li.append(img);
+            }
+            log(list);
+        }
+    }
+
+    return ctor;
 });
