@@ -15,10 +15,16 @@
                   </div>
                 </div>
                 <div class="col-xs-12">
-                  <input data-bind="value: item().name"
-                  class="form-control autofocus" style="margin-top: 14px" name="name" placeholder="Artikelname"></input>
-                  <textarea data-bind="value: item().description"
-                    class="form-control" style="margin-top: 14px" rows="6" name="description" placeholder="Artikelbeschreibung"></textarea>
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input data-bind="value: item().name"
+                    class="form-control autofocus" style="margin-top: 14px" name="name" placeholder="Kurzbeschreibung (Käse, Äpfel,...)"></input>
+                  </div>
+                  <div class="form-group">
+                    <label for="description">Beschreibung</label>
+                    <textarea data-bind="value: item().description"
+                      class="form-control" style="margin-top: 14px" rows="6" name="description" placeholder="Ausführliche Beschreibung"></textarea>
+                  </div>
                 </div>
               </div>
             </div>
