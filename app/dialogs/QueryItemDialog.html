@@ -6,10 +6,10 @@
     <form data-bind="submit: sendQuery">
       <p class="message">Anfrage an <span data-bind="text: item.user.getFullName"></span></p>
       <textarea tabindex="1" class="form-control autofocus" rows="4" data-bind="value: queryText, valueUpdate: 'afterkeydown'" />
-    </form>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-default" tabindex="3" data-bind="click: abort">Abbrechen</button>
+      <button class="btn btn-primary" tabindex="2" data-bind="click: sendQuery">Anfrage abschicken</button>
+    </div>
   </div>
-  <div class="modal-footer">
-    <button class="btn btn-default" tabindex="3" data-bind="click: abort">Abbrechen</button>
-    <button class="btn btn-primary" tabindex="2" data-bind="click: sendQuery">Anfrage abschicken</button>
-  </div>
-</div>

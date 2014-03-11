@@ -11,7 +11,7 @@ function(
     , holder
     , jsonHelper
     , $
-    )
+)
 {
     var log = function(msg) {
         window.console && console.log(msg);

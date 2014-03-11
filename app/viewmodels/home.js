@@ -27,8 +27,8 @@ function(
         var self = this;
 
         /**
-         * only one item can be active
-         */
+        * only one item can be active
+        */
         self.setActive = function(item, state) {
             state = typeof state !== 'undefined' ? state : true; //state defaults to true
             window.console && console.log("setActive: " + item);

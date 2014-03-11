@@ -8,14 +8,14 @@ define(['knockout', 'jquery', 'durandal/composition', 'async!http://maps.google.
             var mapObj = mapWrapper.data.map;
 
             var latLng = new google.maps.LatLng(
-                    48.2, 16.2 /* only default until locations are loaded */
-                    );
+                48.2, 16.2 /* only default until locations are loaded */
+            );
 
             var mapOptions = { center: latLng,
                 mapTypeId: google.maps.MapTypeId.ROADMAP};
 
-            mapObj.googleMap = new google.maps.Map(element, mapOptions);
-            $(element).data("mapObj",mapObj);
+                mapObj.googleMap = new google.maps.Map(element, mapOptions);
+                $(element).data("mapObj",mapObj);
         },
         update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
             var mapWrapper = ko.utils.unwrapObservable(valueAccessor());
@@ -70,27 +70,27 @@ define(['knockout', 'jquery', 'durandal/composition', 'async!http://maps.google.
             mapWrapper.data.map.googleMap.fitBounds(bounds);
 
             /* TODO fixme
-               mapObj.onChangedCoord = function(newValue) {
-               var latLng = new google.maps.LatLng(
-               ko.utils.unwrapObservable(mapObj.lat),
-               ko.utils.unwrapObservable(mapObj.lng));
-               mapObj.googleMap.setCenter(latLng);
-               mapObj.marker.setPosition(latLng);
-               window.console&&console.log("coords changed: " + latLng);
-               };
+            mapObj.onChangedCoord = function(newValue) {
+                var latLng = new google.maps.LatLng(
+                    ko.utils.unwrapObservable(mapObj.lat),
+                    ko.utils.unwrapObservable(mapObj.lng));
+                    mapObj.googleMap.setCenter(latLng);
+                    mapObj.marker.setPosition(latLng);
+                    window.console&&console.log("coords changed: " + latLng);
+            };
 
-               mapObj.onMarkerMoved = function(dragEnd) {
-               var latLng = mapObj.marker.getPosition();
-               mapObj.lat(latLng.lat());
-               mapObj.lng(latLng.lng());
-               window.console&&console.log("marker move: " + latLng);
-               };
+            mapObj.onMarkerMoved = function(dragEnd) {
+                var latLng = mapObj.marker.getPosition();
+                mapObj.lat(latLng.lat());
+                mapObj.lng(latLng.lng());
+                window.console&&console.log("marker move: " + latLng);
+            };
 
-               mapObj.lat.subscribe(mapObj.onChangedCoord);
-               mapObj.lng.subscribe(mapObj.onChangedCoord);
+            mapObj.lat.subscribe(mapObj.onChangedCoord);
+            mapObj.lng.subscribe(mapObj.onChangedCoord);
 
-               google.maps.event.addListener(mapObj.marker, 'dragend', mapObj.onMarkerMoved);
-               */
+            google.maps.event.addListener(mapObj.marker, 'dragend', mapObj.onMarkerMoved);
+            */
         }
     });
 });
