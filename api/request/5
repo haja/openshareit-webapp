@@ -10,6 +10,12 @@
                 , "lastName": "Mustermann"
                 , "email": "eva@mustermann.at"
             }
+        , "messages":
+            [
+                {
+                    "text": "Bitte den ..."
+                }
+            ]
     }
     , {
         "id": 134
@@ -20,6 +26,15 @@
                 , "lastName": "Mustermann"
                 , "email": "max@mustermann.at"
             }
+        , "messages":
+            [
+                {
+                    "text": "Ich möchte gerne..."
+                }
+                , {
+                    "text": "Hallo! Kann ich..."
+                }
+            ]
     }
 ]
 }

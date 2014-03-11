@@ -10,6 +10,12 @@
                 , "lastName": "2"
                 , "email": "user2@mail.com"
             }
+        , "messages":
+            [
+                {
+                    "text": "Ich möchte gerne..."
+                }
+            ]
     }
 ]
 }
