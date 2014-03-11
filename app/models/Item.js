@@ -7,6 +7,9 @@ define(['knockout', 'models/User'], function(ko, User) {
         self.description = item.description;
         self.user = new User(item.user);
 
+        // requests
+        self.requests = ko.observableArray();
+
         // UI behavior
         self.maxDescriptionLength = 12;
         self.getShortDescription = ko.computed(function() {
