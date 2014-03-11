@@ -41,9 +41,11 @@
               <ul class="list-group" data-bind="foreach: requests">
                 <li class="list-group-item">
                 <img alt="thumbnail" title="user photo" data-src="holder.js/40x40/text:Thumbnail" style="float: left; margin-right: 15px;" class="img-thumbnail">
-                <a href="#" class="pull-right">Nachrichten anzeigen</a>
+                <a class="pull-right" data-bind="attr: { href: '#requests/my-items/' + id }">Nachrichten anzeigen</a>
                 <p>
-                Anfrage von <a href="#" data-bind="text: from.getFullName, click: $parents[1].actions.showUserDialog, clickBubble:false"></a>
+                Anfrage von <a data-bind="text: from.getFullName
+                  , click: $parents[1].actions.showUserDialog
+                  , clickBubble:false"></a>
                 <br />
                 <span data-bind="text: messages[0].text" class="text-muted"></span>
                 </p>
