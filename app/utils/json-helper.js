@@ -5,6 +5,7 @@ define([
     , 'models/Item'
     , 'models/Address'
     , 'models/Profile'
+    , 'models/Request'
 ],
 function(
     $
@@ -13,6 +14,7 @@ function(
     , Item
     , Address
     , Profile
+    , Request
 ) {
     var log = function(msg) { window.console && console.log(msg); };
     var obj = {};
@@ -25,7 +27,7 @@ function(
             resultProperty(dataMapper(data, Ctor));
             afterDoneHook && afterDoneHook();
         })
-        .fail(function(a, b, c) { alert("fail");
+        .fail(function(a, b, c) { alert("fail a: " + a + " b: " + b + " c: " + c);
         });
     };
     var arrayMapper = function(data, Ctor) {
@@ -35,16 +37,13 @@ function(
         return new Ctor(data);
     };
 
-    var getRequestsForItems = function(url, items) {
-        window.console && console.log("getRequestsForItems: ", items());
+    var propertySelector = function(selector, mapper, data, Ctor) {
+        return mapper(data[selector], Ctor);
+    };
+
+    var getRequestsForItems = function(url, items, afterDoneHook) {
         _.each(items(), function(item) {
-            $.getJSON(url + item.id)
-            .done(function(req) {
-                window.console && console.log("received request: %o", req);
-                item.requests(req.requests);
-            })
-            .fail(function(a, b, c) { alert("fail a: " + a + " b: " + b + " c: " + c);
-            });
+            getWithCtor(_.partial(propertySelector, 'requests', arrayMapper), Request, url + item.id, item.requests, afterDoneHook);
         });
     };
 

@@ -5,6 +5,7 @@ define([
     , 'plugins/router'
     , 'dialogs/CreateAddressDialog'
     , 'utils/QueryType'
+    , 'dialogs/UserDetailsDialog'
 ],
 function(
     ko
@@ -13,6 +14,7 @@ function(
     , router
     , CreateAddressDialog
     , QueryType
+    , UserDetailsDialog
 ) {
     var log = function(msg) { window.console && console.log(msg); };
     var ViewModel = function() {
@@ -33,7 +35,14 @@ function(
             , new QueryType('Abgeholte Artikel', 'items_picked_up', self.items)
         ]);
 
-        self.actions = {};
+        self.showUserDialog = function(request) {
+            window.console && console.log("showUserDialog: ", request);
+            UserDetailsDialog.show(request.from);
+        };
+
+        self.actions = {
+            showUserDialog: self.showUserDialog
+        };
 
         // load holderjs images
         self.compositionComplete = holder.compositionComplete;

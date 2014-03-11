@@ -3,7 +3,13 @@
 [
     {
         "id": 31
-        , "from": "User2"
+        , "from":
+            {
+                "id": 12
+                , "firstName": "Max"
+                , "lastName": "Mustermann"
+                , "email": "max@mustermann.at"
+            }
     }
 ]
 }

@@ -3,11 +3,23 @@
 [
     {
         "id": 144
-        , "from": "User12"
+        , "from":
+            {
+                "id": 14
+                , "firstName": "Eva"
+                , "lastName": "Mustermann"
+                , "email": "eva@mustermann.at"
+            }
     }
     , {
         "id": 134
-        , "from": "User13"
+        , "from":
+            {
+                "id": 12
+                , "firstName": "Max"
+                , "lastName": "Mustermann"
+                , "email": "max@mustermann.at"
+            }
     }
 ]
 }

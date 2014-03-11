@@ -3,7 +3,13 @@
 [
     {
         "id": 32
-        , "from": "User1"
+        , "from": 
+            {
+                "id": 10
+                , "firstName": "User"
+                , "lastName": "2"
+                , "email": "user2@mail.com"
+            }
     }
 ]
 }
