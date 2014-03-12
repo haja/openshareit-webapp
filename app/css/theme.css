@@ -82,3 +82,25 @@ ul.vertical-list
 .request-messages-panel
 {
 }
+
+.request-message
+{
+}
+
+.request-message-body
+{
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: 5px;
+    background-color: #428bca;
+    color: #fff;
+}
+
+.request-message.me > .request-message-body
+{
+    background-color: #f7f7f9;
+    color: #000;
+}

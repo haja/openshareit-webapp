@@ -14,18 +14,25 @@
           <ul class="list-group" data-bind="foreach: activeItem().requests">
             <li class="list-group-item clearfix">
             <img alt="thumbnail" title="Userfoto" data-src="holder.js/40x40/text:Thumbnail" style="margin-right: 15px;" class="img-thumbnail pull-left" />
-            <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            <span class="glyphicon glyphicon-chevron-down pull-right" data-bind="visible: ! $parent.isActiveRequest($data)"></span>
+            <span class="glyphicon glyphicon-chevron-up pull-right" data-bind="visible: $parent.isActiveRequest($data)"></span>
             Anfrage von <a data-bind="text: from.getFullName, click: $parent.showUserDialog"></a>
             <div class="clearfix"></div>
             <div data-bind="if: $parent.isActiveRequest($data)" class="request-active-panel">
-              <div class="input-group input-group-sm">
-                <input type="text" class="form-control" />
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">Senden</button>
-                </span>
-              </div>
-              <div class="request-messages-panel">
-                messages
+              <div class="panel panel-default">
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control" />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Senden</button>
+                  </span>
+                </div>
+                <div class="panel-body request-messages-panel row" data-bind="foreach: messages">
+                  <div class="request-message col-xs-7" data-bind="css: { 'me col-xs-offset-5': from === 'me' }">
+                    <span data-bind="text: date"></span>
+                    <div class="request-message-body" data-bind="text: text">
+                    </div>
+                  </div>
+                </div>
               </div>
               <button class="btn btn-default btn-sm pull-right">Anfrage stornieren</button>
             </div>

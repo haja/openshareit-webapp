@@ -13,7 +13,24 @@
         , "messages":
             [
                 {
-                    "text": "Ich möchte gerne..."
+                    "from": "me"
+                    , "text": "Ich möchte gerne..."
+                    , "date": "2014-03-12T13:43"
+                }
+                , {
+                    "from": "other"
+                    , "text": "Hallo! message 3"
+                    , "date": "2014-03-12T11:40"
+                }
+                , {
+                    "from": "me"
+                    , "text": "Hallo! message 2"
+                    , "date": "2014-03-12T11:30"
+                }
+                , {
+                    "from": "other"
+                    , "text": "Hallo! message 1"
+                    , "date": "2014-03-12T11:28"
                 }
             ]
     }

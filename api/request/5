@@ -13,7 +13,9 @@
         , "messages":
             [
                 {
-                    "text": "Bitte den ..."
+                    "from": "other"
+                    , "text": "Bitte den ..."
+                    , "date": "2014-03-12T15:04"
                 }
             ]
     }
@@ -29,10 +31,29 @@
         , "messages":
             [
                 {
-                    "text": "Ich möchte gerne..."
+                    "from": "me"
+                    , "text": "Ich möchte gerne..."
+                    , "date": "2014-03-12T12:04"
                 }
                 , {
-                    "text": "Hallo! Kann ich..."
+                    "from": "other"
+                    , "text": "Hallo! Kann ich..."
+                    , "date": "2014-03-12T12:00"
+                }
+                , {
+                    "from": "other"
+                    , "text": "Hallo! message 3"
+                    , "date": "2014-03-12T11:40"
+                }
+                , {
+                    "from": "me"
+                    , "text": "Hallo! message 2"
+                    , "date": "2014-03-12T11:30"
+                }
+                , {
+                    "from": "other"
+                    , "text": "Hallo! message 1"
+                    , "date": "2014-03-12T11:28"
                 }
             ]
     }
