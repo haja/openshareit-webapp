@@ -16,6 +16,7 @@ function(
     var ViewModel = function() {
         var self = this;
         self.activeItem = ko.observable();
+        self.activeRequest = ko.observable();
 
         var api_url = "../../api/"
 
@@ -27,7 +28,12 @@ function(
 
         self.activate = function(itemId, requestId) {
             jsonHelper.getItem(api_url + "item_" + itemId, self.activeItem, function() {
-                jsonHelper.getRequestsForSingleItem(api_url + "request/", self.activeItem);
+                jsonHelper.getRequestsForSingleItem(api_url + "request/", self.activeItem, function() {
+                    self.activeRequest(_.find(self.activeItem().requests(), function(req) {
+                        return req.id === requestId;
+                    })
+                    );
+                });
             });
         };
 

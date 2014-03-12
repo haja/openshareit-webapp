@@ -12,8 +12,10 @@
             </div>
 
           <ul class="list-group" data-bind="foreach: activeItem().requests">
-            <li class="list-group-item">
-            TODO requests
+            <li class="list-group-item clearfix">
+              <img alt="thumbnail" title="Userfoto" data-src="holder.js/40x40/text:Thumbnail" style="margin-right: 15px;" class="img-thumbnail pull-left" />
+              <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+              Anfrage von <a data-bind="text: from.getFullName, click: $parent.showUserDialog"></a>
             </li>
           </ul>
         </div>
