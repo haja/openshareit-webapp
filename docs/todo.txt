@@ -13,6 +13,9 @@ meine artikel:
 d nur artikel, untereinander, wie home;
 - meine artikel: übersicht über anfragen zu jedem artikel mit link zu anfragen. anfragen auf eigener seite (siehe mockup) (für alle arten von anfragen; meine anfragen + anfragen an mich)
 
+requests:
+o fix input field not clickable / clickBubble
+
 neuer artikel / bearbeiten:
 o artikelname bold
 d labels für artikelname/beschreibung
