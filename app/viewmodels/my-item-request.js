@@ -30,11 +30,15 @@ function(
             jsonHelper.getItem(api_url + "item_" + itemId, self.activeItem, function() {
                 jsonHelper.getRequestsForSingleItem(api_url + "request/", self.activeItem, function() {
                     self.activeRequest(_.find(self.activeItem().requests(), function(req) {
-                        return req.id === requestId;
+                        return req.id.toString() === requestId;
                     })
                     );
                 });
             });
+        };
+
+        self.isActiveRequest = function(req) {
+            return typeof(self.activeRequest()) !== 'undefined' && req.id === self.activeRequest().id;
         };
 
         // load holderjs images

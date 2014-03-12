@@ -73,3 +73,12 @@ ul.vertical-list
     bottom: 10px; /* bootstrap adds 10px margin to p */
     right: 0px;
 }
+
+.request-active-panel
+{
+    margin-top: 10px;
+}
+
+.request-messages-panel
+{
+}
