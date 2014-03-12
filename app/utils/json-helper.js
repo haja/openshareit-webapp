@@ -47,12 +47,17 @@ function(
         });
     };
 
+    var getRequestsForSingleItem = function(url, item, afterDoneHook) {
+        getWithCtor(_.partial(propertySelector, 'requests', arrayMapper), Request, url + item().id, item().requests, afterDoneHook);
+    };
+
 
     obj.getItems = _.partial(getWithCtor, arrayMapper, Item);
     obj.getItem = _.partial(getWithCtor, objMapper, Item);
     obj.getAddresses = _.partial(getWithCtor, arrayMapper, Address);
     obj.getProfile = _.partial(getWithCtor, objMapper, Profile);
     obj.getRequestsForItems = getRequestsForItems;
+    obj.getRequestsForSingleItem = getRequestsForSingleItem;
 
     return obj;
 });
