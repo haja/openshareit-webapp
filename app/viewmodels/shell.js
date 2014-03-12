@@ -27,10 +27,17 @@ define(['plugins/router', 'ko-bindings/bootstrap-nav-menu-close-on-click'], func
                     nav: false,
                 },
                 {
-                    route: 'my-items/edit/:id',
+                    route: 'my-items/edit/:id', // TODO update this?
                     title:'Artikel bearbeiten',
                     htmlTitle:'Artikel bearbeiten',
                     moduleId: 'viewmodels/new-item',
+                    nav: false,
+                },
+                {
+                    route: 'my-item/:itemId/request/:requestId',
+                    title:'Anfragen an meine Artikel',
+                    htmlTitle:'Anfragen an meine Artikel',
+                    moduleId: 'viewmodels/my-item-request',
                     nav: false,
                 },
                 {
