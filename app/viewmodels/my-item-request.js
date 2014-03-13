@@ -1,6 +1,6 @@
 define([
     'knockout'
-    , 'utils/holder'
+    , 'holderjs'
     , 'utils/json-helper'
     , 'utils/QueryType'
     , 'dialogs/UserDetailsDialog'
@@ -46,6 +46,7 @@ function(
                         return req.id === requestId;
                     })
                     );
+                    holder.run();
                 });
             });
         };
@@ -59,7 +60,7 @@ function(
         };
 
         // load holderjs images
-        self.compositionComplete = holder.compositionComplete;
+        self.compositionComplete = holder.run;
     };
 
 
