@@ -7,7 +7,7 @@ o karte nicht mitscrollen
 d artikel anlegen oben rechts
 o artikel anlegen: farbe (rot / pink / grün)
 d pfeil auf item einblenden (damit man sieht, dass es aufklappt)
-o karte: mehrere artikel gruppieren? mit david reden
+o karte: mehrere artikel gruppieren -> mapitems
 
 meine artikel:
 d nur artikel, untereinander, wie home;
@@ -46,6 +46,6 @@ o device-klassen, modaldialog auf fullscreen?
 
 sonstiges:
 o about mit dummy-text
-o "konto löschen" in profil bearbeiten verschieben
+- "konto löschen" in profil bearbeiten verschieben
 
-o david fragen wegen hosting
+d david fragen wegen hosting
