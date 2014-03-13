@@ -12,15 +12,19 @@ o karte: mehrere artikel gruppieren -> mapitems
 meine artikel:
 d nur artikel, untereinander, wie home;
 - meine artikel: übersicht über anfragen zu jedem artikel mit link zu anfragen. anfragen auf eigener seite (siehe mockup) (für alle arten von anfragen; meine anfragen + anfragen an mich)
+o volle breite? linksbündig?
 
 requests:
-o fix input field not clickable / clickBubble
+d fix input field not clickable / clickBubble
+o animieren
+o mehrere aufklappbar machen? zuklappen?
 
 neuer artikel / bearbeiten:
 o artikelname bold
 d labels für artikelname/beschreibung
 d profil rechts anzeigen
 - einspaltig / button auf selbe höhe wie "Adresse hinzufügen"
+o adresse wählen: ganzes panel klickbar machen
 
 
 itemView:
@@ -35,6 +39,8 @@ o kein drop-down menu, logout button neben "mein profil"
 
 o push-notifications
 
+login:
+o "schnell-login" modal / dropdown
 
 nachrichten:
 d letzte nachricht oben
@@ -45,7 +51,11 @@ bootstrap:
 o device-klassen, modaldialog auf fullscreen?
 
 sonstiges:
+o aritkelstatus? abgeholt setzten können, etc...
+
 o about mit dummy-text
 - "konto löschen" in profil bearbeiten verschieben
 
 d david fragen wegen hosting
+
+o webkit testing / safari
