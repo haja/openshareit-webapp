@@ -12,12 +12,14 @@
           </div>
 
           <ul class="list-group" data-bind="foreach: activeItem().requests">
-            <li class="list-group-item clearfix" data-bind="click: $parent.uiSetActive">
-            <img alt="thumbnail" title="Userfoto" data-src="holder.js/40x40/text:Thumbnail" style="margin-right: 15px;" class="img-thumbnail pull-left" />
-            <span class="glyphicon glyphicon-chevron-down pull-right" data-bind="visible: ! $parent.isActiveRequest($data)"></span>
-            <span class="glyphicon glyphicon-chevron-up pull-right" data-bind="visible: $parent.isActiveRequest($data)"></span>
-            Anfrage von <a data-bind="text: from.getFullName, click: $parent.showUserDialog"></a>
-            <div class="clearfix"></div>
+            <li class="list-group-item clearfix">
+            <div data-bind="click: $parent.uiSetActive">
+              <img alt="thumbnail" title="Userfoto" data-src="holder.js/40x40/text:Thumbnail" style="margin-right: 15px;" class="img-thumbnail pull-left" />
+              <span class="glyphicon glyphicon-chevron-down pull-right" data-bind="visible: ! $parent.isActiveRequest($data)"></span>
+              <span class="glyphicon glyphicon-chevron-up pull-right" data-bind="visible: $parent.isActiveRequest($data)"></span>
+              Anfrage von <a data-bind="text: from.getFullName, click: $parent.showUserDialog"></a>
+              <div class="clearfix"></div>
+            </diV>
             <div data-bind="if: $parent.isActiveRequest($data)" class="request-active-panel">
               <div class="panel panel-default">
                 <div class="input-group input-group-sm">
