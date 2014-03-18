@@ -13,6 +13,7 @@ define([
         self.id = req.id;
         self.from = new User(req.from);
         self.messages = req.messages;
+        self.active = ko.observable(false);
     };
 
     return Ctor;

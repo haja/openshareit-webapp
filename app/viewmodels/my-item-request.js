@@ -58,9 +58,6 @@ function(
             requestId = parseInt(requestId);
             jsonHelper.getItem(api_url + "item_" + itemId, self.activeItem, function() {
                 jsonHelper.getRequestsForSingleItem(api_url + "request/", self.activeItem, function() {
-                    _.each(self.activeItem().requests(), function(req) {
-                        req.active = ko.observable();
-                    });
                     self.setActiveRequest(requestId);
                 });
             });
