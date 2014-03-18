@@ -1,5 +1,6 @@
 define([
     'knockout'
+    , 'underscore'
     , 'holderjs'
     , 'utils/json-helper'
     , 'utils/QueryType'
@@ -8,6 +9,7 @@ define([
 ],
 function(
     ko
+    , _
     , holder
     , jsonHelper
     , QueryType
@@ -18,7 +20,6 @@ function(
     var ViewModel = function() {
         var self = this;
         self.activeItem = ko.observable();
-        self.activeRequest = ko.observable();
 
         var api_url = "../../api/"
 
@@ -27,36 +28,46 @@ function(
             UserDetailsDialog.show(request.from);
         };
 
-        self.uiSetActive = function(request) {
-            // request should be from active item
-            var itemId = self.activeItem().id;
-            var reqId = request.id;
-            var newHash = '#my-item/' + itemId + '/request/' + reqId
+        self.uiToggleActive = function(request) {
+            window.console && console.log("uiToggleActive", request);
+            request.active(!request.active());
+        };
 
-            self.setActive(itemId, reqId);
-            router.navigate(newHash, false); // update only hash
+        self.uiSetActive = function(request) {
+            window.console && console.log("uiSetActive", request);
+            request.active(true);
+            // still useful?
+            // request should be from active item
+            //var itemId = self.activeItem().id;
+            //var newHash = '#my-item/' + itemId + '/request/' + request.id;
+            //router.navigate(newHash, false); // update only hash
+        };
+
+        self.setActiveRequest = function(reqId) {
+            window.console && console.log("setActiveRequest", reqId);
+            var activeRequest = _.find(self.activeItem().requests(), function(req) {
+                return req.id === reqId;
+            });
+            self.uiSetActive(activeRequest);
+            holder.run();
         };
 
         self.setActive = function(itemId, requestId) {
+            window.console && console.log("setActive", requestId);
             itemId = parseInt(itemId);
             requestId = parseInt(requestId);
             jsonHelper.getItem(api_url + "item_" + itemId, self.activeItem, function() {
                 jsonHelper.getRequestsForSingleItem(api_url + "request/", self.activeItem, function() {
-                    self.activeRequest(_.find(self.activeItem().requests(), function(req) {
-                        return req.id === requestId;
-                    })
-                    );
-                    holder.run();
+                    _.each(self.activeItem().requests(), function(req) {
+                        req.active = ko.observable();
+                    });
+                    self.setActiveRequest(requestId);
                 });
             });
         };
 
         self.activate = function(itemId, requestId) {
             self.setActive(itemId, requestId);
-        };
-
-        self.isActiveRequest = function(req) {
-            return typeof(self.activeRequest()) !== 'undefined' && req.id === self.activeRequest().id;
         };
 
         // load holderjs images

@@ -17,7 +17,7 @@ o volle breite? linksbündig?
 requests:
 d fix input field not clickable / clickBubble
 o animieren
-o mehrere aufklappbar machen? zuklappen?
+d mehrere aufklappbar machen? zuklappen?
 
 neuer artikel / bearbeiten:
 o artikelname bold
