@@ -17,7 +17,7 @@
               <img alt="thumbnail" title="Userfoto" data-src="holder.js/40x40/text:Thumbnail" style="margin-right: 15px;" class="img-thumbnail pull-left" />
               <span class="glyphicon glyphicon-chevron-down pull-right" data-bind="visible: ! $data.active()"></span>
               <span class="glyphicon glyphicon-chevron-up pull-right" data-bind="visible: $data.active()"></span>
-              Anfrage von <a data-bind="text: from.getFullName, click: $parent.showUserDialog"></a>
+              Anfrage von <a data-bind="text: from.getFullName, click: $parent.showUserDialog, clickBubble: false"></a>
               <div class="clearfix"></div>
             </diV>
             <div data-bind="if: active" class="request-active-panel">
