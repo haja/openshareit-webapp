@@ -18,6 +18,7 @@ requests:
 d fix input field not clickable / clickBubble
 o animieren
 d mehrere aufklappbar machen? zuklappen?
+? komplett in 'my items' integrieren? nur einzelne nachricht anzeigen?
 
 neuer artikel / bearbeiten:
 o artikelname bold
