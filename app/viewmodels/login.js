@@ -1,11 +1,13 @@
 define([
     'knockout'
     , 'jquery'
+    , 'plugins/router'
     , 'dao/api'
 ],
 function(
     ko
     , $
+    , router
     , api
 ) {
     var ViewModel = function() {
@@ -25,7 +27,7 @@ function(
                 self.loginError(false);
                 self.isLoading(false);
 
-                // TODO trigger navigation
+                router.navigate('');
             },
             function() {
                 self.loginError(true);
