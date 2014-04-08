@@ -6,6 +6,9 @@
       <div class="col-md-4 col-sm-6">
         <form role="form" data-bind="submit: doLogin" >
           <h1>Login</h1>
+          <p class="text-danger" data-bind="visible: loginError">
+          Username oder Passwort falsch!
+          </p>
           <div class="form-group">
             <label for="email" class="hidden">E-Mail-Adresse</label>
             <input type="email" class="form-control" name="email" id="email" placeholder="E-Mail-Adresse">
