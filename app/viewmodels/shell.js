@@ -81,6 +81,15 @@ define(['plugins/router', 'knockout', 'models/settings', 'ko-bindings/bootstrap-
                     nav: true,
                     navDisplayStyle: 'right'
                     , type: 'notAuthenticated'
+                },
+                {
+                    route: 'logout',
+                    title:'Logout',
+                    htmlTitle:'Logout',
+                    moduleId: 'viewmodels/logout',
+                    nav: true,
+                    navDisplayStyle: 'right'
+                    , type: 'authenticated'
                 }
             ]).buildNavigationModel();
             //.mapUnknownRoutes('home', 'not-found');
