@@ -1,17 +1,19 @@
 define([
-    ], function(
-    ) {
-        var getAuthenticationState = function() {
-            if(settings.token !== '') {
-                return 'authenticated';
-            }
-            return 'notAuthenticated';
-        };
+    'knockout'
+],
+function(
+    ko
+) {
+    var getAuthenticationState = function() {
+        if(settings.token() !== '') {
+            return 'authenticated';
+        }
+        return 'notAuthenticated';
+    };
 
-        var settings = {
-            token: ''
-            , getAuthenticationState: getAuthenticationState
-        };
-        return settings;
-    }
-);
+    var settings = {
+        token: ko.observable('')
+        , getAuthenticationState: getAuthenticationState
+    };
+    return settings;
+});
