@@ -18,7 +18,7 @@ requests:
 d fix input field not clickable / clickBubble
 o animieren
 d mehrere aufklappbar machen? zuklappen?
-? komplett in 'my items' integrieren? nur einzelne nachricht anzeigen?
+o komplett in 'my items' integrieren? nur einzelne nachricht anzeigen?
 
 neuer artikel / bearbeiten:
 o artikelname bold
@@ -42,6 +42,8 @@ o push-notifications
 
 login:
 o "schnell-login" modal / dropdown
+o router.guardRoute aufsetzen, um notAuthenticated buttons abzufangen (siehe: http://stackoverflow.com/questions/18655187/durandal-login-page-redirect-pattern )
+! factor communication to own module(s)
 
 nachrichten:
 d letzte nachricht oben
