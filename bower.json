@@ -27,5 +27,6 @@
     , "requirejs-domready": "~2.0.1"
     , "underscore": "~1.6.0"
     , "momentjs": "~2.5.1"
+    , "fontawesome": "~4.0.3"
   }
 }
