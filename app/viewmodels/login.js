@@ -1,12 +1,12 @@
 define([
     'knockout'
-    ,'models/settings'
     , 'jquery'
+    , 'dao/api'
 ],
 function(
     ko
-    , settings
     , $
+    , api
 ) {
     var ViewModel = function() {
         var self = this;
@@ -21,15 +21,13 @@ function(
 
             self.isLoading(true);
 
-            $.post('http://api.ionic.at/login/', 'username=' + email + '&password=' + pw, function(data) {
-                settings.token(data);
-                window.console && console.log("settings:", settings);
+            api.login(email, pw, function(data) {
                 self.loginError(false);
                 self.isLoading(false);
 
                 // TODO trigger navigation
-            })
-            .fail(function() {
+            },
+            function() {
                 self.loginError(true);
                 self.isLoading(false);
             });
