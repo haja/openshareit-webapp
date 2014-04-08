@@ -12,12 +12,12 @@
         <a class="navbar-brand" href="#">OpenShareIt</a>
       </div>
       <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav" data-bind="foreach: router.navigationModel, bootstrapNavMenuCloseOnClick: {}">
+        <ul class="nav navbar-nav" data-bind="foreach: navbar, bootstrapNavMenuCloseOnClick: {}">
           <li data-bind="css: { active: isActive }, if: navDisplayStyle === 'left'">
           <a class="navbar-link" data-bind="attr: { href: hash }, html: htmlTitle"></a>
           </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right" data-bind="foreach: router.navigationModel, bootstrapNavMenuCloseOnClick: {}">
+        <ul class="nav navbar-nav navbar-right" data-bind="foreach: navbar, bootstrapNavMenuCloseOnClick: {}">
           <li data-bind="css: { active: isActive }, if: navDisplayStyle === 'right'">
           <a class="navbar-link" data-bind="attr: { href: hash }, html: htmlTitle"></a>
           </li>

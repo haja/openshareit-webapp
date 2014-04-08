@@ -1,7 +1,12 @@
-define(['plugins/router', 'ko-bindings/bootstrap-nav-menu-close-on-click'], function (router) {
+define(['plugins/router', 'knockout', 'models/settings', 'ko-bindings/bootstrap-nav-menu-close-on-click'], function (router, ko, settings) {
     return {
-        router: router,
-        activate: function () {
+        router: router
+        , navbar: ko.computed(function() {
+            return ko.utils.arrayFilter(router.navigationModel(), function(route) {
+                return (!route.type || route.type === settings.getAuthenticationState());
+            });
+        })
+        , activate: function () {
             router.map([
                 {
                     route: ['', 'home'],
@@ -18,6 +23,7 @@ define(['plugins/router', 'ko-bindings/bootstrap-nav-menu-close-on-click'], func
                     moduleId: 'viewmodels/my-items',
                     nav: true,
                     navDisplayStyle: 'left'
+                    , type: 'authenticated'
                 },
                 {
                     route: 'my-items/new-item',
@@ -47,6 +53,7 @@ define(['plugins/router', 'ko-bindings/bootstrap-nav-menu-close-on-click'], func
                     moduleId: 'viewmodels/my-profile',
                     nav: true,
                     navDisplayStyle: 'right'
+                    , type: 'authenticated'
                 },
                 {
                     route: 'my-profile', // TODO change this
@@ -55,6 +62,7 @@ define(['plugins/router', 'ko-bindings/bootstrap-nav-menu-close-on-click'], func
                     moduleId: 'viewmodels/my-profile', // TODO change this
                     nav: true,
                     navDisplayStyle: 'right'
+                    , type: 'authenticated'
                 },
                 {
                     route: 'register',
@@ -63,6 +71,7 @@ define(['plugins/router', 'ko-bindings/bootstrap-nav-menu-close-on-click'], func
                     moduleId: 'viewmodels/register',
                     nav: true,
                     navDisplayStyle: 'right'
+                    , type: 'notAuthenticated'
                 }
             ]).buildNavigationModel();
             //.mapUnknownRoutes('home', 'not-found');
