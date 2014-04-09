@@ -2,20 +2,20 @@
     "requests":
 [
     {
-        "id": 32
+        "id": 34
         , "from": 
-            {
-                "id": 10
-                , "firstName": "User"
-                , "lastName": "2"
-                , "email": "user2@mail.com"
-            }
-        , "to":
             {
                 "id": 1
                 , "firstName": "Ich"
                 , "lastName": "Nachname"
                 , "email": "ich@mail.com"
+            }
+        , "to": 
+            {
+                "id": 10
+                , "firstName": "User"
+                , "lastName": "2"
+                , "email": "user2@mail.com"
             }
         , "messages":
             [

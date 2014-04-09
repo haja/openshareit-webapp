@@ -10,6 +10,13 @@
                 , "lastName": "Mustermann"
                 , "email": "eva@mustermann.at"
             }
+        , "to":
+            {
+                "id": 1
+                , "firstName": "Ich"
+                , "lastName": "Nachname"
+                , "email": "ich@mail.com"
+            }
         , "messages":
             [
                 {
@@ -27,6 +34,13 @@
                 , "firstName": "Max"
                 , "lastName": "Mustermann"
                 , "email": "max@mustermann.at"
+            }
+        , "to":
+            {
+                "id": 1
+                , "firstName": "Ich"
+                , "lastName": "Nachname"
+                , "email": "ich@mail.com"
             }
         , "messages":
             [
