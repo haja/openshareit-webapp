@@ -23,16 +23,6 @@ function(
 
         var api_url = "../../api/"
 
-        self.showUserDialog = function(request) {
-            window.console && console.log("showUserDialog: ", request);
-            UserDetailsDialog.show(request.from);
-        };
-
-        self.uiToggleActive = function(request) {
-            window.console && console.log("uiToggleActive", request);
-            request.active(!request.active());
-        };
-
         self.uiSetActive = function(request) {
             window.console && console.log("uiSetActive", request);
             request.active(true);
