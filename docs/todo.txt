@@ -35,6 +35,7 @@ mein profil:
 d adressen -> meine adressen
 d abholdatum -> abholfrist
 d aktuelle adresse highlighten + ausgewählte hinschreiben; radiobutton + highlighten
+o kalender auf mobile/mac richtig implementieren (mozilla bricks?)
 
 o kein drop-down menu, logout button neben "mein profil"
 
@@ -43,7 +44,8 @@ o push-notifications
 login:
 o "schnell-login" modal / dropdown
 o router.guardRoute aufsetzen, um notAuthenticated buttons abzufangen (siehe: http://stackoverflow.com/questions/18655187/durandal-login-page-redirect-pattern )
-! factor communication to own module(s)
+d factor communication to own module(s)
+o cookies? page reload should not delete token
 
 nachrichten:
 d letzte nachricht oben
