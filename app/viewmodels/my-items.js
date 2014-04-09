@@ -35,14 +35,17 @@ function(
                                 window.console && console.log("my-items: queryChanged: got item & request:", self.requestToActivate);
                                 var item, request;
                                 item = _.find(self.items(), function(it) {
-                                    return it.id === self.requestToActivate.itemId;
+                                    window.console && console.log("my-items: finding active item:", it);
+                                    return it.id === parseInt(self.requestToActivate.itemId);
                                 });
+                                window.console && console.log("my-items: found active item:", item);
                                 if(item) {
                                     request = _.find(item.requests(), function(req) {
-                                        return req.id === self.requestToActivate.requestId;
+                                        return req.id === parseInt(self.requestToActivate.requestId);
                                     });
+                                    window.console && console.log("my-items: found active item/request:", item, request);
                                     request.active(true);
-                                    self.requestToActivate = false;
+                                    //self.requestToActivate = false;
                                 }
                             }
                         });
