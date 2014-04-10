@@ -28,5 +28,6 @@
     , "underscore": "~1.6.0"
     , "momentjs": "~2.5.1"
     , "fontawesome": "~4.0.3"
+    , "jquery-cookie": "~1.4.0"
   }
 }

@@ -17,6 +17,7 @@ requirejs.config({
         , domReady: '../lib/requirejs-domready/domReady'
         , knockout: "../lib/knockout.js/knockout"
         , jquery: "../lib/jquery/jquery"
+        , "jquery.cookie": "../lib/jquery-cookie/jquery.cookie"
         , holderjs: "../lib/holderjs/holder"
         , bootstrap: "../lib/bootstrap/dist/js/bootstrap"
         , "bootstrap-datepicker": "../lib/bootstrap-datepicker/js/bootstrap-datepicker"
