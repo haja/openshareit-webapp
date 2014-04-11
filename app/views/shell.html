@@ -17,14 +17,16 @@
           <a class="navbar-link" data-bind="attr: { href: hash }, html: htmlTitle"></a>
           </li>
         </ul>
+        <!--
+        <div class="loader pull-right" data-bind="visible: router.isNavigating">
+          <i class="fa fa-spinner fa-spin fa-2x fa-inverse"></i>
+        </div>
+        -->
         <ul class="nav navbar-nav navbar-right" data-bind="foreach: navbar, bootstrapNavMenuCloseOnClick: {}">
           <li data-bind="css: { active: isActive }, if: navDisplayStyle === 'right'">
           <a class="navbar-link" data-bind="attr: { href: hash }, html: htmlTitle"></a>
           </li>
         </ul>
-        <div class="loader pull-right" data-bind="css: { active: router.isNavigating }">
-          <i class="icon-spinner icon-2x icon-spin"></i>
-        </div>
       </div><!--/.nav-collapse -->
     </div>
   </div>
