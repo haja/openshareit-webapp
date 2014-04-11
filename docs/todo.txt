@@ -21,7 +21,7 @@ d mehrere aufklappbar machen? zuklappen?
 o mit meine artikel mergen -> nachrichten direkt aufklappbar machen
 
 neuer artikel / bearbeiten:
-o artikelname bold
+d artikelname bold
 d labels für artikelname/beschreibung
 d profil rechts anzeigen
 - einspaltig / button auf selbe höhe wie "Adresse hinzufügen"

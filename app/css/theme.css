@@ -104,3 +104,8 @@ ul.vertical-list
     background-color: #f7f7f9;
     color: #000;
 }
+
+.input-bold
+{
+    font-weight: bold;
+}
