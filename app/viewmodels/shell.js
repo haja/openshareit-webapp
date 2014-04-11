@@ -30,21 +30,24 @@ define(['plugins/router', 'knockout', 'models/settings', 'ko-bindings/bootstrap-
                     title:'Artikel anlegen',
                     htmlTitle:'Artikel anlegen',
                     moduleId: 'viewmodels/new-item',
-                    nav: false,
+                    nav: false
+                    , type: 'authenticated'
                 },
                 {
                     route: 'my-items/edit/:id', // TODO update this?
                     title:'Artikel bearbeiten',
                     htmlTitle:'Artikel bearbeiten',
                     moduleId: 'viewmodels/new-item',
-                    nav: false,
+                    nav: false
+                    , type: 'authenticated'
                 },
                 {
                     route: 'my-item/:itemId/request/:requestId',
                     title:'Anfragen an meine Artikel',
                     htmlTitle:'Anfragen an meine Artikel',
                     moduleId: 'viewmodels/my-item-request',
-                    nav: false,
+                    nav: false
+                    , type: 'authenticated'
                 },
                 {
                     route: 'my-profile',
@@ -74,7 +77,8 @@ define(['plugins/router', 'knockout', 'models/settings', 'ko-bindings/bootstrap-
                     , type: 'notAuthenticated'
                 },
                 {
-                    route: 'login',
+                    route: 'login*redirect',
+                    hash: '#login',
                     title:'Login',
                     htmlTitle:'Login',
                     moduleId: 'viewmodels/login',
@@ -93,6 +97,16 @@ define(['plugins/router', 'knockout', 'models/settings', 'ko-bindings/bootstrap-
                 }
             ]).buildNavigationModel();
             //.mapUnknownRoutes('home', 'not-found');
+
+            router.guardRoute = function(instance, instruction) {
+                // handle routes that should only be accessible when the user is logged in
+                if(instruction.config.type && instruction.config.type === 'authenticated' && settings.getAuthenticationState() !== 'authenticated') {
+                    window.console && console.log("redirecting:", 'login/' + instruction.fragment);
+                    return 'login/' + instruction.fragment;
+                } else {
+                    return true;
+                }
+            };
 
             return router.activate();
         }

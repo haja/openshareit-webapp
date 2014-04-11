@@ -27,12 +27,16 @@ function(
                 self.loginError(false);
                 self.isLoading(false);
 
-                router.navigate('');
+                router.navigate(self.redirect, { replace: true, trigger: true });
             },
             function() {
                 self.loginError(true);
                 self.isLoading(false);
             });
+        };
+
+        self.activate = function(redirect) {
+            self.redirect = redirect || '';
         };
     };
 
