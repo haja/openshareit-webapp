@@ -45,7 +45,7 @@ login:
 o "schnell-login" modal / dropdown
 o router.guardRoute aufsetzen, um notAuthenticated buttons abzufangen (siehe: http://stackoverflow.com/questions/18655187/durandal-login-page-redirect-pattern )
 d factor communication to own module(s)
-o cookies? page reload should not delete token
+d cookies? page reload should not delete token
 
 nachrichten:
 d letzte nachricht oben

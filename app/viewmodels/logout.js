@@ -8,8 +8,7 @@ function(
         var self = this;
 
         self.activate = function() {
-            settings.token('');
-            window.console && console.log("settings:", settings);
+            settings.token(undefined);
         };
     };
 

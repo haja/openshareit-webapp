@@ -19,7 +19,7 @@ function(
         self.doLogin = function(formElement) {
             var email = formElement.elements.email.value;
             var pw = formElement.elements.password.value;
-            window.console && console.log("email", email);
+            window.console && console.log("login in user with email:", email);
 
             self.isLoading(true);
 
