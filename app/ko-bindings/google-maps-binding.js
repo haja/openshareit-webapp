@@ -26,10 +26,11 @@ define(['knockout', 'jquery', 'durandal/composition', 'async!http://maps.google.
             window.console&&console.log("locations:", locations);
             $.each(locations, function(idx, loc) {
                 if(!locationsData[loc.id]) {
-                    window.console&&console.log("creating new locData " + loc.id);
+                    window.console&&console.log("creating new locData " + loc.id, loc);
                     locationsData[loc.id] = {};
                 }
                 var locData = locationsData[loc.id];
+                window.console&&console.log("loaded locData", locData);
 
                 var latLng = new google.maps.LatLng(loc.latitude, loc.longitude);
                 if(!locData._marker) {
@@ -49,18 +50,19 @@ define(['knockout', 'jquery', 'durandal/composition', 'async!http://maps.google.
                 if(loc.active) {
                     // open infoWindow only if not already active
                     if(!locData._infoWindow) {
+                        window.console&&console.log("create infoWindow;", locData, locData._infoWindow);
                         locData._infoWindow = new google.maps.InfoWindow({
-                            content: $("#item_" + loc.id).clone()[0]
-                        })
+                            content: "<h5>Items on this location: " + loc.items.length + "</h5>"
+                        });
                         locData._infoWindow.open(mapWrapper.data.map.googleMap, locData._marker);
                         google.maps.event.addListener(locData._infoWindow, 'closeclick', loc.setInactive);
                     }
                 } else {
                     // hide not active items
                     if(locData._infoWindow) {
-                        window.console&&console.log(loc.id + " had prev infoWindow, closing...");
+                        window.console&&console.log(loc.id + " had prev infoWindow, closing...", locData._infoWindow);
                         locData._infoWindow.close();
-                        locData._infoWindow = null;
+                        locData._infoWindow = undefined;
                     }
                 }
 

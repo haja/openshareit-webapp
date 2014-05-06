@@ -21,6 +21,7 @@ define([
                         }, false)
                         , setActive: _.partial(setActiveCallback, mapitem.items, true)
                         , setInactive: _.partial(setActiveCallback, mapitem.items, false)
+                        , items: mapitem.items
                     };
                 });
             }, self);

@@ -45,9 +45,7 @@ function(
                 var api_url = "../../api/";
                 jsonHelper.getItem(api_url + "item_" + item.id, function(fullItem) {
                     var itemsHashMap = self.loadedItemsFull();
-                    var active = item.active();
                     item.setData(fullItem);
-                    item.active(active);
                     itemsHashMap[item.id] = item;
                     self.loadedItemsFull(itemsHashMap);
                     item.isLoaded(true);

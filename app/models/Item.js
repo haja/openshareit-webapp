@@ -36,7 +36,6 @@ define(['knockout', 'models/User'], function(ko, User) {
             self.user = other.user;
             self.requests(other.requests());
             self.maxDescriptionLength = other.maxDescriptionLength;
-            self.active(other.active());
         };
     };
 
