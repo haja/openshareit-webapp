@@ -44,20 +44,22 @@
 
                 <div class="position-base" data-bind="if: active">
                   <!-- TODO loading spinner -->
-                  <div class"btn-panel-right" data-bind="if: isLoaded">
-                    <span class="glyphicon glyphicon-chevron-up pull-right"></span>
-                    <button type="button" class="btn btn-primary btn-right-bottom"
-                      data-bind="
-                      click: $parent.actions.showQueryItemDialog
-                      , clickBubble: false"
-                      >Anfragen</button>
-                  </div>
-                  <div
-                    data-bind="compose: {
-                    model: 'templates/itemViewFull'
-                    , activationData: { item: $data, parent: $parent }
-                    , mode: 'templated'
-                    , preserveContext: true }">
+                  <div data-bind="if: isLoaded">
+                    <div class"btn-panel-right">
+                      <span class="glyphicon glyphicon-chevron-up pull-right"></span>
+                      <button type="button" class="btn btn-primary btn-right-bottom"
+                        data-bind="
+                        click: $parent.actions.showQueryItemDialog
+                        , clickBubble: false"
+                        >Anfragen</button>
+                    </div>
+                    <div 
+                      data-bind="compose: {
+                      model: 'templates/itemViewFull'
+                      , activationData: { item: $data, parent: $parent }
+                      , mode: 'templated'
+                      , preserveContext: true }">
+                    </div>
                   </div>
                 </div>
               </div>

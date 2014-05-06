@@ -39,6 +39,23 @@ function(
         self.setActive = function(item, state) {
             state = typeof state !== 'undefined' ? state : true; //state defaults to true
             window.console && console.log("setActive:", item, item.active());
+            // load data async if not already loaded
+            var loadedItem = self.loadedItemsFull()[item.id];
+            if(typeof(loadedItem) === 'undefined') {
+                var api_url = "../../api/";
+                jsonHelper.getItem(api_url + "item_" + item.id, function(fullItem) {
+                    var itemsHashMap = self.loadedItemsFull();
+                    var active = item.active();
+                    item.setData(fullItem);
+                    item.active(active);
+                    itemsHashMap[item.id] = item;
+                    self.loadedItemsFull(itemsHashMap);
+                    item.isLoaded(true);
+                    window.console && console.log("setActive; loaded item " + item.id, item);
+                }, holder.compositionComplete());
+            }
+
+            // update active state
             if(item.active() === state) {
                 window.console && console.log("** setActive: same state, not activating");
                 return;
@@ -47,12 +64,13 @@ function(
                 it.setActive(false);
             });
             item.setActive(state);
+
             holder.compositionComplete();
         };
 
         self.setActiveMultiple = function(items, state) {
             window.console && console.log("setActiveMultiple:", items);
-// TODO implement
+            // TODO implement
         };
 
         self.toggleActive = function(item) {
@@ -61,14 +79,24 @@ function(
         };
 
         //data
+        self.loadedItemsFull = ko.observable({});
         self.mapitems = ko.observableArray([]);
         self.items = ko.computed(function() {
             var itemsComputed = _.reduceRight(self.mapitems(), function(a, b) {
-                window.console && console.log("computing:", a, b);
                 return { items: a.items.concat(b.items) };
-            }, { items: [] });
+            }, { items: [] }).items;
+
+            // replace already loaded items
+            _.each(itemsComputed, function(elem, idx, list) {
+                var fullItem = self.loadedItemsFull()[elem.id];
+                if(typeof(fullItem) !== 'undefined') {
+                    list[idx] = fullItem;
+                }
+            });
+
             window.console && console.log("ItemsViewModel: items: computed again:", itemsComputed);
-            return itemsComputed.items;
+            holder.compositionComplete();
+            return itemsComputed;
         });
         self.map = ko.observable(new GMap(self.mapitems, self.setActiveMultiple));
 

@@ -11,10 +11,13 @@ define([
     var Ctor = function Mapitem(mapitem) {
         var self = this;
         self.items = _.map(mapitem.items, function(it) {
+            var newIt;
             if(typeof(it.description) === 'undefined') {
                 it.description = '';
             }
-            return new Item(it);
+            newIt = new Item(it);
+            newIt.isLoaded = ko.observable(false);
+            return newIt;
         });
         self.coordinates = mapitem.coordinates;
     };

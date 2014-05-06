@@ -25,6 +25,19 @@ define(['knockout', 'models/User'], function(ko, User) {
         self.setActive = function(b) {
             self.active(b);
         };
+
+
+        // helper functions
+        self.setData = function(other) {
+            self.id = other.id;
+            self.name = other.name;
+            self.loc = other.loc;
+            self.description = other.description;
+            self.user = other.user;
+            self.requests(other.requests());
+            self.maxDescriptionLength = other.maxDescriptionLength;
+            self.active(other.active());
+        };
     };
 
     return Ctor;
