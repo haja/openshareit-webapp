@@ -1,4 +1,13 @@
-define(['knockout', 'jquery', 'durandal/composition', 'async!http://maps.google.com/maps/api/js?sensor=false'], function(ko, $, composition) {
+define(['knockout', 'jquery', 'durandal/composition', 'underscore', 'async!http://maps.google.com/maps/api/js?sensor=false'], function(ko, $, composition, _) {
+    var generateInfoWindowContent = function(loc) {
+        var str = "<h5>" + loc.items.length + " Items on this location:</h5><ul>";
+        _.each(loc.items, function(item) {
+            str = str + "<li>" + item.name + "</li>";
+        });
+        str = str + "</ul>";
+        return str;
+    };
+
     composition.addBindingHandler('map', {
         init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
             window.console&&console.log("loading google maps custom bindings");
@@ -52,7 +61,7 @@ define(['knockout', 'jquery', 'durandal/composition', 'async!http://maps.google.
                     if(!locData._infoWindow) {
                         window.console&&console.log("create infoWindow;", locData, locData._infoWindow);
                         locData._infoWindow = new google.maps.InfoWindow({
-                            content: "<h5>Items on this location: " + loc.items.length + "</h5>"
+                            content: generateInfoWindowContent(loc)
                         });
                         locData._infoWindow.open(mapWrapper.data.map.googleMap, locData._marker);
                         google.maps.event.addListener(locData._infoWindow, 'closeclick', loc.setInactive);
@@ -73,19 +82,19 @@ define(['knockout', 'jquery', 'durandal/composition', 'async!http://maps.google.
 
             /* TODO fixme
             mapObj.onChangedCoord = function(newValue) {
-                var latLng = new google.maps.LatLng(
-                    ko.utils.unwrapObservable(mapObj.lat),
-                    ko.utils.unwrapObservable(mapObj.lng));
-                    mapObj.googleMap.setCenter(latLng);
-                    mapObj.marker.setPosition(latLng);
-                    window.console&&console.log("coords changed: " + latLng);
+            var latLng = new google.maps.LatLng(
+            ko.utils.unwrapObservable(mapObj.lat),
+            ko.utils.unwrapObservable(mapObj.lng));
+            mapObj.googleMap.setCenter(latLng);
+            mapObj.marker.setPosition(latLng);
+            window.console&&console.log("coords changed: " + latLng);
             };
 
             mapObj.onMarkerMoved = function(dragEnd) {
-                var latLng = mapObj.marker.getPosition();
-                mapObj.lat(latLng.lat());
-                mapObj.lng(latLng.lng());
-                window.console&&console.log("marker move: " + latLng);
+            var latLng = mapObj.marker.getPosition();
+            mapObj.lat(latLng.lat());
+            mapObj.lng(latLng.lng());
+            window.console&&console.log("marker move: " + latLng);
             };
 
             mapObj.lat.subscribe(mapObj.onChangedCoord);
