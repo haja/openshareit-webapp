@@ -17,7 +17,7 @@ define([
                         , longitude: loc.longitude
                         , id: item.id
                         , active: item.active()
-                        , setActive: _.partial(setActiveCallback, item)
+                        , setActive: _.partial(setActiveCallback, item, true)
                         , setInactive: _.partial(setActiveCallback, item, false)
                     };
                 });

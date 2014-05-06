@@ -23,7 +23,7 @@ define(['knockout', 'jquery', 'durandal/composition', 'async!http://maps.google.
             var locationsData = mapWrapper.data._markerData;
             var bounds = new google.maps.LatLngBounds();
 
-            window.console&&console.log("locations: " + locations);
+            window.console&&console.log("locations:", locations);
             $.each(locations, function(idx, loc) {
                 if(!locationsData[loc.id]) {
                     window.console&&console.log("creating new locData " + loc.id);
@@ -33,7 +33,7 @@ define(['knockout', 'jquery', 'durandal/composition', 'async!http://maps.google.
 
                 var latLng = new google.maps.LatLng(loc.latitude, loc.longitude);
                 if(!locData._marker) {
-                    window.console&&console.log("create marker: " + loc);
+                    window.console&&console.log("create marker:", loc);
                     locData._marker = new google.maps.Marker({
                         map: mapWrapper.data.map.googleMap,
                         position: latLng,

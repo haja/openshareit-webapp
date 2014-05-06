@@ -31,11 +31,21 @@ function(
         */
         self.setActive = function(item, state) {
             state = typeof state !== 'undefined' ? state : true; //state defaults to true
-            window.console && console.log("setActive: " + item);
+            window.console && console.log("setActive:", item, item.active());
+            if(item.active() === state) {
+                window.console && console.log("** setActive: same state, not activating");
+                return;
+            }
             _.each(self.items(), function(it) {
                 it.setActive(false);
             });
             item.setActive(state);
+            holder.compositionComplete();
+        };
+
+        self.toggleActive = function(item) {
+            window.console && console.log("toggleActive:", item, item.active());
+            self.setActive(item, !item.active());
         };
 
         //data
@@ -53,6 +63,7 @@ function(
         self.actions = {
             showQueryItemDialog: self.showQueryItemDialog
             , setActive: self.setActive
+            , toggleActive: self.toggleActive
         };
 
         self.queryTypes = ko.observableArray([

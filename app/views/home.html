@@ -25,38 +25,36 @@
           </div>
           <div data-part="item-panel">
             <div class="panel"
-              data-bind="css: { 'panel-default': !active(), 'panel-primary': active() }">
+              data-bind="css: { 'panel-default': !active(), 'panel-primary': active() }, click: $parent.actions.toggleActive">
               <div class="panel-body">
-                <div data-bind="click: $parent.actions.setActive">
-                  <div data-bind="ifnot: active">
-                    <span class="glyphicon glyphicon-chevron-down pull-right"></span>
-                    <img alt="thumbnail" title="thumbnail" data-src="holder.js/100x100/text:Thumbnail" style="float: left; margin-right: 15px;" class="img-thumbnail">
-                    <div style="overflow: hidden" data-bind="attr: { 'id': 'item_' + $data.id }">
-                      <h4 data-bind="text: name" ></h4>
+                <div data-bind="ifnot: active">
+                  <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                  <img alt="thumbnail" title="thumbnail" data-src="holder.js/100x100/text:Thumbnail" style="float: left; margin-right: 15px;" class="img-thumbnail">
+                  <div style="overflow: hidden" data-bind="attr: { 'id': 'item_' + $data.id }">
+                    <h4 data-bind="text: name" ></h4>
 
-                      <p>
-                      <span data-bind="text: getShortDescription"></span><br />
-                      <span data-bind="text: loc.postalCode + ' ' + loc.city"></span>
-                      </p>
-                    </div>
+                    <p>
+                    <span data-bind="text: getShortDescription"></span><br />
+                    <span data-bind="text: loc.postalCode + ' ' + loc.city"></span>
+                    </p>
                   </div>
+                </div>
 
-                  <div class="position-base" data-bind="if: active">
-                    <div class"btn-panel-right">
-                      <span class="glyphicon glyphicon-chevron-up pull-right"></span>
-                      <button type="button" class="btn btn-primary btn-right-bottom"
-                        data-bind="
-                        click: $parent.actions.showQueryItemDialog
-                        , clickBubble: false"
-                        >Anfragen</button>
-                    </div>
-                    <div
-                      data-bind="compose: { 
-                      model: 'templates/itemViewFull'
-                      , activationData: { item: $data, parent: $parent }
-                      , mode: 'templated'
-                      , preserveContext: true }">
-                    </div>
+                <div class="position-base" data-bind="if: active">
+                  <div class"btn-panel-right">
+                    <span class="glyphicon glyphicon-chevron-up pull-right"></span>
+                    <button type="button" class="btn btn-primary btn-right-bottom"
+                      data-bind="
+                      click: $parent.actions.showQueryItemDialog
+                      , clickBubble: false"
+                      >Anfragen</button>
+                  </div>
+                  <div
+                    data-bind="compose: {
+                    model: 'templates/itemViewFull'
+                    , activationData: { item: $data, parent: $parent }
+                    , mode: 'templated'
+                    , preserveContext: true }">
                   </div>
                 </div>
               </div>
