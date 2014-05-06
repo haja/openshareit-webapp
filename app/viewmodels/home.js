@@ -68,7 +68,37 @@ function(
 
         self.setActiveMultiple = function(items, state) {
             window.console && console.log("setActiveMultiple:", items);
-            // TODO implement
+            state = typeof state !== 'undefined' ? state : true; //state defaults to true
+
+            // load data async if not already loaded
+            _.each(items, function(item) {
+                var loadedItem = self.loadedItemsFull()[item.id];
+                if(typeof(loadedItem) === 'undefined') {
+                    var api_url = "../../api/";
+                    jsonHelper.getItem(api_url + "item_" + item.id, function(fullItem) {
+                        var itemsHashMap = self.loadedItemsFull();
+                        item.setData(fullItem);
+                        itemsHashMap[item.id] = item;
+                        self.loadedItemsFull(itemsHashMap);
+                        item.isLoaded(true);
+                        window.console && console.log("setActive; loaded item " + item.id, item);
+                    }, holder.compositionComplete());
+                }
+            });
+
+            // deactivate all other items and activate matching items
+            _.each(self.items(), function(item) {
+                if(_.contains(items, item)) {
+                    // matching item, set state
+                    if(item.active() !== state) {
+                        item.active(state);
+                    }
+                } else {
+                    item.active(false);
+                }
+            });
+
+            holder.compositionComplete();
         };
 
         self.toggleActive = function(item) {
