@@ -3,6 +3,7 @@ define([
     , 'underscore'
     , 'knockout'
     , 'models/Item'
+    , 'models/Mapitem'
     , 'models/Address'
     , 'models/Profile'
     , 'models/Request'
@@ -12,6 +13,7 @@ function(
     , _
     , ko
     , Item
+    , Mapitem
     , Address
     , Profile
     , Request
@@ -54,6 +56,7 @@ function(
 
     obj.getItems = _.partial(getWithCtor, arrayMapper, Item);
     obj.getItem = _.partial(getWithCtor, objMapper, Item);
+    obj.getMapitems = _.partial(getWithCtor, arrayMapper, Mapitem);
     obj.getAddresses = _.partial(getWithCtor, arrayMapper, Address);
     obj.getProfile = _.partial(getWithCtor, objMapper, Profile);
     obj.getRequestsForItems = getRequestsForItems;

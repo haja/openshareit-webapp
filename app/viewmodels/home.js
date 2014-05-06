@@ -8,7 +8,6 @@ define([
     , 'models/GMap'
     , 'utils/json-helper'
     , 'dialogs/QueryItemDialog'
-    , 'utils/QueryType'
 ],
 function(
     ko
@@ -20,8 +19,16 @@ function(
     , GMap
     , jsonHelper
     , QueryItemDialog
-    , QueryType
 ) {
+    var QueryTypeImpl = function(name, query, resultProperty) {
+        var self = this;
+        self.name = name;
+
+        var api_url = "../../api/";
+        self.query = function() {
+            jsonHelper.getMapitems(api_url + query, resultProperty, holder.compositionComplete);
+        };
+    };
 
     function ItemsViewModel() {
         var self = this;
@@ -43,14 +50,27 @@ function(
             holder.compositionComplete();
         };
 
+        self.setActiveMultiple = function(items, state) {
+            window.console && console.log("setActiveMultiple:", items);
+// TODO implement
+        };
+
         self.toggleActive = function(item) {
             window.console && console.log("toggleActive:", item, item.active());
             self.setActive(item, !item.active());
         };
 
         //data
-        self.items = ko.observableArray([]);
-        self.map = ko.observable(new GMap(self.items, self.setActive));
+        self.mapitems = ko.observableArray([]);
+        self.items = ko.computed(function() {
+            var itemsComputed = _.reduceRight(self.mapitems(), function(a, b) {
+                window.console && console.log("computing:", a, b);
+                return { items: a.items.concat(b.items) };
+            }, { items: [] });
+            window.console && console.log("ItemsViewModel: items: computed again:", itemsComputed);
+            return itemsComputed.items;
+        });
+        self.map = ko.observable(new GMap(self.mapitems, self.setActiveMultiple));
 
         /** open a modal dialog to query an item */
         self.showQueryItemDialog = function(item) {
@@ -67,9 +87,9 @@ function(
         };
 
         self.queryTypes = ko.observableArray([
-            new QueryType('Nähe', 'items_near', self.items)
-            , new QueryType('Aktualität', 'items_fresh', self.items)
-            , new QueryType('Abholdatum', 'items_pick_up', self.items)
+            new QueryTypeImpl('Nähe', 'mapitems_near', self.mapitems)
+            , new QueryTypeImpl('Aktualität', 'mapitems_fresh', self.mapitems)
+            , new QueryTypeImpl('Abholdatum', 'mapitems_pick_up', self.mapitems)
         ]);
 
         // load holderjs images

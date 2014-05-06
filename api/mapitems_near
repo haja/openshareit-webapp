@@ -1,0 +1,43 @@
+[
+{
+    "items": [
+    {
+        "user": "Max",
+        "id": 1,
+        "name": "Schokonikolaus"
+    },
+    {
+        "user": "Astra",
+        "id": 5,
+        "name": "Kaese"
+    }
+    ],
+    "coordinates": {
+        "latitude": "48.2161545",
+        "longitude": "16.3518631"
+    }
+},
+{
+    "items": [
+    {
+        "user": "Astra",
+        "id": 2,
+        "name": "Zucker & Mehl"
+    },
+    {
+        "user": "Astra",
+        "id": 3,
+        "name": "\u00c4pfel & Birnen"
+    },
+    {
+        "user": "Astra",
+        "id": 4,
+        "name": "Kartoffeln"
+    }
+    ],
+    "coordinates": {
+        "latitude": "48.1375853",
+        "longitude": "16.3276432"
+    }
+}
+]

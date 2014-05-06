@@ -16,7 +16,7 @@ function(
         };
 
         self.activate = function(data) {
-            window.console && console.log("ItemListModel ***** activate ****");
+            window.console && console.log("ItemListModel ***** activate ****", data, data.items());
             self.items = data.items;
             self.queryTypes = data.queryTypes;
             self.actions = data.actions;

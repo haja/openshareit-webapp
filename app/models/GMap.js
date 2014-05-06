@@ -5,20 +5,22 @@ define([
         ko
         , _
     ) {
-        var Ctor = function GMap(items, setActiveCallback) {
+        var Ctor = function GMap(mapitems, setActiveCallback) {
             var self = this;
-            self.items = items;
+            self.mapitems = mapitems;
             self.data = {};
             self.asLocations = ko.computed(function() {
                 window.console&&console.log("computed again");
-                return ko.utils.arrayMap(self.items(), function(item) {
-                    var loc = item.loc.coordinates;
+                return ko.utils.arrayMap(self.mapitems(), function(mapitem) {
+                    var loc = mapitem.coordinates;
                     return { latitude: loc.latitude
                         , longitude: loc.longitude
-                        , id: item.id
-                        , active: item.active()
-                        , setActive: _.partial(setActiveCallback, item, true)
-                        , setInactive: _.partial(setActiveCallback, item, false)
+                        , id: mapitem.items[0].id // one item must be present, use this id for this mapitem
+                        , active: _.reduce(mapitem.items, function(memo, item) {
+                            return memo || item.active();
+                        }, false)
+                        , setActive: _.partial(setActiveCallback, mapitem.items, true)
+                        , setInactive: _.partial(setActiveCallback, mapitem.items, false)
                     };
                 });
             }, self);

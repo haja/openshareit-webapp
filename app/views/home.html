@@ -33,15 +33,18 @@
                   <div style="overflow: hidden" data-bind="attr: { 'id': 'item_' + $data.id }">
                     <h4 data-bind="text: name" ></h4>
 
+                    <!--
                     <p>
                     <span data-bind="text: getShortDescription"></span><br />
                     <span data-bind="text: loc.postalCode + ' ' + loc.city"></span>
                     </p>
+                    -->
                   </div>
                 </div>
 
                 <div class="position-base" data-bind="if: active">
-                  <div class"btn-panel-right">
+                  <!-- TODO loading spinner -->
+                  <div class"btn-panel-right" data-bind="if: isLoaded">
                     <span class="glyphicon glyphicon-chevron-up pull-right"></span>
                     <button type="button" class="btn btn-primary btn-right-bottom"
                       data-bind="
