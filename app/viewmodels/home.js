@@ -9,6 +9,7 @@ define([
     , 'utils/json-helper'
     , 'dialogs/QueryItemDialog'
     , 'utils/geolocation'
+    , 'dao/api'
 ],
 function(
     ko
@@ -21,8 +22,9 @@ function(
     , jsonHelper
     , QueryItemDialog
     , geolocation
+    , api
 ) {
-    var QueryTypeImpl = function(name, query, resultProperty) {
+    var QueryTypeImpl = function(name, view, resultProperty) {
         var self = this;
         self.name = name;
 
@@ -33,12 +35,12 @@ function(
             , longitude: 16.22
         };
 
-        var api_url = "../../api/";
         self.query = function() {
             var loadMapitems = function(position) {
-                window.console && console.log("loading mapitems with position:", position);
-                jsonHelper.getMapitems(api_url + query + "?latitude=" + position.latitude + "&longitude=" + position.longitude, resultProperty, holder.compositionComplete);
+                api.mapitemsGET(position, view, resultProperty, holder.compositionComplete);
             };
+
+            loadMapitems(DEFAULT_POSITION);
 
             // update data when geolocation becomes available
             geolocation.getLocation(
@@ -47,8 +49,6 @@ function(
                     window.console && console.log("error in getLocation:", error);
                 }
             );
-
-            loadMapitems(DEFAULT_POSITION);
         };
     };
 
@@ -165,9 +165,9 @@ function(
         };
 
         self.queryTypes = ko.observableArray([
-            new QueryTypeImpl('Nähe', 'mapitems_near', self.mapitems)
-            , new QueryTypeImpl('Aktualität', 'mapitems_fresh', self.mapitems)
-            , new QueryTypeImpl('Abholdatum', 'mapitems_pick_up', self.mapitems)
+            new QueryTypeImpl('Nähe', 'near', self.mapitems)
+            , new QueryTypeImpl('Aktualität', 'fresh', self.mapitems)
+            , new QueryTypeImpl('Abholdatum', 'pick_up', self.mapitems)
         ]);
 
         // load holderjs images
