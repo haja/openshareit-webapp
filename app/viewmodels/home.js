@@ -4,7 +4,6 @@ define([
     , 'jquery'
     , 'underscore'
     , 'ko-bindings/google-maps-binding'
-    , 'utils/holder'
     , 'models/GMap'
     , 'utils/json-helper'
     , 'dialogs/QueryItemDialog'
@@ -17,7 +16,6 @@ function(
     , $
     , _
     , gmaps_binding
-    , holder
     , GMap
     , jsonHelper
     , QueryItemDialog
@@ -37,7 +35,7 @@ function(
 
         self.query = function() {
             var loadMapitems = function(position) {
-                api.mapitemsGET(position, view, resultProperty, holder.compositionComplete);
+                api.mapitemsGET(position, view, resultProperty);
             };
 
             loadMapitems(DEFAULT_POSITION);
@@ -70,7 +68,7 @@ function(
                         item.isLoaded(true);
                         window.console && console.log("loaded item:", item);
                     }
-                    , holder.compositionComplete());
+                    );
             }
         };
 
@@ -113,8 +111,6 @@ function(
             });
             $(document).scrollTop($topItem.scrollTop());
             */
-
-            holder.compositionComplete();
         };
 
         self.toggleActive = function(item) {
@@ -139,7 +135,6 @@ function(
             });
 
             window.console && console.log("ItemsViewModel: items: computed again:", itemsComputed);
-            holder.compositionComplete();
             return itemsComputed;
         });
         self.map = ko.observable(new GMap(self.mapitems, self.setActiveMultiple));
@@ -163,9 +158,6 @@ function(
             , new QueryTypeImpl('Aktualität', 'fresh', self.mapitems)
             , new QueryTypeImpl('Abholdatum', 'pick_up', self.mapitems)
         ]);
-
-        // load holderjs images
-        self.compositionComplete = holder.compositionComplete;
     };
 
     return new ItemsViewModel();
