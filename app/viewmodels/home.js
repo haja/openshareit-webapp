@@ -41,7 +41,7 @@ function(
             loadMapitems(DEFAULT_POSITION);
 
             // update data when geolocation becomes available
-            geolocation.getLocation(
+            geolocation.getLocationCached(
                 loadMapitems,
                 function(error) {
                     window.console && console.log("error in getLocation:", error);
