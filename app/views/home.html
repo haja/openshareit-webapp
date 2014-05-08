@@ -43,8 +43,11 @@
                   </div>
                 </div>
 
-                <div class="position-base" data-bind="if: active">
-                  <!-- TODO loading spinner -->
+                <div class="position-base" data-bind="visible: active">
+                  <div data-bind="ifnot: isLoaded">
+                    <!-- loading spinner -->
+                    <i class="fa fa-spinner fa-spin fa-3x"></i>
+                  </div>
                   <div data-bind="if: isLoaded">
                     <div class"btn-panel-right">
                       <span class="glyphicon glyphicon-chevron-up pull-right"></span>
