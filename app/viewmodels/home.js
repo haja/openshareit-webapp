@@ -8,6 +8,7 @@ define([
     , 'models/GMap'
     , 'utils/json-helper'
     , 'dialogs/QueryItemDialog'
+    , 'utils/geolocation'
 ],
 function(
     ko
@@ -19,14 +20,35 @@ function(
     , GMap
     , jsonHelper
     , QueryItemDialog
+    , geolocation
 ) {
     var QueryTypeImpl = function(name, query, resultProperty) {
         var self = this;
         self.name = name;
 
+        // location if geolocation is not available
+        var DEFAULT_POSITION = {
+            // Vienna
+            latitude: 48.12
+            , longitude: 16.22
+        };
+
         var api_url = "../../api/";
         self.query = function() {
-            jsonHelper.getMapitems(api_url + query, resultProperty, holder.compositionComplete);
+            var loadMapitems = function(position) {
+                window.console && console.log("loading mapitems with position:", position);
+                jsonHelper.getMapitems(api_url + query + "?latitude=" + position.latitude + "&longitude=" + position.longitude, resultProperty, holder.compositionComplete);
+            };
+
+            // update data when geolocation becomes available
+            geolocation.getLocation(
+                loadMapitems,
+                function(error) {
+                    window.console && console.log("error in getLocation:", error);
+                }
+            );
+
+            loadMapitems(DEFAULT_POSITION);
         };
     };
 
