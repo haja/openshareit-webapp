@@ -7,8 +7,9 @@ o karte nicht mitscrollen
 d artikel anlegen oben rechts
 o artikel anlegen: farbe (rot / pink / grün)
 d pfeil auf item einblenden (damit man sieht, dass es aufklappt)
-o karte: mehrere artikel gruppieren -> mapitems
-o komplettes item onClick nachladen
+d karte: mehrere artikel gruppieren -> mapitems
+d komplettes item onClick nachladen
+o itemliste zu aktiven items scrollen
 o mehr infos in mapitem
 
 meine artikel:

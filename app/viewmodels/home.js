@@ -55,58 +55,37 @@ function(
     function ItemsViewModel() {
         var self = this;
 
+
+        var loadItemAsync = function(item) {
+            window.console && console.log("loading itemId: " + item.id);
+            // load data async if not already loaded
+            var loadedItem = self.loadedItemsFull()[item.id];
+            if(typeof(loadedItem) === 'undefined') {
+                api.itemGET(item.id
+                    , function(fullItem) {
+                        var itemsHashMap = self.loadedItemsFull();
+                        item.setData(fullItem);
+                        itemsHashMap[item.id] = item;
+                        //self.loadedItemsFull(itemsHashMap); // not needed?
+                        item.isLoaded(true);
+                        window.console && console.log("loaded item:", item);
+                    }
+                    , holder.compositionComplete());
+            }
+        };
+
         /**
         * only one item can be active
         */
         self.setActive = function(item, state) {
-            state = typeof state !== 'undefined' ? state : true; //state defaults to true
-            window.console && console.log("setActive:", item, item.active());
-            // load data async if not already loaded
-            var loadedItem = self.loadedItemsFull()[item.id];
-            if(typeof(loadedItem) === 'undefined') {
-                var api_url = "../../api/";
-                jsonHelper.getItem(api_url + "item_" + item.id, function(fullItem) {
-                    var itemsHashMap = self.loadedItemsFull();
-                    item.setData(fullItem);
-                    itemsHashMap[item.id] = item;
-                    self.loadedItemsFull(itemsHashMap);
-                    item.isLoaded(true);
-                    window.console && console.log("setActive; loaded item " + item.id, item);
-                }, holder.compositionComplete());
-            }
-
-            // update active state
-            if(item.active() === state) {
-                window.console && console.log("** setActive: same state, not activating");
-                return;
-            }
-            _.each(self.items(), function(it) {
-                it.setActive(false);
-            });
-            item.setActive(state);
-
-            holder.compositionComplete();
+            self.setActiveMultiple([item], state);
         };
 
         self.setActiveMultiple = function(items, state) {
             window.console && console.log("setActiveMultiple:", items);
             state = typeof state !== 'undefined' ? state : true; //state defaults to true
 
-            // load data async if not already loaded
-            _.each(items, function(item) {
-                var loadedItem = self.loadedItemsFull()[item.id];
-                if(typeof(loadedItem) === 'undefined') {
-                    var api_url = "../../api/";
-                    jsonHelper.getItem(api_url + "item_" + item.id, function(fullItem) {
-                        var itemsHashMap = self.loadedItemsFull();
-                        item.setData(fullItem);
-                        itemsHashMap[item.id] = item;
-                        self.loadedItemsFull(itemsHashMap);
-                        item.isLoaded(true);
-                        window.console && console.log("setActive; loaded item " + item.id, item);
-                    }, holder.compositionComplete());
-                }
-            });
+            _.each(items, loadItemAsync);
 
             // deactivate all other items and activate matching items
             _.each(self.items(), function(item) {
@@ -119,6 +98,21 @@ function(
                     item.active(false);
                 }
             });
+
+            // TODO scroll to the topmost active item; is this possible easily? (async loading of full items...)
+            /*
+            var $topItem;
+            var topOffset = $(document).height();
+            _.each(items, function(item) {
+                var $item = $('#item_' + item.id);
+                var itemOffset = $item.offset().top;
+                if(itemOffset < topOffset) {
+                    topOffset = itemOffset;
+                    $topItem = $item;
+                }
+            });
+            $(document).scrollTop($topItem.scrollTop());
+            */
 
             holder.compositionComplete();
         };
