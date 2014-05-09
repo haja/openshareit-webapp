@@ -1,5 +1,8 @@
 #TODO:
 
+api:
+o token im header mitsenden
+
 all-items:
 d highlighten
 o grünen rand/schatten
@@ -32,6 +35,12 @@ d labels für artikelname/beschreibung
 d profil rechts anzeigen
 - einspaltig / button auf selbe höhe wie "Adresse hinzufügen"
 o adresse wählen: ganzes panel klickbar machen
+
+o validierung: meldung, falls daten fehlerhaft, servermeldung anzeigen?
+
+o fragen an david: 
+    - pickupDeadline: dateformat?
+    - user? should be handled by server
 
 
 itemView:

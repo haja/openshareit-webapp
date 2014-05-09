@@ -109,3 +109,9 @@ ul.vertical-list
 {
     font-weight: bold;
 }
+
+.toast-message
+{
+    border-radius: 10px;
+    padding: 14px;
+}

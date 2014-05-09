@@ -22,6 +22,7 @@ function(
 
         // data
         self.items = ko.observableArray();
+        self.statusMessages = {};
 
         var api_url = "../../api/"
         self.queryTypes = ko.observableArray([
@@ -71,6 +72,14 @@ function(
                     itemId: params.item
                     , requestId: params.request
                 };
+            }
+
+            self.statusMessages.itemCreated = ko.observable(false);
+            if(params && params.itemCreated === 'true') {
+                window.console && console.log("my-items: activate: itemCreated");
+                self.statusMessages.itemCreated(true);
+                // remove param from history
+                router.navigate('#my-items', { replace: true, trigger: false });
             }
         };
 

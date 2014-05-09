@@ -33,6 +33,14 @@ function(
             var completeUrl = local_apiUrl + 'item_';
             jsonHelper.getItem(completeUrl + itemId, resultProperty, afterDoneHook);
         }
+        , itemsPOST: function(item) {
+            var completeUrl = apiUrl + 'items/';
+            var jqxhr = $.post(completeUrl, item);
+            jqxhr.fail(function(data) {
+                window.console && console.log("itemsPOST: failed; error status: " + data.status, data);
+            });
+            return jqxhr;
+        }
     };
 
     return api;
