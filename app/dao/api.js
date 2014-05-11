@@ -59,7 +59,7 @@ function(
         , itemGET: function(itemId, resultProperty, afterDoneHook) {
             var url = 'items/';
             //var url = 'item_';
-            mapper.getItem(jqGetJSON(url + itemId), resultProperty, afterDoneHook);
+            mapper.getItem(jqGetJSON(url + itemId + "/"), resultProperty, afterDoneHook);
         }
         , itemsPOST: function(item) {
             var jqxhr = jqPost('items/', item);
