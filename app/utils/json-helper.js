@@ -18,14 +18,12 @@ function(
     , Profile
     , Request
 ) {
-    var log = function(msg) { window.console && console.log(msg); };
     var obj = {};
     var getWithCtor = function(dataMapper, Ctor, url, resultProperty, afterDoneHook) {
         $.getJSON(
             url
         )
         .done(function(data) {
-            log(data);
             resultProperty(dataMapper(data, Ctor));
             afterDoneHook && afterDoneHook();
         })

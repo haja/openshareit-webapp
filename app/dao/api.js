@@ -2,17 +2,42 @@ define([
     'models/settings'
     , 'jquery'
     , 'utils/json-helper'
+    , 'underscore'
 ],
 function(
     settings
     , $
     , jsonHelper
+    , _
 ) {
     var apiUrl = 'http://api.ionic.at/';
     var local_apiUrl = "../../api/";
+
+    var doAjax = function(type, relativeUrl, data, dataType) {
+        var completeUrl = apiUrl + relativeUrl;
+        return $.ajax({
+            type: type
+            , url: completeUrl
+            , data: data
+            , dataType: dataType
+            , beforeSend: function(jqXHR, jqSettings) {
+                if(settings.getAuthenticationState() === 'authenticated') {
+                    window.console && console.log("adding token to request " + relativeUrl);
+                    jqXHR.setRequestHeader('token', settings.token()); // TODO this throws CORS/same origin policy error
+                }
+            }
+        });
+    }
+
+    var jqPost = _.partial(doAjax, 'POST');
+    var jqGet = _.partial(doAjax, 'GET');
+    var jqGetJSON = _.partial(doAjax, 'GET', _, _, 'json');
+
+
     var api = {
         login: function(email, password, successFn, failFn) {
-            $.post(apiUrl + 'login/', 'username=' + email + '&password=' + password, function(data) {
+            jqPost('login/', 'username=' + email + '&password=' + password)
+            .done(function(data) {
                 settings.token(data.token);
                 window.console && console.log("Successfully logged in! settings:", settings);
                 successFn(data);
@@ -34,8 +59,7 @@ function(
             jsonHelper.getItem(completeUrl + itemId, resultProperty, afterDoneHook);
         }
         , itemsPOST: function(item) {
-            var completeUrl = apiUrl + 'items/';
-            var jqxhr = $.post(completeUrl, item);
+            var jqxhr = jqPost('items/', item);
             jqxhr.fail(function(data) {
                 window.console && console.log("itemsPOST: failed; error status: " + data.status, data);
             });
