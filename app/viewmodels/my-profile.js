@@ -4,6 +4,7 @@ define([
     , 'utils/json-helper'
     , 'plugins/router'
     , 'dialogs/CreateAddressDialog'
+    , 'dao/api'
 ],
 function(
     ko
@@ -11,12 +12,12 @@ function(
     , jsonHelper
     , router
     , CreateAddressDialog
+    , api
 ) {
     var ViewModel = function() {
         var self = this;
 
         // data
-        self.items = ko.observableArray([]);
         self.addresses = ko.observableArray([]);
 
         // behaviour
@@ -33,9 +34,7 @@ function(
         }
 
         // load data
-        var api_url = "../../api/"
-        jsonHelper.getItems(api_url + "items_my", self.items);
-        jsonHelper.getAddresses(api_url + "addresses_my", self.addresses);
+        api.addressesGET(self.addresses);
 
         // load holderjs images
         self.compositionComplete = holder.compositionComplete;

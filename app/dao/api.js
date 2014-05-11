@@ -14,7 +14,7 @@ function(
     var local_apiUrl = "../../api/";
 
     var doAjax = function(type, relativeUrl, data, dataType) {
-        var completeUrl = apiUrl + relativeUrl; // TODO change this to none-local url
+        var completeUrl = local_apiUrl + relativeUrl; // TODO change this to none-local url
         return $.ajax({
             type: type
             , url: completeUrl
@@ -63,6 +63,10 @@ function(
         }
         , itemsPOST: function(item) {
             return jqPost('items/', item);
+        }
+        , addressesGET: function(resultProperty, afterDoneHook) {
+            var url = 'addresses_my';
+            mapper.getAddresses(jqGetJSON(url), resultProperty, afterDoneHook);
         }
     };
 
