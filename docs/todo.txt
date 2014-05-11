@@ -1,7 +1,7 @@
 #TODO:
 
 api:
-o token im header mitsenden
+d token im header mitsenden
 
 all-items:
 d highlighten
@@ -17,6 +17,7 @@ o mehr infos in mapitem
 o aktuelle position auf der karte anzeigen
 o bugfix: infoWindow verschwindet/wird nicht mehr geöffnet
 d infoWindow: titel: name des ersten items und " + x weitere", und darunter liste mit allen items
+? pagination? soll umblättern möglich sein / wie implementieren?
 
 meine artikel:
 d nur artikel, untereinander, wie home;

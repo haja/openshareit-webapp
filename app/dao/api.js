@@ -1,20 +1,20 @@
 define([
     'models/settings'
+    , 'dao/data-mapper'
     , 'jquery'
-    , 'utils/json-helper'
     , 'underscore'
 ],
 function(
     settings
+    , mapper
     , $
-    , jsonHelper
     , _
 ) {
     var apiUrl = 'http://api.ionic.at/';
     var local_apiUrl = "../../api/";
 
     var doAjax = function(type, relativeUrl, data, dataType) {
-        var completeUrl = apiUrl + relativeUrl;
+        var completeUrl = apiUrl + relativeUrl; // TODO change this to none-local url
         return $.ajax({
             type: type
             , url: completeUrl
@@ -22,10 +22,13 @@ function(
             , dataType: dataType
             , beforeSend: function(jqXHR, jqSettings) {
                 if(settings.getAuthenticationState() === 'authenticated') {
-                    window.console && console.log("adding token to request " + relativeUrl);
-                    jqXHR.setRequestHeader('token', settings.token()); // TODO this throws CORS/same origin policy error
+                    window.console && console.log("adding authorization token to request " + relativeUrl);
+                    jqXHR.setRequestHeader('authorization', settings.token());
                 }
             }
+        }).fail(function(a, b, c) {
+            window.console && console.log("(EE) request to " + completeUrl + " failed", a, b, c);
+            alert("(EE) request to " + completeUrl + " failed", a, b, c);
         });
     }
 
@@ -48,15 +51,15 @@ function(
         }
         , mapitemsGET: function(position, view, resultProperty, afterDoneHook) {
             // TODO view === ordering? api needs to specify
-            //var completeUrl = apiUrl + 'mapitems/';
-            var completeUrl = local_apiUrl + 'mapitems';
+            var url = 'mapitems/';
+            //var url = 'mapitems';
             window.console && console.log("loading mapitems with position:", position);
-            jsonHelper.getMapitems(completeUrl + '?view=' + view + '&latitude=' + position.latitude + "&longitude=" + position.longitude, resultProperty, afterDoneHook);
+            mapper.getMapitems(jqGetJSON(url + '?view=' + view + '&latitude=' + position.latitude + "&longitude=" + position.longitude), resultProperty, afterDoneHook);
         }
         , itemGET: function(itemId, resultProperty, afterDoneHook) {
-            //var completeUrl = apiUrl + 'items/';
-            var completeUrl = local_apiUrl + 'item_';
-            jsonHelper.getItem(completeUrl + itemId, resultProperty, afterDoneHook);
+            var url = 'items/';
+            //var url = 'item_';
+            mapper.getItem(jqGetJSON(url + itemId), resultProperty, afterDoneHook);
         }
         , itemsPOST: function(item) {
             var jqxhr = jqPost('items/', item);
