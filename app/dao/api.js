@@ -26,9 +26,9 @@ function(
                     jqXHR.setRequestHeader('authorization', settings.token());
                 }
             }
-        }).fail(function(a, b, c) {
-            window.console && console.log("(EE) request to " + completeUrl + " failed", a, b, c);
-            alert("(EE) request to " + completeUrl + " failed", a, b, c);
+        }).fail(function(data) {
+            window.console && console.log("(EE) request to " + completeUrl + " failed; status: " + data.status, data);
+            alert("(EE) request to " + completeUrl + " failed; status: " + data.status, data);
         });
     }
 
@@ -62,11 +62,7 @@ function(
             mapper.getItem(jqGetJSON(url + itemId + "/"), resultProperty, afterDoneHook);
         }
         , itemsPOST: function(item) {
-            var jqxhr = jqPost('items/', item);
-            jqxhr.fail(function(data) {
-                window.console && console.log("itemsPOST: failed; error status: " + data.status, data);
-            });
-            return jqxhr;
+            return jqPost('items/', item);
         }
     };
 
