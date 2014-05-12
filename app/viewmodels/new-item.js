@@ -4,7 +4,6 @@
 define([
     'knockout'
     , 'utils/holder'
-    , 'utils/json-helper'
     , 'plugins/router'
     , 'bootstrap-datepicker'
     , 'jquery'
@@ -15,7 +14,6 @@ define([
 function(
     ko
     , holder
-    , jsonHelper
     , router
     , datepicker
     , $
@@ -94,9 +92,8 @@ function(
             if(typeof(itemId) !== 'undefined') {
                 self.title('Artikel bearbeiten');
                 // load item data
-                jsonHelper.getItem(api_url + 'item_' + itemId, self.item, function() {
-                    window.console && console.log("item loaded:");
-                    window.console && console.log(self.item());
+                api.itemGET(itemId, self.item, function() {
+                    window.console && console.log("item loaded", self.item());
                     self.choosenAddress(self.item().loc.id);
                 });
             } else {
@@ -113,7 +110,6 @@ function(
             holder.compositionComplete();
         };
     };
-
 
     return new ViewModel();
 });
