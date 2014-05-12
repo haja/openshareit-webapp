@@ -83,9 +83,10 @@ function(
         self.activate = function(itemId) {
             // load data
             var api_url = "../../api/";
-            // TODO set default address
-            jsonHelper.getAddresses(api_url + "addresses_my", self.addresses, function() {
+            api.addressesGET(self.addresses, function() {
                 if(typeof(itemId) === 'undefined') {
+                    // TODO get default address from api
+                    // TODO handle case if no address is available
                     self.choosenAddress(self.addresses()[0].id);
                 }
             });
