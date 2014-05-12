@@ -13,11 +13,25 @@ define([
             self.city = ko.observable();
             self.province = ko.observable();
             self.country = ko.observable();
+
+            // UI data
+            self.isWorking = ko.observable(false);
         };
 
         CreateAddressDialog.prototype.createAddress = function() {
             window.console && console.log('TODO create address');
             this.id = ko.observable(99); // dummy id TODO remove this
+
+            this.isWorking(true);
+            // TODO this is a dummy demo
+            // TODO await response from api
+            var working = this.isWorking;
+            setTimeout(function() {
+                working(false);
+            }, 5000);
+            // TODO display error or close
+
+            /*
             dialog.close(this, {
                 id: this.id()
                 , street: this.street()
@@ -27,6 +41,7 @@ define([
                 , province: this.province()
                 , country: this.country()
             });
+            */
         };
 
         CreateAddressDialog.prototype.abort = function() {
