@@ -5,7 +5,6 @@ define([
     , 'underscore'
     , 'ko-bindings/google-maps-binding'
     , 'models/GMap'
-    , 'utils/json-helper'
     , 'dialogs/QueryItemDialog'
     , 'utils/geolocation'
     , 'dao/api'
@@ -17,7 +16,6 @@ function(
     , _
     , gmaps_binding
     , GMap
-    , jsonHelper
     , QueryItemDialog
     , geolocation
     , api
@@ -54,6 +52,7 @@ function(
         var self = this;
 
 
+        // TODO refactor this to general module
         var loadItemAsync = function(item) {
             window.console && console.log("loading itemId: " + item.id);
             // load data async if not already loaded
@@ -68,7 +67,7 @@ function(
                         item.isLoaded(true);
                         window.console && console.log("loaded item:", item);
                     }
-                    );
+                );
             }
         };
 
