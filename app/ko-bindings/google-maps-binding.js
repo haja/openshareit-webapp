@@ -1,4 +1,4 @@
-define(['knockout', 'jquery', 'durandal/composition', 'underscore', 'async!http://maps.google.com/maps/api/js?sensor=false'], function(ko, $, composition, _) {
+define(['knockout', 'jquery', 'durandal/composition', 'underscore', 'utils/geolocation', 'async!http://maps.google.com/maps/api/js?sensor=false'], function(ko, $, composition, _, geolocation) {
     var generateInfoWindowContent = function(loc) {
         var str;
         if(loc.items.length > 1) {
@@ -20,6 +20,8 @@ define(['knockout', 'jquery', 'durandal/composition', 'underscore', 'async!http:
         return str;
     };
 
+    var ownLocation;
+
     composition.addBindingHandler('map', {
         init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
             window.console&&console.log("loading google maps custom bindings");
@@ -32,11 +34,29 @@ define(['knockout', 'jquery', 'durandal/composition', 'underscore', 'async!http:
                 48.2, 16.2 /* only default until locations are loaded */
             );
 
-            var mapOptions = { center: latLng,
-                mapTypeId: google.maps.MapTypeId.ROADMAP};
+            var mapOptions = {
+                center: latLng
+                , mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
 
-                mapObj.googleMap = new google.maps.Map(element, mapOptions);
-                $(element).data("mapObj",mapObj);
+            mapObj.googleMap = new google.maps.Map(element, mapOptions);
+            $(element).data("mapObj",mapObj);
+
+            geolocation.getLocationCached(function(pos) {
+                window.console && console.log("setting own position on map", pos);
+                ownLocation = new google.maps.Marker({
+                    clickable: false
+                    , icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png'
+                        , new google.maps.Size(22,22)
+                        , new google.maps.Point(0,18)
+                        , new google.maps.Point(11,11)
+                    )
+                    , shadow: null
+                    , zIndex: 999
+                    , map: mapObj.googleMap
+                });
+                ownLocation.setPosition(new google.maps.LatLng(pos.latitude, pos.longitude));
+            });
         },
         update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
             var mapWrapper = ko.utils.unwrapObservable(valueAccessor());

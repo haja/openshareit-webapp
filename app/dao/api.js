@@ -28,7 +28,7 @@ function(
             }
         }).fail(function(data) {
             window.console && console.log("(EE) request to " + completeUrl + " failed; status: " + data.status, data);
-            alert("(EE) request to " + completeUrl + " failed; status: " + data.status, data);
+            //alert("(EE) request to " + completeUrl + " failed; status: " + data.status, data);
         });
     }
 
