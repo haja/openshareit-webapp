@@ -27,8 +27,7 @@ function(
             {
                 name: 'Meine Artikel'
                 , query: function() {
-                    api.itemsGETwithRequests('my-items' // TODO check if this is the right view name
-                        , self.items,
+                    api.itemsGETwithRequests('myitems', self.items,
                         function() {
                             window.console && console.log("my-items: queryChanged: got requests!");
                             if(self.requestToActivate) {
@@ -53,13 +52,11 @@ function(
             }
             , {
                 name: 'Angefragte Artikel'
-                , query: _.partial(api.itemsGETwithRequests, 'items_queried' // TODO check this view param
-                , self.items)
+                , query: _.partial(api.itemsGETwithRequests, 'reqitems', self.items)
             }
             , {
                 name: 'Abgeholte Artikel'
-                , query: _.partial(api.itemsGETwithRequests, 'items_picked_up' // TODO check this view param
-                , self.items)
+                , query: _.partial(api.itemsGETwithRequests, 'fetcheditems', self.items)
             }
         ]);
 
