@@ -1,7 +1,6 @@
 define([
     'knockout'
     , 'utils/holder'
-    , 'utils/json-helper'
     , 'plugins/router'
     , 'dialogs/CreateAddressDialog'
     , 'dao/api'
@@ -9,7 +8,6 @@ define([
 function(
     ko
     , holder
-    , jsonHelper
     , router
     , CreateAddressDialog
     , api

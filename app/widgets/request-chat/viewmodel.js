@@ -1,20 +1,10 @@
 define([
-    'knockout'
-    , 'underscore'
-    , 'holderjs'
-    , 'utils/json-helper'
-    , 'utils/QueryType'
+    'holderjs'
     , 'dialogs/UserDetailsDialog'
-    , 'plugins/router'
 ],
 function(
-    ko
-    , _
-    , holder
-    , jsonHelper
-    , QueryType
+    holder
     , UserDetailsDialog
-    , router
 ) {
     var ctor = function() {};
 
@@ -34,10 +24,6 @@ function(
         window.console && console.log("showUserDialog: ", request);
         UserDetailsDialog.show(request.from);
     };
-
-
-
-
 
 
     ctor.prototype.compositionComplete = holder.compositionComplete;

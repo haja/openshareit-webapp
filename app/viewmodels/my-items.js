@@ -3,7 +3,6 @@ define([
     , 'utils/holder'
     , 'plugins/router'
     , 'dialogs/CreateAddressDialog'
-    , 'utils/QueryType'
     , 'dialogs/UserDetailsDialog'
     , 'dao/api'
 ],
@@ -12,7 +11,6 @@ function(
     , holder
     , router
     , CreateAddressDialog
-    , QueryType
     , UserDetailsDialog
     , api
 ) {
