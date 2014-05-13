@@ -55,6 +55,8 @@ d aktuelle adresse highlighten + ausgewählte hinschreiben; radiobutton + highli
 o kalender auf mobile/mac richtig implementieren (mozilla bricks?)
 
 d kein drop-down menu, logout button neben "mein profil"
+? GET auf users sollte eigenes profil/user liefern.
+? POST/PATCH auf users soll eigenes profil ändern
 
 o push-notifications
 
