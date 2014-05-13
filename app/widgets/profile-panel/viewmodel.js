@@ -1,12 +1,12 @@
 define([
     'knockout'
     , 'utils/holder'
-    , 'utils/json-helper'
+    , 'dao/api'
 ],
 function(
     ko
     , holder
-    , jsonHelper
+    , api
 ) {
     var ctor = function() {};
 
@@ -16,8 +16,7 @@ function(
         self.profile = ko.observable();
 
         // load data
-        var api_url = "../../api/"
-        jsonHelper.getProfile(api_url + "profile_my", self.profile);
+        api.profileGET(self.profile);
     };
 
     ctor.prototype.compositionComplete = holder.compositionComplete;

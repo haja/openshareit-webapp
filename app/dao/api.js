@@ -80,6 +80,10 @@ function(
             var url = 'addresses/';
             mapper.getAddresses(jqGetJSON(url), resultProperty, afterDoneHook);
         }
+        , profileGET: function(resultProperty, afterDoneHook) {
+            var url = 'users/';
+            mapper.getProfile(jqGetJSON(url), resultProperty, afterDoneHook);
+        }
     };
 
     return api;
