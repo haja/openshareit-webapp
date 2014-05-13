@@ -48,6 +48,9 @@ o fragen an david:
 itemView:
 d buttons nicht unterhalb, sondern richtiges float:right / rechts neben text
 
+addresses:
+? POST auf addresses/ liefert 400 / 500
+
 mein profil:
 d adressen -> meine adressen
 d abholdatum -> abholfrist
