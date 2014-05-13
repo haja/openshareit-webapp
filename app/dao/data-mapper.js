@@ -30,11 +30,13 @@ function(
     var propertySelector = function(selector, mapper, data, Ctor) {
         return mapper(data[selector], Ctor);
     };
+    // TODO needs api spec for requests
     var getRequestsForItems = function(url, items, afterDoneHook) {
         _.each(items(), function(item) {
             getWithCtor(_.partial(propertySelector, 'requests', arrayMapper), Request, url + item.id, item.requests, afterDoneHook);
         });
     };
+    // TODO needs api spec for requests
     var getRequestsForSingleItem = function(url, item, afterDoneHook) {
         getWithCtor(_.partial(propertySelector, 'requests', arrayMapper), Request, url + item().id, item().requests, afterDoneHook);
     };

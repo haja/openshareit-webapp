@@ -1,20 +1,20 @@
 define([
     'knockout'
     , 'utils/holder'
-    , 'utils/json-helper'
     , 'plugins/router'
     , 'dialogs/CreateAddressDialog'
     , 'utils/QueryType'
     , 'dialogs/UserDetailsDialog'
+    , 'dao/api'
 ],
 function(
     ko
     , holder
-    , jsonHelper
     , router
     , CreateAddressDialog
     , QueryType
     , UserDetailsDialog
+    , api
 ) {
     var log = function(msg) { window.console && console.log(msg); };
     var ViewModel = function() {
@@ -26,10 +26,11 @@ function(
 
         var api_url = "../../api/"
         self.queryTypes = ko.observableArray([
-            new QueryType('Meine Artikel', 'items_my',
-                function(items) {
-                    self.items(items);
-                    jsonHelper.getRequestsForItems(api_url + "request/", self.items,
+            {
+                name: 'Meine Artikel'
+                , query: function() {
+                    api.itemsGETwithRequests('my-items' // TODO check if this is the right view name
+                        , self.items,
                         function() {
                             window.console && console.log("my-items: queryChanged: got requests!");
                             if(self.requestToActivate) {
@@ -51,9 +52,17 @@ function(
                             }
                         });
                 }
-            )
-            , new QueryType('Angefragte Artikel', 'items_queried', self.items)
-            , new QueryType('Abgeholte Artikel', 'items_picked_up', self.items)
+            }
+            , {
+                name: 'Angefragte Artikel'
+                , query: _.partial(api.itemsGETwithRequests, 'items_queried' // TODO check this view param
+                , self.items)
+            }
+            , {
+                name: 'Abgeholte Artikel'
+                , query: _.partial(api.itemsGETwithRequests, 'items_picked_up' // TODO check this view param
+                , self.items)
+            }
         ]);
 
         self.showUserDialog = function(request) {

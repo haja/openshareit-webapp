@@ -14,7 +14,7 @@ function(
     var local_apiUrl = "../../api/";
 
     var doAjax = function(type, relativeUrl, data, dataType) {
-        var completeUrl = local_apiUrl + relativeUrl; // TODO change this to none-local url
+        var completeUrl = apiUrl + relativeUrl;
         return $.ajax({
             type: type
             , url: completeUrl
@@ -61,11 +61,23 @@ function(
             //var url = 'item_';
             mapper.getItem(jqGetJSON(url + itemId + "/"), resultProperty, afterDoneHook);
         }
+        , itemsGET: function(view, resultProperty, afterDoneHook) {
+            var url = 'items/';
+            mapper.getItems(jqGetJSON(url + '?view=' + view), resultProperty, afterDoneHook);
+        }
+        , itemsGETwithRequests: function(view, resultProperty, afterDoneHook) {
+            var requetsUrl = 'requests/';
+            api.itemsGET(view, resultProperty,
+            afterDoneHook);
+            /*function() {
+                getRequestsForItems(jqGetJSON(requestsUrl), resultProperty, afterDoneHook); // TODO implement correctly, api needs to specify
+                }); */
+        }
         , itemsPOST: function(item) {
             return jqPost('items/', item);
         }
         , addressesGET: function(resultProperty, afterDoneHook) {
-            var url = 'addresses_my';
+            var url = 'addresses/';
             mapper.getAddresses(jqGetJSON(url), resultProperty, afterDoneHook);
         }
     };
