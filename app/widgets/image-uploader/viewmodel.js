@@ -1,21 +1,13 @@
 define([
-    'knockout'
-    , 'durandal/composition'
-    , 'utils/holder'
-    , 'utils/json-helper'
+    'durandal/composition'
     , 'jquery'
 ],
 function(
-    ko
-    , composition
-    , holder
-    , jsonHelper
+    composition
     , $
 )
 {
-    var log = function(msg) {
-        window.console && console.log(msg);
-    };
+    var log = (window.console ? console.log : function() {});
     var ctor = function() {};
     var URL, parts;
 
@@ -27,8 +19,7 @@ function(
     };
 
     ctor.prototype.attached = function(view) {
-        log("composition:");
-        log(composition.getParts(view));
+        log("composition:", composition.getParts(view));
         parts = composition.getParts(view);
     };
 
@@ -38,20 +29,14 @@ function(
     }
 
     ctor.prototype.handleFiles = function(data, event) {
-        log("handleFiles: ");
-        log(data);
-        log("event: ");
-        log(event);
+        log("handleFiles: ", data, event, composition);
         var files = event.currentTarget.files;
-        log("composition:");
-        log(composition);
 
         if (!files.length) {
             log("no files.length");
         } else {
             var list = $(parts.fileList).children("ul:first-of-type");
-            log("list:");
-            log(list);
+            log("list:", list);
 
             for (var i = 0; i < files.length; i++) {
                 log("copy li");
@@ -63,7 +48,7 @@ function(
                     window.URL.revokeObjectURL(this.src);
                 } });
             }
-            log(list);
+            log("new list:", list);
         }
     }
 
