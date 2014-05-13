@@ -1,0 +1,11 @@
+<div>
+  <div data-part="fileElem">
+    <input type="file" style="display: none" accept="image/*" data-bind="event: { change: handleFiles }" />
+  </div>
+  <div data-part="currentFile">
+    <a href="#" data-bind="click: addPhoto">
+      <img alt="thumbnail" title="Foto ändern..." src="/static/thumbnails/profile-default.png"  class="img-thumbnail">
+    </a>
+    <a type="button" style="position: relative; top: -45px; left: -10px; z-index: 1" class="btn btn-default pull-right" href="#" data-bind="click: addPhoto">Foto ändern</a>
+  </div>
+</div>

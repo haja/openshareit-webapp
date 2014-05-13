@@ -29,11 +29,15 @@
           </div>
         </div>
         <div class="col-xs-12 col-md-4">
-          <div class="panel">
+          <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">
-                TODO profilbild
+                Profilbild
               </h3>
+            </div>
+            <div class="panel-body">
+              <div data-bind="widget: { kind: 'image-uploader-single' }">
+              </div>
             </div>
           </div>
           <button type="submit" class="btn btn-primary pull-right" tabindex="7"><i class="fa fa-spinner fa-spin" data-bind="visible: isWorking"></i> Profil speichern</button>
