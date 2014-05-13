@@ -1,11 +1,11 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Profilfoto</h3>
+    <h3 class="panel-title">Profil</h3>
   </div>
   <div class="panel-body" data-bind="with: profile">
-    <img class="img-thumbnail" alt="thumbnail" title="thumbnail" data-src="holder.js/200x200/text:Foto hinzufuegen">
+    <img class="img-thumbnail" alt="thumbnail" title="thumbnail" data-src="holder.js/200x200/text:Dein Profilbild">
     <table class="profile-details">
-      <tr><th>Name:</th><td data-bind="text: firstName + ' ' + lastName"></td></tr>
+      <tr><th>Name:</th><td data-bind="text: first_name + ' ' + last_name"></td></tr>
       <tr><th>beigetreten am:</th><td data-bind="text: getDateJoinedAsString()"></td></tr>
       <tr><th>e-mail:</th><td data-bind="text: email"></td></tr>
     </table>

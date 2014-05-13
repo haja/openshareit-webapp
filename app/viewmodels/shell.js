@@ -59,6 +59,13 @@ define(['plugins/router', 'knockout', 'models/settings', 'ko-bindings/bootstrap-
                     , type: 'authenticated'
                 },
                 {
+                    route: 'my-profile/edit',
+                    title: 'Mein Profil bearbeiten',
+                    moduleId: 'viewmodels/edit-profile',
+                    nav: false
+                    , type: 'authenticated'
+                },
+                {
                     route: 'my-profile', // TODO change this
                     htmlTitle:'<span class="glyphicon glyphicon-envelope"></span>',
                     title: 'Posteingang',

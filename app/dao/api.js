@@ -85,7 +85,7 @@ function(
             return jqPost(url, address);
         }
         , profileGET: function(resultProperty, afterDoneHook) {
-            var url = 'users/';
+            var url = 'users/1/'; // TODO change this, remove id
             mapper.getProfile(jqGetJSON(url), resultProperty, afterDoneHook);
         }
     };
