@@ -40,9 +40,10 @@ o adresse wählen: ganzes panel klickbar machen
 
 o validierung: meldung, falls daten fehlerhaft, servermeldung anzeigen?
 
-o fragen an david: 
-    - pickupDeadline: dateformat?
-    - user? should be handled by server
+? fragen an david: 
+    ? pickupDeadline: dateformat?
+    ? bilder? upload? verlinkung in artikel?
+    ? artikel-status? atomare aktion? ergibt sich implizit aus anderen rest-calls?
 
 
 itemView:
