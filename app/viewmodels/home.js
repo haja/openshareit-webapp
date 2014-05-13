@@ -153,7 +153,7 @@ function(
         };
 
         self.queryTypes = ko.observableArray([
-            new QueryTypeImpl('Nähe', 'near', self.mapitems)
+            new QueryTypeImpl('Nähe', 'distance', self.mapitems)
             , new QueryTypeImpl('Aktualität', 'fresh', self.mapitems)
             , new QueryTypeImpl('Abholdatum', 'pick_up', self.mapitems)
         ]);

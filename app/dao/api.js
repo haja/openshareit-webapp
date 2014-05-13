@@ -23,12 +23,14 @@ function(
             , beforeSend: function(jqXHR, jqSettings) {
                 if(settings.getAuthenticationState() === 'authenticated') {
                     window.console && console.log("adding authorization token to request " + relativeUrl);
-                    jqXHR.setRequestHeader('authorization', settings.token());
+                    jqXHR.setRequestHeader('Authorization', settings.token());
                 }
             }
         }).fail(function(data) {
             window.console && console.log("(EE) request to " + completeUrl + " failed; status: " + data.status, data);
             //alert("(EE) request to " + completeUrl + " failed; status: " + data.status, data);
+        }).done(function(data) {
+            window.console && console.log("response for " + completeUrl, data);
         });
     }
 
@@ -41,7 +43,7 @@ function(
         login: function(email, password, successFn, failFn) {
             jqPost('login/', 'username=' + email + '&password=' + password)
             .done(function(data) {
-                settings.token(data.token);
+                settings.token("Token " + data.token);
                 window.console && console.log("Successfully logged in! settings:", settings);
                 successFn(data);
             })
@@ -49,12 +51,11 @@ function(
                 failFn();
             });
         }
-        , mapitemsGET: function(position, view, resultProperty, afterDoneHook) {
-            // TODO view === ordering? api needs to specify
+        , mapitemsGET: function(position, order, resultProperty, afterDoneHook) {
             var url = 'mapitems/';
             //var url = 'mapitems';
             window.console && console.log("loading mapitems with position:", position);
-            mapper.getMapitems(jqGetJSON(url + '?view=' + view + '&latitude=' + position.latitude + "&longitude=" + position.longitude), resultProperty, afterDoneHook);
+            mapper.getMapitems(jqGetJSON(url + '?order=' + order + '&latitude=' + position.latitude + "&longitude=" + position.longitude), resultProperty, afterDoneHook);
         }
         , itemGET: function(itemId, resultProperty, afterDoneHook) {
             var url = 'items/';
@@ -74,6 +75,7 @@ function(
                 }); */
         }
         , itemsPOST: function(item) {
+            item.user = 1; // TODO remove this, for debugging only
             return jqPost('items/', item);
         }
         , addressesGET: function(resultProperty, afterDoneHook) {
@@ -85,7 +87,7 @@ function(
             return jqPost(url, address);
         }
         , profileGET: function(resultProperty, afterDoneHook) {
-            var url = 'users/1/'; // TODO change this, remove id
+            var url = 'users/';
             mapper.getProfile(jqGetJSON(url), resultProperty, afterDoneHook);
         }
     };

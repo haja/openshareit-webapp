@@ -27,11 +27,12 @@ function(
         // data
         self.title = ko.observable();
         self.addresses = ko.observableArray([]);
-        self.choosenAddress = ko.observable();
+        self.choosenAddress = ko.observable(-1);
         self.item = ko.observable({});
         var dateformat = {
             'moment': 'DD.MM.YYYY'
             , 'datepicker': 'dd.mm.yyyy'
+            , 'api': 'YYYY-MM-DDTHH:mm'
         };
         self.pickupDate = ko.observable(moment().add('d', 1).format(dateformat.moment));
 
@@ -58,7 +59,7 @@ function(
                 && item.description !== ''
             ) {
                 item.location = self.choosenAddress();
-                item.pickupDeadline = self.pickupDate();
+                item.pickupDeadline = moment(self.pickupDate(), dateformat.moment).format(dateformat.api);
 
                 item.status = 'READY'; // TODO is this correct? should serer handle this?
 
@@ -81,7 +82,8 @@ function(
         self.activate = function(itemId) {
             // load data
             var api_url = "../../api/";
-            api.addressesGET(self.addresses, function() {
+            api.addressesGET(function(addresses) {
+                self.addresses(addresses);
                 if(typeof(itemId) === 'undefined') {
                     // TODO get default address from api
                     // TODO handle case if no address is available
