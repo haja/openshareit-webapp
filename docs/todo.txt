@@ -13,8 +13,9 @@ d pfeil auf item einblenden (damit man sieht, dass es aufklappt)
 d karte: mehrere artikel gruppieren -> mapitems
 d komplettes item onClick nachladen
 o itemliste zu aktiven items scrollen
-o mehr infos von mapitem verwenden (desc, user.first_name)
-o aktuelle position auf der karte anzeigen
+d mehr infos von mapitem verwenden (desc, user.first_name)
+? user/address bei GET auf items/pk/ nachladen? oder soll er mitgeschickt werden?
+d aktuelle position auf der karte anzeigen
 o bugfix: infoWindow verschwindet/wird nicht mehr geöffnet (wenn man seite wechselt und wieder zurück kommt. sollte neu geladen werden)
 d infoWindow: titel: name des ersten items und " + x weitere", und darunter liste mit allen items
 ? pagination? soll umblättern möglich sein / wie implementieren?

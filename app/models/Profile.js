@@ -1,9 +1,11 @@
 define([
     'knockout'
     , 'moment'
+    , 'dao/api-dateformat'
     ], function(
         ko
         , moment
+        , api_dateformat
     ) {
         var Ctor = function Profile(data) {
             var self = this;
@@ -11,7 +13,7 @@ define([
             self.first_name = data.first_name;
             self.last_name = data.last_name;
             self.email = data.email;
-            self.dateJoined = moment(data.date_joined, 'YYYY-MM-DD-HH:mm:ss.SSS-');// date format: yyyy-mm-ddThh:mm:ssZ
+            self.dateJoined = moment(data.date_joined, api_dateformat.momentParseFormat);
 
             self.getDateJoinedAsString = function() {
                 return self.dateJoined.format('DD.MM.YYYY');
