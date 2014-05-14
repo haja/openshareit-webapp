@@ -1,11 +1,12 @@
-define(['knockout', 'models/User'], function(ko, User) {
+define(['knockout', 'models/User', 'models/Address'], function(ko, User, Address) {
     var Ctor = function Item(item) {
         var self = this;
         self.id = item.id;
         self.name = item.name;
-        self.loc = item.location;
+        self.loc = new Address(item.location);
         self.description = item.description;
         self.user = new User(item.user);
+        self.pickupDeadline = item.pickupDeadline
 
         // requests
         self.requests = ko.observableArray();

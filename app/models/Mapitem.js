@@ -15,6 +15,9 @@ define([
             if(typeof(it.description) === 'undefined') {
                 it.description = '';
             }
+            if(typeof(it.location) === 'undefined') {
+                it.location = {};
+            }
             newIt = new Item(it);
             newIt.isLoaded = ko.observable(false);
             return newIt;
