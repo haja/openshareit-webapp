@@ -15,7 +15,7 @@ define([
                     var loc = mapitem.coordinates;
                     return { latitude: loc.latitude
                         , longitude: loc.longitude
-                        , id: mapitem.items[0].id // one item must be present, use this id for this mapitem
+                        , id: mapitem.items[0].id() // one item must be present, use this id for this mapitem
                         , active: _.reduce(mapitem.items, function(memo, item) {
                             return memo || item.active();
                         }, false)

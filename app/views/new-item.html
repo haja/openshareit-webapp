@@ -32,7 +32,7 @@
 
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title">Abholadresse wählen (<span data-bind="text: 'Adresse ' + choosenAddress() + ' gewählt'"></span>)</h3>
+              <h3 class="panel-title">Abholadresse wählen</h3>
             </div>
             <div class="panel-body">
               <div class="row">
@@ -42,7 +42,6 @@
                     <div class="address panel" data-bind="css: { 'panel-default': id.toString() !== $parent.choosenAddress().toString(), 'panel-primary': id.toString() === $parent.choosenAddress().toString() }">
                       <div class="panel-body">
                         <p>
-                        <strong><span data-bind="text: 'Adresse ' + id"></span></strong><br /><br />
                         <span data-bind="text: street + ' ' + houseNumber"></span><br />
                         <span data-bind="text: postalCode + ' ' + city"></span>
                         </p>

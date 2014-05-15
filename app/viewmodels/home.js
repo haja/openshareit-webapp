@@ -54,16 +54,15 @@ function(
 
         // TODO refactor this to general module
         var loadItemAsync = function(item) {
-            window.console && console.log("loading itemId: " + item.id);
+            window.console && console.log("loading itemId: " + item.id());
             // load data async if not already loaded
-            var loadedItem = self.loadedItemsFull()[item.id];
+            var loadedItem = self.loadedItemsFull()[item.id()];
             if(typeof(loadedItem) === 'undefined') {
-                api.itemGET(item.id
+                api.itemGET(item.id()
                     , function(fullItem) {
                         var itemsHashMap = self.loadedItemsFull();
-                        item.setData(fullItem);
-                        itemsHashMap[item.id] = item;
-                        //self.loadedItemsFull(itemsHashMap); // not needed?
+                        item.setDataFromItem(fullItem);
+                        itemsHashMap[item.id()] = item;
                         item.isLoaded(true);
                         window.console && console.log("loaded item:", item);
                     }
@@ -125,14 +124,6 @@ function(
                 return { items: a.items.concat(b.items) };
             }, { items: [] }).items;
 
-            // replace already loaded items
-            _.each(itemsComputed, function(elem, idx, list) {
-                var fullItem = self.loadedItemsFull()[elem.id];
-                if(typeof(fullItem) !== 'undefined') {
-                    list[idx] = fullItem;
-                }
-            });
-
             window.console && console.log("ItemsViewModel: items: computed again:", itemsComputed);
             return itemsComputed;
         });
@@ -146,8 +137,14 @@ function(
                 }
             });
         };
+        /** open a modal dialog to show user details */
+        self.showUserDialog = function(item) {
+            window.console && console.log("showUserDialog " + item.user().getFullName());
+            UserDetailsDialog.show(item.user());
+        };
         self.actions = {
             showQueryItemDialog: self.showQueryItemDialog
+            , showUserDialog: self.showUserDialog
             , setActive: self.setActive
             , toggleActive: self.toggleActive
         };

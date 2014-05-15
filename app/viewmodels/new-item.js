@@ -96,7 +96,7 @@ function(
                 // load item data
                 api.itemGET(itemId, self.item, function() {
                     window.console && console.log("item loaded", self.item());
-                    self.choosenAddress(self.item().loc.id);
+                    self.choosenAddress(self.item().loc().id);
                 });
             } else {
                 self.title('Artikel anlegen');

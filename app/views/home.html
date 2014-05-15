@@ -27,43 +27,57 @@
             <div class="panel"
               data-bind="css: { 'panel-default': !active(), 'panel-primary': active() }, click: $parent.actions.toggleActive">
               <div class="panel-body">
-                <div data-bind="ifnot: active">
+                <div data-bind="visible: !active() || (active() && !isLoaded())">
                   <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                  <span data-bind="visible: active() && !isLoaded()" class="pull-right">
+                    <!-- loading spinner -->
+                    <i class="fa fa-spinner fa-spin fa-3x"></i>
+                  </span>
                   <!-- <img alt="thumbnail" title="thumbnail" data-src="holder.js/100x100/text:Thumbnail" style="float: left; margin-right: 15px;" class="img-thumbnail"> -->
-                  <img alt="thumbnail" title="thumbnail" src="../../static/thumbnails/ic_sackerl_ph_light.png" style="float: left; margin-right: 15px;" class="img-thumbnail">
+                  <img alt="thumbnail" title="thumbnail" src="/static/thumbnails/ic_sackerl_ph_light.png" style="float: left; margin-right: 15px;" class="img-thumbnail">
                   <div style="overflow: hidden" data-bind="attr: { 'id': 'item_' + $data.id }">
                     <h4 data-bind="text: name" ></h4>
 
                     <p>
                     <span data-bind="text: description"></span><br />
-                    User: <span data-bind="text: user.firstName"></span><br />
+                    User: <span data-bind="text: user().firstName"></span><br />
                     <!--
-                    <span data-bind="text: loc.postalCode + ' ' + loc.city"></span>
+                    <span data-bind="text: loc().postalCode + ' ' + loc().city"></span>
                     -->
                     </p>
                   </div>
                 </div>
 
-                <div class="position-base" data-bind="visible: active">
-                  <div data-bind="ifnot: isLoaded">
-                    <!-- loading spinner -->
-                    <i class="fa fa-spinner fa-spin fa-3x"></i>
+                <div class="position-base" data-bind="visible: active() && isLoaded()">
+                  <div class"btn-panel-right">
+                    <span class="glyphicon glyphicon-chevron-up pull-right"></span>
+                    <button type="button" class="btn btn-primary btn-right-bottom"
+                      data-bind="
+                      click: $parent.actions.showQueryItemDialog
+                      , clickBubble: false"
+                      >Anfragen</button>
                   </div>
-                  <div data-bind="if: isLoaded">
-                    <div class"btn-panel-right">
-                      <span class="glyphicon glyphicon-chevron-up pull-right"></span>
-                      <button type="button" class="btn btn-primary btn-right-bottom"
-                        data-bind="
-                        click: $parent.actions.showQueryItemDialog
-                        , clickBubble: false"
-                        >Anfragen</button>
-                    </div>
-                    <div 
-                      data-bind="compose: {
-                      model: 'templates/itemViewFull'
-                      , activationData: { item: $data, parent: $parent }
-                      , mode: 'templated'
-                      , preserveContext: true }">
+
+                  <!-- was itemsViewFull -->
+                  <img alt="thumbnail" title="thumbnail" src="/static/thumbnails/ic_sackerl_ph_light.png" style="float: left; margin-right: 15px;" class="img-thumbnail">
+                  <div style="overflow: hidden" data-bind="attr: { 'id': 'item_' + $data.id }">
+                    <h4 data-bind="text: name" ></h4>
+                    <div>
+                      <p>
+                      <span data-bind="text: description"></span><br />
+                      User: <a href="#" data-bind="
+                        click: $parent.actions.showUserDialog
+                        , clickBubble: false
+                        "><span data-bind="text: user().getFullName"></span></a><br />
+                      <span data-bind="text: loc().street + ' ' + loc().houseNumber"></span><br />
+                      <span data-bind="text: loc().postalCode + ' ' + loc().city"></span><br />
+                      <span data-bind="text: loc().country"></span><br />
+                      Abholfrist: <span data-bind="text: getPickupDeadlineAsString()"></span>
+                      <div style="float: right">
+                        <div data-part="bottom-right">
+                        </div>
+                      </div>
+                      </p>
                     </div>
                   </div>
                 </div>

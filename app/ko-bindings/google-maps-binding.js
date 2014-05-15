@@ -2,7 +2,7 @@ define(['knockout', 'jquery', 'durandal/composition', 'underscore', 'utils/geolo
     var generateInfoWindowContent = function(loc) {
         var str;
         if(loc.items.length > 1) {
-            str = "<h5>" + loc.items[0].name + " + " + (loc.items.length - 1);
+            str = "<h5>" + loc.items[0].name() + " + " + (loc.items.length - 1);
             if(loc.items.length === 2) {
                 // only one more item
                 str = str + " weiterer";
@@ -11,11 +11,11 @@ define(['knockout', 'jquery', 'durandal/composition', 'underscore', 'utils/geolo
             }
             str = str + " Artikel</h5><ul>";
             _.each(loc.items, function(item) {
-                str = str + "<li>" + item.name + "</li>";
+                str = str + "<li>" + item.name() + "</li>";
             });
             str = str + "</ul>";
         } else {
-            str = "<h5>" + loc.items[0].name + "</h5>";
+            str = "<h5>" + loc.items[0].name() + "</h5>";
         }
         return str;
     };
