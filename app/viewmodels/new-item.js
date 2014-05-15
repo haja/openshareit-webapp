@@ -113,5 +113,5 @@ function(
         };
     };
 
-    return new ViewModel();
+    return ViewModel;
 });

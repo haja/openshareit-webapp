@@ -156,5 +156,5 @@ function(
         ]);
     };
 
-    return new ItemsViewModel();
+    return ItemsViewModel;
 });
