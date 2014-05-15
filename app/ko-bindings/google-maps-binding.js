@@ -20,7 +20,7 @@ define(['knockout', 'jquery', 'durandal/composition', 'underscore', 'utils/geolo
         return str;
     };
 
-    var ownLocation;
+    var ownLocation = ko.observable();
 
     composition.addBindingHandler('map', {
         init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
@@ -44,7 +44,7 @@ define(['knockout', 'jquery', 'durandal/composition', 'underscore', 'utils/geolo
 
             geolocation.getLocationCached(function(pos) {
                 window.console && console.log("setting own position on map", pos);
-                ownLocation = new google.maps.Marker({
+                ownLocation(new google.maps.Marker({
                     clickable: false
                     , icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png'
                         , new google.maps.Size(22,22)
@@ -54,8 +54,8 @@ define(['knockout', 'jquery', 'durandal/composition', 'underscore', 'utils/geolo
                     , shadow: null
                     , zIndex: 999
                     , map: mapObj.googleMap
-                });
-                ownLocation.setPosition(new google.maps.LatLng(pos.latitude, pos.longitude));
+                    , position: new google.maps.LatLng(pos.latitude, pos.longitude)
+                }));
             });
         },
         update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
@@ -110,6 +110,10 @@ define(['knockout', 'jquery', 'durandal/composition', 'underscore', 'utils/geolo
                 // center & zoom map to show all markers
                 bounds.extend(latLng);
             });
+            // add own position to shown markers
+            if(ownLocation() && ownLocation().getPosition()) {
+                bounds.extend(ownLocation().getPosition());
+            }
             mapWrapper.data.map.googleMap.fitBounds(bounds);
 
             /* TODO fixme
