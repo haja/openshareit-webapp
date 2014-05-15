@@ -10,6 +10,7 @@ define([
     , 'moment'
     , 'dialogs/CreateAddressDialog'
     , 'dao/api'
+    , 'underscore'
 ],
 function(
     ko
@@ -20,6 +21,7 @@ function(
     , moment
     , CreateAddressDialog
     , api
+    , _
 ) {
     var ViewModel = function() {
         var self = this;
@@ -44,7 +46,22 @@ function(
                     self.addresses.push(response);
                 }
             });
-        }
+        };
+
+        self.getChoosenAddress = function() {
+            var choosenAddr = parseInt(self.choosenAddress());
+            var addr = _.find(self.addresses(), function(address) {
+                return address.id === choosenAddr;
+            });
+            if(typeof(addr) === 'undefined') {
+                return {
+                    street: ''
+                    , houseNumber: ''
+                };
+            } else {
+                return addr;
+            }
+        };
 
         self.submitNewItem = function(form) {
             var jqxhr;

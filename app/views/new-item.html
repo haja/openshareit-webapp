@@ -37,7 +37,9 @@
             <div class="panel-body">
               <div class="row">
                 <div class="col-xs-12">
-                  <ul class="vertical-list" data-bind="foreach: addresses">
+                  <div style="margin-bottom: 14px">gewählte Adresse: <span data-bind="text: getChoosenAddress().street + ' ' + getChoosenAddress().houseNumber"></span></div>
+                  <ul class="vertical-list">
+                    <!-- ko foreach: addresses -->
                     <li>
                     <div class="address panel" data-bind="css: { 'panel-default': id.toString() !== $parent.choosenAddress().toString(), 'panel-primary': id.toString() === $parent.choosenAddress().toString() }">
                       <div class="panel-body">
@@ -51,12 +53,16 @@
                       </div>
                     </div>
                     </li>
+                    <!-- /ko -->
+                    <li>
+                    <button class="panel panel-default btn btn-default" type="button" data-bind="click: showCreateAddressDialog">
+                      <div class="panel-body">
+                        <i class="fa fa-plus fa-2x"></i><br />
+                        Neue<br />Addresse anlegen
+                      </div>
+                    </button>
+                    </li>
                   </ul>
-                </div>
-                <div class="col-xs-12">
-                  <div style="float: right">
-                    <button class="btn btn-default" type="button" data-bind="click: showCreateAddressDialog">Addresse hinzufügen</button>
-                  </div>
                 </div>
               </div>
             </div>
