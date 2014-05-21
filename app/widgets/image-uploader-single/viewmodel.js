@@ -7,7 +7,6 @@ function(
     , $
 )
 {
-    var log = (window.console ? console.log : function() {});
     var ctor = function() {};
     var URL, parts;
 
@@ -19,25 +18,25 @@ function(
     };
 
     ctor.prototype.attached = function(view) {
-        log("composition:", composition.getParts(view));
+        window.console&&console.log("composition:", composition.getParts(view));
         parts = composition.getParts(view);
     };
 
     ctor.prototype.addPhoto = function() {
-        log("addPhoto");
+        window.console&&console.log("addPhoto");
         $(parts.fileElem).children("input:first-of-type").click();
     }
 
     ctor.prototype.handleFiles = function(data, event) {
-        log("handleFiles: ", data, event, composition);
+        window.console&&console.log("handleFiles: ", data, event, composition);
         var files = event.currentTarget.files;
 
         if (!files.length || files.length < 1) {
-            log("no files.length");
+            window.console&&console.log("no files.length");
         } else {
             var addFileLink = $(parts.currentFile).children("a:first-of-type");
 
-            log("set img");
+            window.console&&console.log("set img");
             var img = $(addFileLink).children("img:first-of-type").attr({
                 src: URL.createObjectURL(files[0]), onload: function(e) {
                     window.URL.revokeObjectURL(this.src);
