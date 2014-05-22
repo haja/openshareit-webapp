@@ -26,6 +26,14 @@ define(['plugins/router', 'knockout', 'models/settings', 'ko-bindings/bootstrap-
                     , type: 'authenticated'
                 },
                 {
+                    route: 'about'
+                    , title: 'Über uns'
+                    , htmlTitle: 'Über uns'
+                    , moduleId: 'viewmodels/about'
+                    , nav: true
+                    , navDisplayStyle: 'left'
+                },
+                {
                     route: 'my-items/new-item',
                     title:'Artikel anlegen',
                     htmlTitle:'Artikel anlegen',

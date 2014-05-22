@@ -88,7 +88,7 @@ sonstiges:
 o aritkelstatus? abgeholt setzten können, etc...
 
 ? webkit testing / safari
-o about mit dummy-text
+d about mit dummy-text
 - "konto löschen" in profil bearbeiten verschieben
 
 d david fragen wegen hosting
