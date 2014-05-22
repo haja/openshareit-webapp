@@ -11,6 +11,7 @@ define([
                 first_name: ""
                 , last_name: ""
                 , email: ""
+                , phoneNumber: ""
             });
 
             // UI data
