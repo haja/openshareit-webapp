@@ -11,7 +11,8 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-xs-12">
-                <ul class="vertical-list" data-bind="foreach: addresses">
+                <ul class="vertical-list">
+                  <!-- ko foreach: addresses -->
                   <li>
                   <div class="address panel panel-default">
                     <div class="panel-body">
@@ -22,13 +23,42 @@
                     </div>
                   </div>
                   </li>
+                  <!-- /ko -->
+                  <!--
+                  <li>
+                  <button class="address panel panel-default btn btn-default" type="button" data-bind="click: showCreateAddressDialog">
+                    <div class="panel-body">
+                      <i class="fa fa-plus"></i><br />
+                      Addresse anlegen
+                    </div>
+                  </button>
+                  </li>
+                  -->
+                  <li>
+                  <button class="address panel panel-default btn btn-default" type="button" data-bind="click: showCreateAddressDialog">
+                    <div class="panel-body">
+                      <div style="display: flex; align-items: center">
+                        <i class="fa fa-plus fa-3x pull-left"></i>
+                        Addresse anlegen
+                      </div>
+                    </div>
+                  </button>
+                  </li>
+                  <!--
+                  <li>
+                  <button class="address panel panel-default btn btn-default" type="button" data-bind="click: showCreateAddressDialog">
+                    <div class="panel-body">
+                      <i class="fa fa-plus fa-3x pull-left"></i>
+                    </div>
+                  </button>
+                  </li>
+                  -->
                 </ul>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-12">
                 <div style="float: right">
-                  <button class="btn btn-default" type="button" data-bind="click: showCreateAddressDialog">Addresse hinzufügen</button>
                   <button class="btn btn-default" type="button">bearbeiten</button>
                 </div>
               </div>
