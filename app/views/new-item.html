@@ -47,9 +47,12 @@
                         <span data-bind="text: street + ' ' + houseNumber"></span><br />
                         <span data-bind="text: postalCode + ' ' + city"></span>
                         </p>
-                        <div>
-                          <input type="radio" name="address" data-bind="attr: { value: id }, checked: $parent.choosenAddress">
-                          auswählen</input></div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="address" data-bind="attr: { value: id }, checked: $parent.choosenAddress">
+                            auswählen</input>
+                          </label>
+                        </div>
                       </div>
                     </div>
                     </li>
