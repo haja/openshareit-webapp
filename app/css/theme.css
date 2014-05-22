@@ -115,3 +115,11 @@ ul.vertical-list
     border-radius: 10px;
     padding: 14px;
 }
+
+.panel-btn
+{
+    padding: 0;
+}
+.panel-btn-body
+{
+}

@@ -22,7 +22,7 @@
                       <div data-bind="visible: $parent.editAddresses">
                         <div class="radio">
                           <label>
-                          <input type="radio" name="defaultAddress" id="address_$id" value="$id" data-bind="checked: $parent.defaultAddressId" class="btn btn-default">Standardadresse</input>
+                            <input type="radio" name="defaultAddress" id="address_$id" value="$id" data-bind="checked: $parent.defaultAddressId" class="btn btn-default">Standardadresse</input>
                           </label>
                         </div>
                         <br />
@@ -33,16 +33,17 @@
                   </div>
                   </li>
                   <!-- /ko -->
-                  <!--
                   <li>
-                  <button class="address panel panel-default btn btn-default" type="button" data-bind="click: showCreateAddressDialog">
-                    <div class="panel-body">
+                  <button class="address panel panel-default btn btn-default panel-btn" type="button" data-bind="click: showCreateAddressDialog">
+                    <div class="panel-body panel-btn-body">
+                      <p>
                       <i class="fa fa-plus"></i><br />
                       Addresse anlegen
+                      </p>
                     </div>
                   </button>
                   </li>
-                  -->
+                  <!--
                   <li data-bind="visible: !editAddresses()">
                   <button class="address panel panel-default btn btn-default" style="padding: 0" type="button" data-bind="click: showCreateAddressDialog">
                     <div class="panel-body">
@@ -53,6 +54,7 @@
                     </div>
                   </button>
                   </li>
+                  -->
                   <!--
                   <li>
                   <button class="address panel panel-default btn btn-default" type="button" data-bind="click: showCreateAddressDialog">

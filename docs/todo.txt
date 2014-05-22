@@ -44,6 +44,7 @@ o adresse wählen: ganzes panel klickbar machen
 o validierung: meldung, falls daten fehlerhaft, servermeldung anzeigen?
 d straße/hausNr im panel title anzeigen
 d adresse hinzufügen umbenennen in "neue adresse anlegen" + als extra feld, nicht button, anzeigen
+d foto hinzufügen: + und grau hinterlegt, ähnlich wie addr hinzufügen
 
 ? fragen an david: 
     ? bilder? upload? verlinkung in artikel?
@@ -67,6 +68,7 @@ d kein drop-down menu, logout button neben "mein profil"
 ? POST/PATCH auf users soll eigenes profil ändern
 
 o heimadresse setzen / lesen
+o passwort ändern
 
 o push-notifications
 

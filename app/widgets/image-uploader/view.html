@@ -4,9 +4,14 @@
   </div>
   <div data-part="fileList">
     <ul class="list-inline">
-      <li><a href="#" data-bind="click: addPhoto">
-        <img alt="thumbnail" title="Foto hinzufügen..." data-src="holder.js/100x100/text:hinzufuegen.../#fff:#aaa" class="img-thumbnail item-thumbnail">
-      </a>
+      <li><button class="thumbnail btn btn-default panel panel-default panel-btn" data-bind="click: addPhoto">
+        <div class="panel-body panel-btn-body">
+          <p>
+          <i class="fa fa-plus fa-2x"></i><br />
+          Foto hinzufügen
+          </p>
+        </div>
+      </button>
       </li>
     </ul>
   </div>
