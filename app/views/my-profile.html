@@ -14,12 +14,20 @@
                 <ul class="vertical-list">
                   <!-- ko foreach: addresses -->
                   <li>
-                  <div class="address panel panel-default">
+                  <div class="address panel" data-bind="css: { 'panel-default': id.toString() !== $parent.defaultAddressId().toString(), 'panel-primary': id.toString() === $parent.defaultAddressId().toString() }">
                     <div class="panel-body">
                       <p>
                       <span data-bind="text: street + ' ' + houseNumber"></span><br />
                       <span data-bind="text: postalCode + ' ' + city"></span><br />
-                      <button data-bind="visible: $parent.editAddresses, click: $parent.deleteAddress" class="btn btn-danger">löschen</button>
+                      <div data-bind="visible: $parent.editAddresses">
+                        <div class="radio">
+                          <label>
+                          <input type="radio" name="defaultAddress" id="address_$id" value="$id" data-bind="checked: $parent.defaultAddressId" class="btn btn-default">Standardadresse</input>
+                          </label>
+                        </div>
+                        <br />
+                        <button data-bind="click: $parent.deleteAddress" class="btn btn-danger">löschen</button>
+                      </div>
                       </p>
                     </div>
                   </div>
@@ -60,8 +68,8 @@
             <div class="row">
               <div class="col-xs-12">
                 <div style="float: right">
-                  <button class="btn btn-default" type="button" data-bind="click: toggleEditAddresses, visible: !editAddresses()">Adresse löschen</button>
-                  <button class="btn btn-success" type="button" data-bind="click: toggleEditAddresses, visible: editAddresses">Fertig</button>
+                  <button class="btn btn-default" type="button" data-bind="click: toggleEditAddresses, visible: !editAddresses()">bearbeiten</button>
+                  <button class="btn btn-default" type="button" data-bind="click: toggleEditAddresses, visible: editAddresses">Fertig</button>
                 </div>
               </div>
             </div>

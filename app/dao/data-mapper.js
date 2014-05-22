@@ -27,6 +27,9 @@ function(
     var objMapper = function(data, Ctor) {
         return new Ctor(data);
     };
+    var funcMapper = function(data, fun) {
+        return fun(data);
+    };
     var propertySelector = function(selector, mapper, data, Ctor) {
         return mapper(data[selector], Ctor);
     };
@@ -45,6 +48,9 @@ function(
     obj.getItem = _.partial(getWithCtor, objMapper, Item);
     obj.getMapitems = _.partial(getWithCtor, arrayMapper, Mapitem);
     obj.getAddresses = _.partial(getWithCtor, arrayMapper, Address);
+    obj.getDefaultAddressFromProfile = _.partial(getWithCtor, funcMapper, function(data) {
+        return new Address(data.primaryAddress);
+    });
     obj.getProfile = _.partial(getWithCtor, objMapper, Profile);
     obj.getRequestsForItems = getRequestsForItems;
     obj.getRequestsForSingleItem = getRequestsForSingleItem;

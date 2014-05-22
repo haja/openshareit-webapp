@@ -1,13 +1,11 @@
 define([
     'knockout'
-    , 'utils/holder'
     , 'plugins/router'
     , 'dialogs/CreateAddressDialog'
     , 'dao/api'
 ],
 function(
     ko
-    , holder
     , router
     , CreateAddressDialog
     , api
@@ -17,6 +15,7 @@ function(
 
         // data
         self.addresses = ko.observableArray([]);
+        self.defaultAddressId = ko.observable(-1);
         self.editAddresses = ko.observable(false);
 
         // behaviour
@@ -40,9 +39,11 @@ function(
 
         // load data
         api.addressesGET(self.addresses);
-
-        // load holderjs images
-        self.compositionComplete = holder.compositionComplete;
+        /* TODO enable if api handles /users/ correctly
+        api.defaultAddressGET(function(addr) {
+            self.defaultAddressId(addr.id);
+        });
+        */
     };
 
 
