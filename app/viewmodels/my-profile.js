@@ -17,6 +17,7 @@ function(
 
         // data
         self.addresses = ko.observableArray([]);
+        self.editAddresses = ko.observable(false);
 
         // behaviour
         self.navigateNewItem = function() {
@@ -29,7 +30,13 @@ function(
                     self.addresses.push(response);
                 }
             });
-        }
+        };
+        self.toggleEditAddresses = function() {
+            self.editAddresses(!self.editAddresses());
+        };
+        self.deleteAddress = function(address) {
+            window.console && console.log("deleting address", address);
+        };
 
         // load data
         api.addressesGET(self.addresses);
