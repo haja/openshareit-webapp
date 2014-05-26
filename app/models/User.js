@@ -9,8 +9,8 @@ define([
                 self.firstName = data;
             } else {
                 self.id = data.id;
-                self.firstName = data.firstName;
-                self.lastName = data.lastName;
+                self.firstName = data.first_name;
+                self.lastName = data.last_name;
                 self.email = data.email;
                 self.phoneNumber = data.phoneNumber;
                 self.mobileNumber = data.mobileNumber;
