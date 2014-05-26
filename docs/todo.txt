@@ -41,6 +41,8 @@ d profil rechts anzeigen
 - einspaltig / button auf selbe höhe wie "Adresse hinzufügen"
 o adresse wählen: ganzes panel klickbar machen
 
++ bugfix: fotos hinzufügen: fotos verschoben; nich mehr als 2 möglich?
+
 o validierung: meldung, falls daten fehlerhaft, servermeldung anzeigen?
 d straße/hausNr im panel title anzeigen
 d adresse hinzufügen umbenennen in "neue adresse anlegen" + als extra feld, nicht button, anzeigen
