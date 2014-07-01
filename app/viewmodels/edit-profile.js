@@ -1,3 +1,6 @@
+/*
+ * Edit the currently logged in user's profile
+ */
 define([
     'knockout'
     , 'dao/api'
@@ -7,6 +10,8 @@ define([
     ) {
         var ViewModel = function() {
             var self = this;
+
+            // empty observable to set the user data
             self.user = ko.observable({
                 first_name: ""
                 , last_name: ""
@@ -20,6 +25,7 @@ define([
 
             // methods
 
+            // TODO implement user profile update
             self.updateProfile = function() {
 
             };
