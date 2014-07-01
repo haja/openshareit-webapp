@@ -1,3 +1,6 @@
+/*
+ * API dao; Access functionality of the REST API.
+ */
 define([
     'models/settings'
     , 'dao/data-mapper'
@@ -13,6 +16,10 @@ function(
     var apiUrl = 'http://api.ionic.at/';
     var local_apiUrl = "../../api/";
 
+    /*
+     * modify each ajax call; set authorization header token if present.
+     * print debuging messages to console.
+     */
     var doAjax = function(type, relativeUrl, data, dataType) {
         var completeUrl = apiUrl + relativeUrl;
         return $.ajax({
@@ -34,6 +41,9 @@ function(
         });
     }
 
+    /*
+     * shorthands to use modified ajax call
+     */
     var jqPost = _.partial(doAjax, 'POST');
     var jqGet = _.partial(doAjax, 'GET');
     var jqGetJSON = _.partial(doAjax, 'GET', _, _, 'json');
