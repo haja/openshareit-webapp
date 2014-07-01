@@ -102,7 +102,7 @@ function(
             mapper.getDefaultAddressFromProfile(jqGetJSON(url), resultProperty, afterDoneHook);
         }
         , profileGET: function(resultProperty, afterDoneHook) {
-            var url = 'users/';
+            var url = 'users/self/';
             mapper.getProfile(jqGetJSON(url), resultProperty, afterDoneHook);
         }
     };
