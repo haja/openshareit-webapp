@@ -1,3 +1,6 @@
+/*
+ * home screen; This screen displays a map and a list of nearby items.
+ */
 define([
     'knockout'
     , 'durandal/app'
@@ -20,17 +23,27 @@ function(
     , geolocation
     , api
 ) {
+
+    /*
+     * This class holds data for one type of query. Each query type is called with different data (such as ordering or view).
+     */
     var QueryTypeImpl = function(name, view, resultProperty) {
         var self = this;
         self.name = name;
 
-        // location if geolocation is not available
+        /*
+         * location if geolocation is not available
+         */
         var DEFAULT_POSITION = {
             // Vienna
             latitude: 48.12
             , longitude: 16.22
         };
 
+
+        /*
+         * actual query to be called when a query type is selected.
+         */
         self.query = function() {
             var loadMapitems = function(position) {
                 api.mapitemsGET(position, view, resultProperty);
@@ -38,7 +51,9 @@ function(
 
             loadMapitems(DEFAULT_POSITION);
 
-            // update data when geolocation becomes available
+            /*
+             * update data when geolocation becomes available
+             */
             geolocation.getLocationCached(
                 loadMapitems,
                 function(error) {
@@ -48,11 +63,18 @@ function(
         };
     };
 
+    /*
+     * the actual viewModel class
+     */
     function ItemsViewModel() {
         var self = this;
 
 
         // TODO refactor this to general module
+        /* Full item data loading and caching.
+         * If an item is already loaded, it is present in the cache map and served directly.
+         * If not, it is loaded async and added to the cache.
+         */
         var loadItemAsync = function(item) {
             window.console && console.log("loading itemId: " + item.id());
             // load data async if not already loaded
@@ -70,13 +92,18 @@ function(
             }
         };
 
-        /**
-        * only one item can be active
-        */
+        /* 
+         * Set the state of a single item.
+         * Deactivates all other previously active items.
+         */
         self.setActive = function(item, state) {
             self.setActiveMultiple([item], state);
         };
 
+        /*
+         * Set the state of multiple items.
+         * Deactivates all other previously active items.
+         */
         self.setActiveMultiple = function(items, state) {
             window.console && console.log("setActiveMultiple:", items);
             state = typeof state !== 'undefined' ? state : true; //state defaults to true
@@ -111,12 +138,18 @@ function(
             */
         };
 
+        /*
+         * Toggle the active-state of a single item.
+         */
         self.toggleActive = function(item) {
             window.console && console.log("toggleActive:", item, item.active());
             self.setActive(item, !item.active());
         };
 
+        //
         //data
+        //
+
         self.loadedItemsFull = ko.observable({});
         self.mapitems = ko.observableArray([]);
         self.items = ko.computed(function() {
@@ -129,7 +162,9 @@ function(
         });
         self.map = ko.observable(new GMap(self.mapitems, self.setActiveMultiple));
 
-        /** open a modal dialog to query an item */
+        /*
+         * open a modal dialog to request an item
+         */
         self.showQueryItemDialog = function(item) {
             QueryItemDialog.show(item).then(function(response) {
                 if(typeof response !== 'undefined') {
@@ -137,11 +172,18 @@ function(
                 }
             });
         };
-        /** open a modal dialog to show user details */
+
+        /*
+         * open a modal dialog to show user details
+         */
         self.showUserDialog = function(item) {
             window.console && console.log("showUserDialog " + item.user().getFullName());
             UserDetailsDialog.show(item.user());
         };
+
+        /*
+         * actions that can be accessed by each item
+         */
         self.actions = {
             showQueryItemDialog: self.showQueryItemDialog
             , showUserDialog: self.showUserDialog
@@ -149,6 +191,9 @@ function(
             , toggleActive: self.toggleActive
         };
 
+        /*
+         * Available query types
+         */
         self.queryTypes = ko.observableArray([
             new QueryTypeImpl('Nähe', 'distance', self.mapitems)
             , new QueryTypeImpl('Aktualität', 'fresh', self.mapitems)
