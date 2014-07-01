@@ -1,6 +1,6 @@
-// *
-// create a new item or edit an existing item (if itemId is passed on activation)
-// */
+/*
+ * create a new item or edit an existing item (if itemId is passed on activation)
+ */
 define([
     'knockout'
     , 'utils/holder'
@@ -29,8 +29,11 @@ function(
         // data
         self.title = ko.observable();
         self.addresses = ko.observableArray([]);
+        // id of the user choosen address
         self.choosenAddress = ko.observable(-1);
         self.item = ko.observable({});
+
+        // define different dateformats in one place
         var dateformat = {
             'moment': 'DD.MM.YYYY'
             , 'datepicker': 'dd.mm.yyyy'
@@ -39,6 +42,8 @@ function(
         self.pickupDate = ko.observable(moment().add('d', 1).format(dateformat.moment));
 
         // behaviour
+
+        // open a modal dialog to create an address
         self.showCreateAddressDialog = function() {
             window.console && console.log("showCreateAddressDialog");
             CreateAddressDialog.show().then(function(response) {
@@ -48,6 +53,7 @@ function(
             });
         };
 
+        // get the address object that matches the chooosenAddress ID
         self.getChoosenAddress = function() {
             var choosenAddr = parseInt(self.choosenAddress());
             var addr = _.find(self.addresses(), function(address) {
@@ -63,6 +69,7 @@ function(
             }
         };
 
+        // send the new item to the API
         self.submitNewItem = function(form) {
             var jqxhr;
             var item = self.item();
