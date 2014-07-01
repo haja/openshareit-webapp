@@ -1,3 +1,6 @@
+/*
+ * show requests to specific item. Deprecated?
+ */
 define([
     'knockout'
     , 'underscore'
