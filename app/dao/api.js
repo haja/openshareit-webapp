@@ -62,10 +62,11 @@ function(
             });
         }
         , mapitemsGET: function(position, order, resultProperty, afterDoneHook) {
+            var distance = 0.0001;
             var url = 'mapitems/';
             //var url = 'mapitems';
             window.console && console.log("loading mapitems with position:", position);
-            mapper.getMapitems(jqGetJSON(url + '?order=' + order + '&latitude=' + position.latitude + "&longitude=" + position.longitude), resultProperty, afterDoneHook);
+            mapper.getMapitems(jqGetJSON(url + '?order=' + order + '&latitude=' + position.latitude + "&longitude=" + position.longitude + "&distance=" + distance), resultProperty, afterDoneHook);
         }
         , itemGET: function(itemId, resultProperty, afterDoneHook) {
             var url = 'items/';

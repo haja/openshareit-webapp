@@ -36,8 +36,9 @@ function(
          */
         var DEFAULT_POSITION = {
             // Vienna
-            latitude: 48.12
-            , longitude: 16.22
+            // http://api.ionic.at/mapitems/?longitude=&latitude=16.3718631&distance=0.0001&limit=100
+            latitude: 48.2071545
+            , longitude: 16.3718631
         };
 
 
