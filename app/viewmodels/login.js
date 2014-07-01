@@ -1,3 +1,6 @@
+/*
+ * login dialog; Log in a registered user, display error on invalid credentials.
+ */
 define([
     'knockout'
     , 'jquery'
@@ -13,9 +16,23 @@ function(
     var ViewModel = function() {
         var self = this;
 
+        //
+        // data
+        //
+
+        /*
+         * If true, display a login error message.
+         */
         self.loginError = ko.observable(false);
+
+        /*
+         * If true, a request to the server is active
+         */
         self.isLoading = ko.observable(false);
 
+        /*
+         * Try to login a user.
+         */
         self.doLogin = function(formElement) {
             var email = formElement.elements.email.value;
             var pw = formElement.elements.password.value;
@@ -36,6 +53,7 @@ function(
         };
 
         self.activate = function(redirect) {
+            // if no redirect is given, redirect to home screen after successfull login.
             self.redirect = redirect || '';
         };
     };
