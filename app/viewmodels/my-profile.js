@@ -1,3 +1,6 @@
+/*
+ * my profile; Show all data of the currently logged in user.
+ */
 define([
     'knockout'
     , 'plugins/router'
@@ -13,15 +16,27 @@ function(
     var ViewModel = function() {
         var self = this;
 
+        //
         // data
+        //
+
+        /*
+         * addresses of the user
+         */
         self.addresses = ko.observableArray([]);
+        /*
+         * id of the default adress
+         */
         self.defaultAddressId = ko.observable(-1);
+        /*
+         * If true, we are in address edit mode
+         */
         self.editAddresses = ko.observable(false);
 
+        //
         // behaviour
-        self.navigateNewItem = function() {
-            router.navigate('my-items/new-item');
-        };
+        //
+
         self.showCreateAddressDialog = function() {
             window.console && console.log("showCreateAddressDialog");
             CreateAddressDialog.show().then(function(response) {
