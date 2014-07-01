@@ -1,3 +1,6 @@
+/*
+ * durandal shell; handles menu, routing setup, ...
+ */
 define(['plugins/router', 'knockout', 'models/settings', 'ko-bindings/bootstrap-nav-menu-close-on-click'], function (router, ko, settings) {
     return {
         router: router
