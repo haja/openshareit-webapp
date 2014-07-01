@@ -1,3 +1,6 @@
+/*
+ * my items; Show all items this user has created or requested.
+ */
 define([
     'knockout'
     , 'utils/holder'
@@ -14,19 +17,35 @@ function(
     , UserDetailsDialog
     , api
 ) {
+    /*
+     * shorthand for logging messages to console
+     */
     var log = function(msg) { window.console && console.log(msg); };
+
     var ViewModel = function() {
         var self = this;
 
+        //
         // data
+        //
+
         self.items = ko.observableArray();
+        /*
+         * display information about successfully created items and other messages
+         */
         self.statusMessages = {};
 
+        // TODO remove this
         var api_url = "../../api/"
+
+        /*
+         * Available query types
+         */
         self.queryTypes = ko.observableArray([
             {
                 name: 'Meine Artikel'
                 , query: function() {
+                    // TODO implment
                     api.itemsGETwithRequests('myitems', self.items,
                         function() {
                             window.console && console.log("my-items: queryChanged: got requests!");
