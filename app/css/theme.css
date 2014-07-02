@@ -74,6 +74,9 @@ ul.vertical-list
     right: 0px;
 }
 
+.btn-responsive {
+}
+
 .request-active-panel
 {
     margin-top: 10px;
@@ -122,4 +125,20 @@ ul.vertical-list
 }
 .panel-btn-body
 {
+}
+
+@media (max-width: 767px) {
+    .btn-responsive {
+        padding:2px 4px;
+        font-size:80%;
+        line-height: 1;
+        border-radius:3px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .btn-responsive {
+        padding:4px 9px;
+        font-size:90%;
+        line-height: 1.2;
+    }
 }

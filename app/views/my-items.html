@@ -10,7 +10,7 @@
       <div class="col-xs-12 col-md-8">
         <div data-bind="compose: { model: '../templates/itemList', activationData: { items: items, queryTypes: queryTypes, actions: actions }, mode: 'templated' }">
           <div data-part="btn-group-right">
-            <a class="btn btn-primary" href="#my-items/new-item">Artikel anlegen</a>
+            <a class="btn btn-primary btn-responsive" href="#my-items/new-item">Artikel anlegen</a>
           </div>
 
           <div data-part="item-panel">
@@ -18,7 +18,7 @@
               <div class="panel-body">
                 <div class="position-base">
                   <div class="btn-panel-right">
-                    <a class="btn btn-default btn-right-bottom"
+                    <a class="btn btn-default btn-responsive btn-right-bottom"
                       data-bind="visible: $parent.lastQuery() === 'Meine Artikel'
                       , attr: { href: '#my-items/edit/' + id() }
                       "

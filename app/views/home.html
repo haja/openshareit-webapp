@@ -21,7 +21,7 @@
       <div class="col-md-6">
         <div data-bind="compose: { model: '../templates/itemList', activationData: { items: items, queryTypes: queryTypes, actions: actions }, mode: 'templated' }">
           <div data-part="btn-group-right">
-            <a class="btn btn-primary" href="#my-items/new-item">Artikel anlegen</a>
+            <a class="btn btn-primary btn-responsive" href="#my-items/new-item">Artikel anlegen</a>
           </div>
           <div data-part="item-panel">
             <div class="panel"
@@ -51,7 +51,7 @@
                 <div class="position-base" data-bind="visible: active() && isLoaded()">
                   <div class"btn-panel-right">
                     <span class="glyphicon glyphicon-chevron-up pull-right"></span>
-                    <button type="button" class="btn btn-primary btn-right-bottom"
+                    <button type="button" class="btn btn-primary btn-responsive btn-right-bottom"
                       data-bind="
                       click: $parent.actions.showQueryItemDialog
                       , clickBubble: false"
