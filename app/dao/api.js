@@ -85,8 +85,8 @@ function(
                 getRequestsForItems(jqGetJSON(requestsUrl), resultProperty, afterDoneHook); // TODO implement correctly, api needs to specify
                 }); */
         }
-        , itemsPOST: function(item) {
-            item.user = 1; // TODO remove this, for debugging only
+        , itemsPOST: function(item, userID) {
+            item.user = userID; // TODO remove this, for debugging only
             return jqPost('items/', item);
         }
         , addressesGET: function(resultProperty, afterDoneHook) {
