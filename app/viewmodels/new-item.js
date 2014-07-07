@@ -87,18 +87,16 @@ function(
 
                 item.status = 'READY'; // TODO is this correct? should serer handle this?
 
-                api.profileGET(function(profile) {
-                    window.console && console.log("submitting item", item, "userID", profile.id);
-                    jqxhr = api.itemsPOST(item, profile.id);
-                    jqxhr.done(function(data) {
-                        window.console && console.log("itemsPOST: respones", data);
-                        // redirect to myItems and show success message
-                        router.navigate('#my-items?itemCreated=true', { replace: true, trigger: true });
-                    });
-                    jqxhr.fail(function(data) {
-                        window.console && console.log("itemsPOST: failed", data);
-                        // TODO display error message
-                    });
+                window.console && console.log("submitting item", item);
+                jqxhr = api.itemsPOST(item);
+                jqxhr.done(function(data) {
+                    window.console && console.log("itemsPOST: respones", data);
+                    // redirect to myItems and show success message
+                    router.navigate('#my-items?itemCreated=true', { replace: true, trigger: true });
+                });
+                jqxhr.fail(function(data) {
+                    window.console && console.log("itemsPOST: failed", data);
+                    // TODO display error message
                 });
             } else {
                 window.console && console.log("trying to submit invalid item, aborting", item);

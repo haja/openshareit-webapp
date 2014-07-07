@@ -54,8 +54,11 @@ function(
             jqPost('login/', 'username=' + email + '&password=' + password)
             .done(function(data) {
                 settings.token("Token " + data.token);
-                window.console && console.log("Successfully logged in! settings:", settings);
-                successFn(data);
+                api.profileGET(function(profile) {
+                    settings.userId(profile.id);
+                    window.console && console.log("Successfully logged in! settings:", settings);
+                    successFn(data);
+                });
             })
             .fail(function() {
                 failFn();
@@ -92,8 +95,8 @@ function(
                 });
             });
         }
-        , itemsPOST: function(item, userID) {
-            item.user = userID; // TODO remove this, for debugging only
+        , itemsPOST: function(item) {
+            item.user = settings.userId(); // TODO remove this, api needs to provide user on post
             return jqPost('items/', item);
         }
         , addressesGET: function(resultProperty, afterDoneHook) {
@@ -116,6 +119,31 @@ function(
             var url = 'requests/';
             var url2 = '/messages/';
             return mapper.getMessagesForRequest(jqGetJSON(url + request.id + url2), request.messages);
+        }
+        , requestPOST: function(item, reqMessage) {
+            var url = 'requests/';
+            var urlMessages = 'messages/';
+            var deferred = $.Deferred();
+            window.console && console.log("requesting item", item, reqMessage, settings.userId());
+            jqPost(url, { 'item': parseInt(item.id()), 'user': parseInt(settings.userId()), 'approved': false })
+            .done(function(data) {
+                jqPost(urlMessages, {
+                    'request': data.id
+                    , 'sender': parseInt(settings.userId())
+                    , 'recipient': item.user().id
+                    , 'message': reqMessage
+                })
+                .done(function() {
+                    deferred.resolve();
+                })
+                .fail(function() {
+                    deferred.reject();
+                })
+            })
+            .fail(function() {
+                deferred.reject();
+            });
+            return deferred;
         }
     };
 

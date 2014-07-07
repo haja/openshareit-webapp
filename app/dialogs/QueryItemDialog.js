@@ -6,7 +6,7 @@ define(['knockout', 'plugins/dialog'], function(ko, dialog) {
     };
 
     QueryItemDialog.prototype.sendQuery = function() {
-        window.console && console.log('TODO sending query');
+        window.console && console.log('sending request');
         dialog.close(this, this.queryText());
     };
 

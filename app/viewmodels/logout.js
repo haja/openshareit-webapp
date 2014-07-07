@@ -13,6 +13,7 @@ function(
         self.activate = function() {
             // delete authorization token. API doesn't provide logout functionality.
             settings.token(undefined);
+            settings.userId(undefined);
         };
     };
 

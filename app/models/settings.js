@@ -14,6 +14,7 @@ function(
 
     var settings = {
         token: ko.observable().extend({ cookie: 'token' })
+        , userId: ko.observable().extend({ cookie: 'userId' })
         , getAuthenticationState: getAuthenticationState
     };
     return settings;

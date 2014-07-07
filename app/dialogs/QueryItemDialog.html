@@ -4,7 +4,7 @@
   </div>
   <div class="modal-body">
     <form data-bind="submit: sendQuery">
-      <p class="message">Anfrage an <span data-bind="text: item.user.getFullName"></span></p>
+      <p class="message">Anfrage an <span data-bind="text: item.name"></span></p>
       <textarea tabindex="1" class="form-control autofocus" rows="4" data-bind="value: queryText, valueUpdate: 'afterkeydown'" />
       </form>
     </div>
