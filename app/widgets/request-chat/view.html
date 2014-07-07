@@ -3,6 +3,7 @@
     <img alt="thumbnail" title="Userfoto" src="static/thumbnails/profile-default-xs.png" style="margin-right: 15px;" class="img-thumbnail pull-left" />
     <span class="glyphicon glyphicon-chevron-down pull-right" data-bind="visible: ! request.active()"></span>
     <span class="glyphicon glyphicon-chevron-up pull-right" data-bind="visible: request.active()"></span>
+    <i class="fa fa-spinner fa-spin pull-right" data-bind="visible: request.isLoading"></i>
     Anfrage von <a data-bind="text: request.from.getFullName, click: showUserDialog, clickBubble: false"></a>
     <br />
     <!-- <span data-bind="visible: ! request.active(), text: request.messages[0].text" class="text-muted"></span> -->

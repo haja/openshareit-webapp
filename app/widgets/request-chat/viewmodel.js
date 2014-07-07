@@ -18,13 +18,13 @@ function(
         var request = this.request;
         window.console && console.log("uiToggleActive", request);
         if(request.messages().length === 0) {
-            request.loading(true);
+            request.isLoading(true);
             api.messagesGETforRequest(request)
             .done(function() {
                 request.active(true);
             })
             .always(function() {
-                request.loading(false)
+                request.isLoading(false)
             });
         } else {
             request.active(!request.active());

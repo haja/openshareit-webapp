@@ -15,7 +15,7 @@ define([
         self.approved = ko.observable(req.approved);
         self.messages = ko.observableArray();
         self.active = ko.observable(false);
-        self.loading = ko.observable(false);
+        self.isLoading = ko.observable(false);
     };
 
     return Ctor;
