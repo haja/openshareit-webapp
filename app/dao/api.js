@@ -78,12 +78,19 @@ function(
             mapper.getItems(jqGetJSON(url + '?view=' + view), resultProperty, afterDoneHook);
         }
         , itemsGETwithRequests: function(view, resultProperty, afterDoneHook) {
-            var requetsUrl = 'requests/';
-            api.itemsGET(view, resultProperty,
-            afterDoneHook);
-            /*function() {
-                getRequestsForItems(jqGetJSON(requestsUrl), resultProperty, afterDoneHook); // TODO implement correctly, api needs to specify
-                }); */
+            var url = '/requests/';
+            var deferreds;
+            api.itemsGET(view, function(items) {
+                deferreds = _.map(items, function(item) {
+                    return mapper.getRequestsForSingleItem(jqGetJSON('items/' + item.id() + url), function(requests) {
+                        item.requests(requests);
+                    });
+                });
+                $.when.apply(null, deferreds).done(function() {
+                    resultProperty(items);
+                    afterDoneHook && afterDoneHook();
+                });
+            });
         }
         , itemsPOST: function(item, userID) {
             item.user = userID; // TODO remove this, for debugging only
@@ -104,6 +111,11 @@ function(
         , profileGET: function(resultProperty, afterDoneHook) {
             var url = 'users/self/';
             mapper.getProfile(jqGetJSON(url), resultProperty, afterDoneHook);
+        }
+        , messagesGETforRequest: function(request) {
+            var url = 'requests/';
+            var url2 = '/messages/';
+            return mapper.getMessagesForRequest(jqGetJSON(url + request.id + url2), request.messages);
         }
     };
 

@@ -1,11 +1,11 @@
 <div>
   <div data-bind="click: uiToggleActive">
-    <img alt="thumbnail" title="Userfoto" data-src="holder.js/40x40/text:Thumbnail" style="margin-right: 15px;" class="img-thumbnail pull-left" />
+    <img alt="thumbnail" title="Userfoto" src="static/thumbnails/profile-default-xs.png" style="margin-right: 15px;" class="img-thumbnail pull-left" />
     <span class="glyphicon glyphicon-chevron-down pull-right" data-bind="visible: ! request.active()"></span>
     <span class="glyphicon glyphicon-chevron-up pull-right" data-bind="visible: request.active()"></span>
     Anfrage von <a data-bind="text: request.from.getFullName, click: showUserDialog, clickBubble: false"></a>
     <br />
-    <span data-bind="visible: ! request.active(), text: request.messages[0].text" class="text-muted"></span>
+    <!-- <span data-bind="visible: ! request.active(), text: request.messages[0].text" class="text-muted"></span> -->
     <div class="clearfix"></div>
   </diV>
   <div data-bind="if: request.active" class="request-active-panel">
@@ -17,9 +17,9 @@
         </span>
       </div>
       <div class="panel-body request-messages-panel row" data-bind="foreach: request.messages">
-        <div class="request-message col-xs-7" data-bind="css: { 'me col-xs-offset-5': from === 'me' }">
-          <span data-bind="text: date"></span>
-          <div class="request-message-body" data-bind="text: text">
+        <div class="request-message col-xs-7" data-bind="css: { 'me col-xs-offset-5': from.id !== $parent.otherUserId }">
+          <span data-bind="text: sendDate"></span>
+          <div class="request-message-body" data-bind="text: message">
           </div>
         </div>
       </div>

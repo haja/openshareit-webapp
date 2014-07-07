@@ -8,6 +8,7 @@ define([
     , 'models/Address'
     , 'models/Profile'
     , 'models/Request'
+    , 'models/Message'
 ],
 function(
     _
@@ -16,6 +17,7 @@ function(
     , Address
     , Profile
     , Request
+    , Message
 ) {
     var obj = {};
 
@@ -27,7 +29,7 @@ function(
      * Set the received data on the resultProperty and map it with given dataMapper and Ctor function.
      */
     var getWithCtor = function(dataMapper, Ctor, jqXHR, resultProperty, afterDoneHook) {
-        jqXHR.done(function(data) {
+        return jqXHR.done(function(data) {
             resultProperty(dataMapper(data, Ctor));
             afterDoneHook && afterDoneHook();
         });
@@ -65,23 +67,6 @@ function(
     // Exported functions
     //
 
-    // TODO needs api spec for requests
-    /*
-     * Get all requests for all given items.
-     */
-    var getRequestsForItems = function(url, items, afterDoneHook) {
-        _.each(items(), function(item) {
-            getWithCtor(_.partial(propertySelector, 'requests', arrayMapper), Request, url + item.id, item.requests, afterDoneHook);
-        });
-    };
-    // TODO needs api spec for requests
-    /*
-     * Get all requets for a single item.
-     */
-    var getRequestsForSingleItem = function(url, item, afterDoneHook) {
-        getWithCtor(_.partial(propertySelector, 'requests', arrayMapper), Request, url + item().id, item().requests, afterDoneHook);
-    };
-
     /*
      * get Items
      */
@@ -109,13 +94,13 @@ function(
      */
     obj.getProfile = _.partial(getWithCtor, objMapper, Profile);
     /*
-     * get all requests for all given items
-     */
-    obj.getRequestsForItems = getRequestsForItems;
-    /*
      * get all requests for a single item
      */
-    obj.getRequestsForSingleItem = getRequestsForSingleItem;
+    obj.getRequestsForSingleItem = _.partial(getWithCtor, arrayMapper, Request);
+    /*
+     * get all messages for a single request
+     */
+    obj.getMessagesForRequest = _.partial(getWithCtor, arrayMapper, Message);
 
     return obj;
 });
