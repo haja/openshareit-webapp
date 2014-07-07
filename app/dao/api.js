@@ -87,6 +87,9 @@ function(
             api.itemsGET(view, function(items) {
                 deferreds = _.map(items, function(item) {
                     return mapper.getRequestsForSingleItem(jqGetJSON('items/' + item.id() + url), function(requests) {
+                        _.each(requests, function(req) {
+                            req.item = item;
+                        });
                         item.requests(requests);
                     });
                 });

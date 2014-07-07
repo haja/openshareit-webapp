@@ -14,6 +14,8 @@ define([
         self.from = new User(req.user);
         self.approved = ko.observable(req.approved);
         self.messages = ko.observableArray();
+        self.item;
+
         self.active = ko.observable(false);
         self.isLoading = ko.observable(false);
     };

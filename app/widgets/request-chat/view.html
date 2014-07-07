@@ -11,12 +11,14 @@
   </diV>
   <div data-bind="if: request.active" class="request-active-panel">
     <div class="panel panel-default">
-      <div class="input-group input-group-sm">
-        <input type="text" class="form-control" />
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">Senden</button>
-        </span>
-      </div>
+      <form data-bind="submit: sendMessage">
+        <div class="input-group input-group-sm">
+          <input type="text" class="form-control" data-bind="value: message" />
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Senden</button>
+          </span>
+        </div>
+      </form>
       <div class="panel-body request-messages-panel row" data-bind="foreach: request.messages">
         <div class="request-message col-xs-7" data-bind="css: { 'me col-xs-offset-5': from.id !== $parent.otherUserId }">
           <span data-bind="text: sendDate"></span>
@@ -27,7 +29,7 @@
     </div>
     <button style="margin-left: 10px" class="btn btn-primary btn-sm pull-right" data-bind="click: approveRequest, visible: ! request.approved()">Akzeptieren</button>
     <span class="pull-right" data-bind="visible: request.approved()">
-    Anfrage akzeptiert
+      Anfrage akzeptiert
     </span>
     <!-- <button class="btn btn-default btn-sm pull-right">Ablehnen</button> -->
   </div>
