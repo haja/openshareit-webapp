@@ -167,17 +167,7 @@ function(
          * open a modal dialog to request an item
          */
         self.showQueryItemDialog = function(item) {
-            QueryItemDialog.show(item).then(function(reqMessage) {
-                if(typeof reqMessage !== 'undefined') {
-                    api.requestPOST(item, reqMessage)
-                    .done(function() {
-                        app.showMessage('Anfrage an Artikel ' + item.name() + ' verschickt!');
-                    })
-                    .fail(function() {
-                        app.showMessage('Anfrage an Artikel ' + item.name() + ' leider fehlgeschlagen!');
-                    });
-                }
-            });
+            QueryItemDialog.show(item);
         };
 
         /*

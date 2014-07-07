@@ -120,19 +120,22 @@ function(
             var url2 = '/messages/';
             return mapper.getMessagesForRequest(jqGetJSON(url + request.id + url2), request.messages);
         }
+        , messagePOST: function(requestId, recipient, reqMessage) {
+            var url = 'messages/';
+            return jqPost(url, {
+                'request': requestId
+                , 'sender': parseInt(settings.userId())
+                , 'recipient': recipient
+                , 'message': reqMessage
+            })
+        }
         , requestPOST: function(item, reqMessage) {
             var url = 'requests/';
-            var urlMessages = 'messages/';
             var deferred = $.Deferred();
             window.console && console.log("requesting item", item, reqMessage, settings.userId());
             jqPost(url, { 'item': parseInt(item.id()), 'user': parseInt(settings.userId()), 'approved': false })
             .done(function(data) {
-                jqPost(urlMessages, {
-                    'request': data.id
-                    , 'sender': parseInt(settings.userId())
-                    , 'recipient': item.user().id
-                    , 'message': reqMessage
-                })
+                api.messagePOST(data.id, item.user().id, reqMessage)
                 .done(function() {
                     deferred.resolve();
                 })
