@@ -31,6 +31,19 @@ function(
         }
     };
 
+    ctor.prototype.approveRequest = function() {
+        var request = this.request;
+        window.console && console.log("approveRequest", request);
+        request.isLoading(true);
+        api.requestApprove(request)
+        .done(function() {
+            request.approved(true);
+        })
+        .always(function() {
+            request.isLoading(false);
+        });
+    };
+
     ctor.prototype.showUserDialog = function() {
         var request = this.request;
         window.console && console.log("showUserDialog: ", request);

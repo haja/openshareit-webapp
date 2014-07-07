@@ -25,7 +25,10 @@
         </div>
       </div>
     </div>
-    <button style="margin-left: 10px" class="btn btn-primary btn-sm pull-right">Akzeptieren</button>
-    <button class="btn btn-default btn-sm pull-right">Ablehnen</button>
+    <button style="margin-left: 10px" class="btn btn-primary btn-sm pull-right" data-bind="click: approveRequest, visible: ! request.approved()">Akzeptieren</button>
+    <span class="pull-right" data-bind="visible: request.approved()">
+    Anfrage akzeptiert
+    </span>
+    <!-- <button class="btn btn-default btn-sm pull-right">Ablehnen</button> -->
   </div>
 </div>

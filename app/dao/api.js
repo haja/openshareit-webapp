@@ -45,6 +45,7 @@ function(
      * shorthands to use modified ajax call
      */
     var jqPost = _.partial(doAjax, 'POST');
+    var jqPatch = _.partial(doAjax, 'PATCH');
     var jqGet = _.partial(doAjax, 'GET');
     var jqGetJSON = _.partial(doAjax, 'GET', _, _, 'json');
 
@@ -147,6 +148,10 @@ function(
                 deferred.reject();
             });
             return deferred;
+        }
+        , requestApprove: function(request) {
+            var url = 'requests/';
+            return jqPatch(url + request.id + '/', { 'pk': parseInt(request.id), 'approved': true});
         }
     };
 
