@@ -43,6 +43,8 @@ function(
         // id of the user choosen address
         self.choosenAddress = ko.observable(-1);
         self.item = ko.observable(new Item());
+        self.itemStatusList = ko.observableArray(api.itemStatusList);
+        self.itemStatus = ko.observable(self.itemStatusList()[0]);
 
         // define different dateformats in one place
         var dateformat = {
@@ -80,6 +82,13 @@ function(
             }
         };
 
+        self.setAdditionalItemData = function(plainItem) {
+            plainItem.location = self.choosenAddress();
+            plainItem.pickupDeadline = moment(self.pickupDate(), dateformat.moment).format(dateformat.api);
+
+            plainItem.status = self.itemStatus().apiKey;
+        };
+
         // send updated item to API
         self.updateItem = function(form) {
             var jqxhr;
@@ -87,7 +96,9 @@ function(
             window.console && console.log("updateItem", form, plainItem);
 
             if(itemIsValid(plainItem)) {
-                window.console && console.log("updateItem: item valid", plainItem);
+                self.setAdditionalItemData(plainItem);
+
+                //window.console && console.log("submitting item update", plainItem);
             } else {
                 window.console && console.log("trying to update with invalid item, aborting", plainItem);
             }
@@ -101,10 +112,7 @@ function(
 
             // somewhat validate data
             if(itemIsValid(plainItem)) {
-                plainItem.location = self.choosenAddress();
-                plainItem.pickupDeadline = moment(self.pickupDate(), dateformat.moment).format(dateformat.api);
-
-                plainItem.status = 'READY'; // TODO is this correct? should serer handle this?
+                self.setAdditionalItemData(plainItem);
 
                 window.console && console.log("submitting item", plainItem);
                 jqxhr = api.itemsPOST(plainItem);

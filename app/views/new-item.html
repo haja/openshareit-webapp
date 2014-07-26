@@ -18,12 +18,20 @@
                   <div class="form-group">
                     <label for="name">Name</label>
                     <input data-bind="value: item().name"
-                    class="form-control autofocus input-bold" style="margin-top: 14px" name="name" placeholder="Kurzbeschreibung (Käse, Äpfel,...)"></input>
+                    class="form-control autofocus input-bold" style="margin-top: 14px" name="name" id="name" placeholder="Kurzbeschreibung (Käse, Äpfel,...)"></input>
+                  </div>
+                  <div class="form-group">
+                    <label for="status">Status</label>
+                    <select data-bind="options: itemStatusList
+                      , optionsText: 'caption'
+                      , value: itemStatus"
+                      name="status" id="status" class="form-control">
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="description">Beschreibung</label>
                     <textarea data-bind="value: item().description"
-                      class="form-control" style="margin-top: 14px" rows="6" name="description" placeholder="Ausführliche Beschreibung"></textarea>
+                      class="form-control" style="margin-top: 14px" rows="6" name="description" id="description" placeholder="Ausführliche Beschreibung"></textarea>
                   </div>
                 </div>
               </div>

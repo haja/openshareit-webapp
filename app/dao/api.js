@@ -156,6 +156,16 @@ function(
             var url = 'requests/';
             return jqPatch(url + request.id + '/', { 'pk': parseInt(request.id), 'approved': true});
         }
+        , itemStatusList: [
+            {
+                'apiKey': 'READY'
+                , 'caption': 'Bereit'
+            }
+            , {
+                'apiKey': 'PICKED_UP'
+                , 'caption': 'Abgeholt'
+            }
+        ]
     };
 
     return api;
