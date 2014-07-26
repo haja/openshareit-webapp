@@ -27,12 +27,13 @@ d nur artikel, untereinander, wie home;
 - meine artikel: übersicht über anfragen zu jedem artikel mit link zu anfragen. anfragen auf eigener seite (siehe mockup) (für alle arten von anfragen; meine anfragen + anfragen an mich)
 o volle breite? linksbündig?
 ? api: how to get requests for an item?
+o spinner anzeigen, solange geladen wird
 
 requests:
 d fix input field not clickable / clickBubble
 o animieren
 d mehrere aufklappbar machen? zuklappen?
-o mit meine artikel mergen -> nachrichten direkt aufklappbar machen
+d mit meine artikel mergen -> nachrichten direkt aufklappbar machen
 
 neuer artikel / bearbeiten:
 d artikelname bold
@@ -89,7 +90,7 @@ bootstrap:
 o device-klassen, modaldialog auf fullscreen?
 
 sonstiges:
-o aritkelstatus? abgeholt setzten können, etc...
+d aritkelstatus? abgeholt setzten können, etc...
 
 ? webkit testing / safari
 d about mit dummy-text
