@@ -88,6 +88,12 @@ function(
 
             plainItem.status = self.itemStatus().apiKey;
         };
+        self.deleteUnwantedItemData = function(plainItem) {
+                // remove unwanted properties from item
+                delete plainItem.user;
+                delete plainItem.loc;
+                delete plainItem.requests;
+        };
 
         // send updated item to API
         self.updateItem = function(form) {
@@ -97,8 +103,19 @@ function(
 
             if(itemIsValid(plainItem)) {
                 self.setAdditionalItemData(plainItem);
+                self.deleteUnwantedItemData(plainItem);
 
-                //window.console && console.log("submitting item update", plainItem);
+                window.console && console.log("submitting item update", plainItem);
+                jqxhr = api.itemsPATCH(plainItem);
+                jqxhr.done(function(data) {
+                    window.console && console.log("itemsPATCH: respones", data);
+                    // redirect to myItems and show success message
+                    router.navigate('#my-items?itemUpdated=true', { replace: true, trigger: true });
+                });
+                jqxhr.fail(function(data) {
+                    window.console && console.log("itemsPATCH: failed", data);
+                    // TODO display error message
+                });
             } else {
                 window.console && console.log("trying to update with invalid item, aborting", plainItem);
             }
@@ -113,6 +130,7 @@ function(
             // somewhat validate data
             if(itemIsValid(plainItem)) {
                 self.setAdditionalItemData(plainItem);
+                self.deleteUnwantedItemData(plainItem);
 
                 window.console && console.log("submitting item", plainItem);
                 jqxhr = api.itemsPOST(plainItem);

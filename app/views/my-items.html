@@ -6,6 +6,9 @@
         <p class="bg-success toast-message" data-bind="visible: statusMessages.itemCreated() === true">
           Artikel wurde erfolgreich angelegt!
         </p>
+        <p class="bg-success toast-message" data-bind="visible: statusMessages.itemUpdated() === true">
+          Artikel wurde erfolgreich bearbeitet!
+        </p>
       </div>
       <div class="col-xs-12 col-md-8">
         <div data-bind="compose: { model: '../templates/itemList', activationData: { items: items, queryTypes: queryTypes, actions: actions }, mode: 'templated' }">

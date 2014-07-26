@@ -104,6 +104,13 @@ function(
                 // remove param from history
                 router.navigate('#my-items', { replace: true, trigger: false });
             }
+            self.statusMessages.itemUpdated = ko.observable(false);
+            if(params && params.itemUpdated === 'true') {
+                window.console && console.log("my-items: activate: itemUpdated");
+                self.statusMessages.itemUpdated(true);
+                // remove param from history
+                router.navigate('#my-items', { replace: true, trigger: false });
+            }
         };
 
         // load holderjs images

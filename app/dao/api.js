@@ -103,6 +103,9 @@ function(
             item.user = settings.userId(); // TODO remove this, api needs to provide user on post
             return jqPost('items/', item);
         }
+        , itemsPATCH: function(item) {
+            return jqPatch('items/' + item.id + '/', item);
+        }
         , addressesGET: function(resultProperty, afterDoneHook) {
             var url = 'addresses/';
             mapper.getAddresses(jqGetJSON(url), resultProperty, afterDoneHook);
