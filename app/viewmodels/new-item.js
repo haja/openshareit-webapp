@@ -11,6 +11,7 @@ define([
     , 'dialogs/CreateAddressDialog'
     , 'dao/api'
     , 'underscore'
+    , 'models/Item'
 ],
 function(
     ko
@@ -22,16 +23,26 @@ function(
     , CreateAddressDialog
     , api
     , _
+    , Item
 ) {
+    var itemIsValid = function(item) {
+        return (item
+                && typeof(item.name) === 'string'
+                && typeof(item.description) === 'string'
+                && item.name !== ''
+                && item.description !== '');
+    };
+
     var ViewModel = function() {
         var self = this;
 
         // data
         self.title = ko.observable();
+        self.submitText = ko.observable();
         self.addresses = ko.observableArray([]);
         // id of the user choosen address
         self.choosenAddress = ko.observable(-1);
-        self.item = ko.observable({});
+        self.item = ko.observable(new Item());
 
         // define different dateformats in one place
         var dateformat = {
@@ -69,26 +80,34 @@ function(
             }
         };
 
+        // send updated item to API
+        self.updateItem = function(form) {
+            var jqxhr;
+            var plainItem = self.item().getPlainObject();
+            window.console && console.log("updateItem", form, plainItem);
+
+            if(itemIsValid(plainItem)) {
+                window.console && console.log("updateItem: item valid", plainItem);
+            } else {
+                window.console && console.log("trying to update with invalid item, aborting", plainItem);
+            }
+        };
+
         // send the new item to the API
         self.submitNewItem = function(form) {
             var jqxhr;
-            var item = self.item();
-            window.console && console.log("submitNewItem", form, item);
+            var plainItem = self.item().getPlainObject();
+            window.console && console.log("submitNewItem", form, plainItem);
 
             // somewhat validate data
-            if(item
-                && typeof(item.name) === 'string'
-                && typeof(item.description) === 'string'
-                && item.name !== ''
-                && item.description !== ''
-            ) {
-                item.location = self.choosenAddress();
-                item.pickupDeadline = moment(self.pickupDate(), dateformat.moment).format(dateformat.api);
+            if(itemIsValid(plainItem)) {
+                plainItem.location = self.choosenAddress();
+                plainItem.pickupDeadline = moment(self.pickupDate(), dateformat.moment).format(dateformat.api);
 
-                item.status = 'READY'; // TODO is this correct? should serer handle this?
+                plainItem.status = 'READY'; // TODO is this correct? should serer handle this?
 
-                window.console && console.log("submitting item", item);
-                jqxhr = api.itemsPOST(item);
+                window.console && console.log("submitting item", plainItem);
+                jqxhr = api.itemsPOST(plainItem);
                 jqxhr.done(function(data) {
                     window.console && console.log("itemsPOST: respones", data);
                     // redirect to myItems and show success message
@@ -99,7 +118,7 @@ function(
                     // TODO display error message
                 });
             } else {
-                window.console && console.log("trying to submit invalid item, aborting", item);
+                window.console && console.log("trying to submit invalid item, aborting", plainItem);
             }
         };
 
@@ -117,6 +136,8 @@ function(
 
             if(typeof(itemId) !== 'undefined') {
                 self.title('Artikel bearbeiten');
+                self.submitText('Artikel speichern');
+                self.submitAction = self.updateItem;
                 // load item data
                 api.itemGET(itemId, self.item, function() {
                     window.console && console.log("item loaded", self.item());
@@ -124,6 +145,8 @@ function(
                 });
             } else {
                 self.title('Artikel anlegen');
+                self.submitText('Artikel anlegen');
+                self.submitAction = self.submitNewItem;
             };
         };
 

@@ -1,7 +1,7 @@
 <section>
   <div class="container theme-showcase">
 
-    <form data-bind="submit: submitNewItem">
+    <form data-bind="submit: submitAction">
       <div class="row">
         <div class="col-sm-8">
           <div class="panel panel-default">
@@ -96,7 +96,7 @@
           </div>
 
           <div style="float: right">
-            <button class="btn btn-success" type="submit">Artikel anlegen / speichern</button>
+            <button class="btn btn-success" type="submit" data-bind="text: submitText"></button>
           </div>
 
         </div>

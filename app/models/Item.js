@@ -13,6 +13,15 @@ define([
     ) {
         var Ctor = function Item(item) {
             var self = this;
+
+            if(typeof(item) === 'undefined') {
+                item = {
+                    'location': {}
+                    , 'user': {}
+                    , 'description': ''
+                }
+            }
+
             self.id = ko.observable(item.id);
             self.name = ko.observable(item.name);
             self.loc = ko.observable(new Address(item.location));
@@ -65,6 +74,18 @@ define([
                 self.requests(other.requests());
                 self.maxDescriptionLength = other.maxDescriptionLength;
                 self.pickupDeadline(other.pickupDeadline());
+            };
+
+            self.getPlainObject = function() {
+                var plain = {};
+                plain.id = self.id();
+                plain.name = self.name();
+                plain.loc = self.loc();
+                plain.description = self.description();
+                plain.user = self.user();
+                plain.pickupDeadline = self.pickupDeadline();
+                plain.requests = self.requests();
+                return plain;
             };
         };
 
