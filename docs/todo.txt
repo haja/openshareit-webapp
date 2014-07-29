@@ -34,6 +34,7 @@ d fix input field not clickable / clickBubble
 o animieren
 d mehrere aufklappbar machen? zuklappen?
 d mit meine artikel mergen -> nachrichten direkt aufklappbar machen
+o check if a user is logged in before sending request
 
 neuer artikel / bearbeiten:
 d artikelname bold
@@ -67,7 +68,7 @@ d aktuelle adresse highlighten + ausgewählte hinschreiben; radiobutton + highli
 - kalender auf mobile/mac richtig implementieren (mozilla bricks?)
 
 d kein drop-down menu, logout button neben "mein profil"
-? GET auf users sollte eigenes profil/user liefern.
+d GET auf users sollte eigenes profil/user liefern.
 ? POST/PATCH auf users soll eigenes profil ändern
 
 o heimadresse setzen / lesen
@@ -94,7 +95,7 @@ d aritkelstatus? abgeholt setzten können, etc...
 
 ? webkit testing / safari
 d about mit dummy-text
-- "konto löschen" in profil bearbeiten verschieben
+d "konto löschen" in profil bearbeiten verschieben
 
 d david fragen wegen hosting
 
