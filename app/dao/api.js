@@ -161,8 +161,16 @@ function(
         }
         , itemStatusList: [
             {
+                'apiKey': 'INACTIVE'
+                , 'caption': 'Inaktiv'
+            }
+            , {
                 'apiKey': 'READY'
                 , 'caption': 'Bereit'
+            }
+            , {
+                'apiKey': 'RESERVED'
+                , 'caption': 'Reserviert'
             }
             , {
                 'apiKey': 'PICKED_UP'
