@@ -69,7 +69,7 @@ d aktuelle adresse highlighten + ausgewählte hinschreiben; radiobutton + highli
 
 d kein drop-down menu, logout button neben "mein profil"
 d GET auf users sollte eigenes profil/user liefern.
-? POST/PATCH auf users soll eigenes profil ändern
+d POST/PATCH auf users soll eigenes profil ändern
 
 o heimadresse setzen / lesen
 o passwort ändern
