@@ -159,6 +159,10 @@ function(
             var url = 'requests/';
             return jqPatch(url + request.id + '/', { 'pk': parseInt(request.id), 'approved': true});
         }
+        , profilePATCH: function(user) {
+            var url = 'users/' + settings.userId() + '/';
+            return jqPatch(url, user);
+        }
         , itemStatusList: [
             {
                 'apiKey': 'INACTIVE'
