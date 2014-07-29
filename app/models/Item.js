@@ -28,6 +28,7 @@ define([
             self.description = ko.observable(item.description);
             self.user = ko.observable(new User(item.user));
             self.pickupDeadline = ko.observable(moment(item.pickupDeadline, api_dateformat.momentParseFormat));
+            self.status = ko.observable(item.status);
 
             // requests
             self.requests = ko.observableArray();
@@ -64,6 +65,7 @@ define([
                 self.requests(other.requests());
                 self.maxDescriptionLength = other.maxDescriptionLength;
                 self.pickupDeadline(other.pickupDeadline);
+                self.status(other.status);
             };
             self.setDataFromItem = function(other) {
                 self.id(other.id());
@@ -74,6 +76,7 @@ define([
                 self.requests(other.requests());
                 self.maxDescriptionLength = other.maxDescriptionLength;
                 self.pickupDeadline(other.pickupDeadline());
+                self.status(other.status());
             };
 
             self.getPlainObject = function() {
@@ -85,6 +88,7 @@ define([
                 plain.user = self.user();
                 plain.pickupDeadline = self.pickupDeadline();
                 plain.requests = self.requests();
+                plain.status = self.status();
                 return plain;
             };
         };

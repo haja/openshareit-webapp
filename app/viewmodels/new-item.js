@@ -168,6 +168,10 @@ function(
                 api.itemGET(itemId, self.item, function() {
                     window.console && console.log("item loaded", self.item());
                     self.choosenAddress(self.item().loc().id);
+                    self.itemStatus(_.find(self.itemStatusList(), function(itStat) {
+                        window.console && console.log("item status list entry:", itStat);
+                        return itStat.apiKey === self.item().status();
+                    }));
                 });
             } else {
                 self.title('Artikel anlegen');
