@@ -29,7 +29,7 @@ execute SimpleServer.py with
 python SimpleServer.py
 ```
 
-this will start a simple http server on port 8000
+and open [http://localhost:8000](http://localhost:8000) in your browser.
 
 ## Remarks
 
